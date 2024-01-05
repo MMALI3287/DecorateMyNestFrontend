@@ -1,5 +1,5 @@
 {
-  "name": "decorate-my-nest",
+  "name": "@decorate-my-nest/frontend",
   "private": true,
   "version": "0.0.0",
   "type": "module",
