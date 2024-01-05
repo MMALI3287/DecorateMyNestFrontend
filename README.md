@@ -30,23 +30,23 @@ This is the frontend for the DecorateMyNest project. It is a single page applica
 
 ## Technologies Used
 
-* React
+- React
 
-* Vite
+- Vite
 
-* React Router
+- React Router
 
-* React Bootstrap
+- React Bootstrap
 
-* React Icons
+- React Icons
 
-* React Hook Form
+- React Hook Form
 
-* Yup
+- Yup
 
-* Axios
+- Axios
 
-* Dotenv
+- Dotenv
 
 ## Installation
 
@@ -54,25 +54,25 @@ This is the frontend for the DecorateMyNest project. It is a single page applica
 
    ```sh
    git clone
-    ```
+   ```
 
 2. Install NPM packages
 
-    ```sh
-    npm install
-    ```
+   ```sh
+   npm install
+   ```
 
 3. Create a .env file in the root directory of the project and add the following:
 
-    ```sh
-    REACT_APP_API_URL=http://localhost:8000
-    ```
+   ```sh
+   REACT_APP_API_URL=http://localhost:8000
+   ```
 
 4. Start the app
 
-    ```sh
-    npm run dev
-    ```
+   ```sh
+   npm run dev
+   ```
 
 ## Usage
 
@@ -98,8 +98,7 @@ This is the frontend for the DecorateMyNest project. It is a single page applica
 
 ## Roadmap
 
-See the [open issues](
-https://github.com/joseph-chong/react-image-gallery-utils/issues) for a list of proposed features
+See the [open issues](https://github.com/joseph-chong/react-image-gallery-utils/issues) for a list of proposed features
 (and known issues).
 
 ## Contributing
@@ -119,3 +118,5 @@ Contributions are what make the open source community such an amazing place to b
 ## License
 
 Distributed under the MIT License. See `LICENSE` for more information.
+
+[![wakatime](https://wakatime.com/badge/user/55b3480f-fbb9-40ba-bd9a-c04c257f4e39/project/018c8798-1db5-434d-8369-97fe172ba7c9.svg)](https://wakatime.com/badge/user/55b3480f-fbb9-40ba-bd9a-c04c257f4e39/project/018c8798-1db5-434d-8369-97fe172ba7c9)
