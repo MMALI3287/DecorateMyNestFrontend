@@ -1,0 +1,111 @@
+/* register.css */
+
+.register-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100vh;
+  background-color: #191919;
+}
+
+.left-section {
+  width: 50%;
+}
+
+.right-section {
+  flex-basis: 50%;
+  padding: 200px;
+}
+
+.right-section h2 {
+  font-weight: bold;
+  font-family: "Fredoka One", cursive;
+  margin-bottom: 20px;
+  font-size: 40px;
+  text-align: center;
+  color: #fbb200;
+}
+
+.right-section form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  color: white;
+  font-family: "Fredoka One", cursive;
+  justify-content: center;
+}
+
+.right-section .label-input-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+}
+
+.right-section label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  width: 120px;
+  font-family: "Fredoka One", cursive;
+}
+
+.right-section input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-weight: bold;
+  width: 250px;
+  font-family: "Fredoka One", cursive;
+}
+
+.right-section .error {
+  color: #ff0000;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.right-section button[type="submit"] {
+  background-color: #fbb200;
+  color: #191919;
+  border: 9px solid #202020;
+  font-weight: bold;
+  font-family: "Fredoka One", cursive;
+  padding: 10px;
+  font-size: 24px;
+  cursor: pointer;
+  border-radius: 25px;
+  margin: 0 auto;
+}
+
+.social-icons {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+.social-icons img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.login-button {
+  background-color: #fbb200;
+  color: #191919;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+  margin-left: 270px;
+  font-weight: bold;
+  font-family: "Fredoka One", cursive;
+}
+
+.right-section p {
+  color: white;
+  font-weight: bold;
+  font-family: "Fredoka One", cursive;
+}
