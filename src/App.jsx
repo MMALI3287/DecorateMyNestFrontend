@@ -1,20 +1,18 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
-import Button from "./components/elements/Button";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import "./App.scss";
+import Header from "./components/templates/Header/Header";
+import Register from "./components/pages/Register/Register";
+import Login from "./components/pages/Login/Login";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <>
-      <Button
-        text="Submit"
-        type="Submit"
-        className="px-2 py-1 rounded-lg bg-blue-500 text-white"
-      />
-    </>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Header />} />
+        <Route path="/signup" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+      </Routes>
+    </Router>
   );
 }
 

@@ -1,0 +1,63 @@
+@import "../../../index.scss";
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: $white-color;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 4rem;
+    z-index: 1000;
+    .navbar_logo {
+        padding: 0.4rem;
+        font-size: 1rem;
+    }
+    .navbar_links ul {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 20rem;
+        padding: 0 1rem;
+        font-size: 14px;
+        letter-spacing: 1px;
+    }
+    .nav_icons ul {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 12rem;
+        font-size: 14px;
+        letter-spacing: 1px;
+        gap: 1rem;
+    }
+}
+
+.active {
+    color: $green-color;
+    font-size: 15px;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+.nav-icon-div {
+    font-size: 17px;
+}
+
+.nav-icon-div:hover {
+    color: $green-color;
+    cursor: pointer;
+}
+
+.sign-in-up {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1rem;
+    width: 12rem;
+}
+
+.cart-icon {
+    position: relative;
+}

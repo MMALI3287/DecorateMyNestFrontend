@@ -1,0 +1,15 @@
+@import "../../../index.scss";
+
+.content-left {
+    position: relative;
+    // transform: translate(-50%, -50%);
+    background-color: $white-color;
+    height: 30rem;
+    width: 30dvw;
+    box-shadow:
+        rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
+        rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    border-radius: 10px;
+    padding: 1rem 2rem;
+    box-sizing: border-box;
+}

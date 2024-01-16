@@ -1,0 +1,20 @@
+.red-dot-container {
+    position: relative;
+    display: inline-block;
+}
+
+.red-dot {
+    position: absolute;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    font-size: 11px;
+    height: 15px;
+    width: 15px;
+    text-align: center;
+    line-height: 1.2;
+    top: 0;
+    right: 0;
+    transform: translate(9px, -6px);
+    font-weight: 800;
+}

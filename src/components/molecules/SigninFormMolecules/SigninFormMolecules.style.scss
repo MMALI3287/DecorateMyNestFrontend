@@ -1,0 +1,18 @@
+@import "../../../index.scss";
+.input-group-checkbox {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem 0;
+    input[type="checkbox"] {
+        margin-right: 0.5rem;
+    }
+    label {
+        font-size: 14px;
+        font-weight: 600;
+    }
+    p {
+        font-size: 14px;
+        color: $green-color;
+    }
+}

@@ -1,0 +1,34 @@
+@import "../../../index.scss";
+.input-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0.5rem 0;
+    input[type="email"],
+    input[type="password"],
+    input[type="text"],
+    input[type="number"],
+    input[type="file"],
+    select {
+        background-color: $gray-dark-color;
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+        margin-top: 0.3rem;
+        width: 100%;
+    }
+    label {
+        font-weight: 500;
+    }
+}
+
+.label-text {
+    font-size: 1.5rem;
+    font-family: "consolas";
+}
+
+.error {
+    color: red;
+    font-size: 14px;
+    margin-top: 1px;
+    font-family: "sans serif";
+}
