@@ -76,6 +76,7 @@ class ApiCalls {
   }
 
   async getAuthenticationById(authenticationId) {
+    console.log(authenticationId);
     return await this.fetchData(`authentications/${authenticationId}`);
   }
 

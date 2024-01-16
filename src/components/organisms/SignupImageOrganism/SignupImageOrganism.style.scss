@@ -1,8 +1,10 @@
-@import "../../../index.scss";
-
-.image-interior {
+.image-interior-signup {
     width: 100%;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    overflow: hidden;
+    img {
+        width: 100%;
+        height: 100vh;
+        object-fit: fill;
+        overflow: hidden;
+    }
 }

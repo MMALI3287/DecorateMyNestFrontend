@@ -1,44 +1,18 @@
 @import "../../../index.scss";
-.left-div {
-    width: 100%;
-    height: 75vh;
-    min-height: 650px;
-    background-color: $gray-lighter-color;
-    margin-top: 75px;
-    .content {
-        padding: 10rem 0 0 10rem;
-        position: relative;
-        height: 100%;
+.left-div-signin {
+    overflow: hidden;
+    height: 100dvh;
+    img {
+        height: 100vh;
         width: 100%;
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6,
-        p {
-            position: relative;
-            z-index: 1;
-        }
-        .rounded-square {
-            position: absolute;
-            left: 50%;
-            transform: translate(-75%);
-            bottom: 0;
-            height: 30rem;
-            width: 28rem;
-            background-color: $white-color;
-            border-radius: 50% 50% 0 0;
-        }
+        object-fit: fill;
     }
 }
 .right-div {
     width: 100%;
-    height: 75vh;
-    min-height: 650px;
+    height: 100dvh;
     position: relative;
-    background-color: $white-color;
-    margin-top: 75px;
+    background-color: $black-color;
     .content {
         position: absolute;
         top: 45%;
@@ -52,16 +26,5 @@
             rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
         border-radius: 10px;
         padding: 5rem;
-    }
-}
-
-.img-div {
-    position: absolute;
-    bottom: 0;
-    left: 65%;
-    transform: translate(-75%);
-    img {
-        height: 60vh;
-        min-height: 600px;
     }
 }

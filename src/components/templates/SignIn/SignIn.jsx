@@ -3,7 +3,7 @@ import "./Signin.style.scss";
 const Signin = () => {
   return (
     <>
-      <div className="container-main">
+      <div className="container-main-signin">
         <SigninOrganism />
       </div>
     </>

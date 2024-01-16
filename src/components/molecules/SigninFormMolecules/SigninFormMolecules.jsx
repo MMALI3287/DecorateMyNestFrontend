@@ -33,26 +33,24 @@ const SigninFormMolecules = () => {
     try {
       const authenticationData = await api.getAuthenticaions();
 
-      // Check if there is a matching email and password
-      const isMatch = authenticationData.some(
-        (auth) =>
-          auth.EmailAddress === data.email.trim() &&
-          auth.Password === data.password.trim()
-      );
+      const authId = authenticationData.map(async (item, index) => {
+        if (
+          item.EmailAddress === data.email.trim() &&
+          item.Password === data.password.trim()
+        ) {
+          await api.getAuthenticationById(item.AuthId);
 
-      console.log("Email and password match:", isMatch);
-
-      const authenticationById = await api.getAuthenticationById();
-
-      dispatch(addUser(data.email.trim()));
-      dispatch(addRole(data));
-      if (isMatch) {
-        // Redirect or perform other actions on successful login
-        navigate("/");
-      } else {
-        // Handle unsuccessful login (display an error message, etc.)
-        console.log("Invalid email or password");
-      }
+          console.log("Email and password match:", item.AuthId);
+          dispatch(addUser(item.AuthId));
+          if (item.AuthId != null) {
+            navigate("/");
+          } else {
+            console.log("Invalid email or password");
+          }
+          return item.AuthId;
+        }
+        return null;
+      });
     } catch (error) {
       console.error("Error fetching authentication data:", error.message);
     } finally {

@@ -1,20 +1,25 @@
-@import '../../../index.scss';
+@import "../../../index.scss";
 
-.container-main {
+.container-main-signup {
   padding: 100px;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px;
   height: 100vh;
   background-color: $white-color;
 }
 
-.column1 {
-  grid-area: span 1;
+.image-interior-signup {
+  width: 100%;
   overflow: hidden;
+  img {
+    width: 100%;
+    height: 800px;
+    object-fit: fill;
+    overflow: hidden;
+  }
 }
 
-.column2{
+.column2 {
   grid-area: span 2;
   overflow: hidden;
   display: flex;
