@@ -1,8 +1,11 @@
+@import "../../../index.scss";
+
 .footer {
-    background-color: #e6decf;
+    background-color: $white-color;
     color: #191919;
     padding: 20px;
     text-align: center;
+    margin-left: 18vw;
   }
   
   .footer-container {

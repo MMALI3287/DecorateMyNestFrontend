@@ -8,8 +8,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 4rem;
+    padding: 0.5rem 1rem;
     z-index: 1000;
+    padding-left: 14rem;
     .navbar_logo {
         padding: 0.4rem;
         font-size: 1rem;
@@ -21,6 +22,7 @@
         width: 20rem;
         padding: 0 1rem;
         font-size: 14px;
+
         letter-spacing: 1px;
     }
     .nav_icons ul {

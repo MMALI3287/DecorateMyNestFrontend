@@ -30,24 +30,19 @@ const Header = () => {
     <div>
       {" "}
       <div className="navbar">
-        <div className="navbar_logo">
+        {/* <div className="navbar_logo">
           <img
             style={{
               height: "71px",
             }}
             src="logo.png"
           ></img>
-        </div>
+        </div> */}
         <div className="navbar_links_admin">
           <ul>
             <li>
               <NavLink activeclassname="active" to="/">
                 HOME
-              </NavLink>
-            </li>
-            <li>
-              <NavLink activeclassname="active" to="/books">
-                BOOKS
               </NavLink>
             </li>
             <li>
@@ -58,11 +53,6 @@ const Header = () => {
             <li>
               <NavLink activeclassname="active" to="/orders">
                 ORDERS
-              </NavLink>
-            </li>
-            <li>
-              <NavLink activeclassname="active" to="/discounts">
-                DISCOUNTS
               </NavLink>
             </li>
           </ul>
@@ -89,7 +79,7 @@ const Header = () => {
                 <div>
                   <ProfileName
                     username={user ? user.data.user.name.split(" ")[0] : ""}
-                    profileImage={"//myimg.png"}
+                    // profileImage={"//myimg.png"}
                   />
                 </div>
               </>
@@ -104,12 +94,12 @@ const Header = () => {
       <div className="navbar">
         <div className="navbar_logo">
           <NavLink to="/">
-            <img
+            {/* <img
               style={{
                 height: "60px",
               }}
               src="/logo.png"
-            ></img>
+            ></img> */}
           </NavLink>
         </div>
         <div className="navbar_links">
@@ -117,11 +107,6 @@ const Header = () => {
             <li>
               <NavLink activeclassname="active" to="/">
                 HOME
-              </NavLink>
-            </li>
-            <li>
-              <NavLink activeclassname="active" to="/books">
-                BOOKS
               </NavLink>
             </li>
             <li>
@@ -155,12 +140,12 @@ const Header = () => {
               </>
             ) : (
               <>
-                <div>
+                {/* <div>
                   <ProfileName
                     username={user ? user.data.user.name.split(" ")[0] : ""}
                     profileImage={"/myimg.png"}
                   />
-                </div>
+                </div> */}
               </>
             )}
           </ul>

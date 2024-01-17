@@ -1,4 +1,7 @@
 @import "../../../index.scss";
+*{
+    color: $black-color;
+}
 .input-group-checkbox {
     display: flex;
     justify-content: space-between;

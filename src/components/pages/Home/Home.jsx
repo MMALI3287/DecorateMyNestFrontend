@@ -6,7 +6,7 @@ import Footer from "../../templates/Footer/Footer";
 const Home = () => {
   return (
     <div>
-      <Header />
+      {/* <Header /> */}
       <HomeBody />
       <Footer />
     </div>

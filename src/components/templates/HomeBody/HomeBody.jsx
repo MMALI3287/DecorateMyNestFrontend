@@ -31,7 +31,7 @@ const HomeBody = () => {
         <h1>DecorateMyNest</h1>
 
         <div className="sign-up-container">
-          <Link to={"/Register"} className="title">
+          <Link to={"/signup"} className="title">
             <button className="sign-up-button">SIGN UP</button>
           </Link>
         </div>
@@ -44,7 +44,7 @@ const HomeBody = () => {
       <div className="content">
         <p className="middle-text">
           Create A Space
-          <br /> Where <br />
+          <br /> Where
           You Want To Stay
         </p>
         <div className="services-section">
