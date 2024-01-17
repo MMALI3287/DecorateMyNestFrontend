@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import FormInput from "../../atoms/FormInput/FormInput";
 import PasswordInput from "../../atoms/PasswordInput/PasswordInput";
 import Button from "../../atoms/Buttons/Button";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import LinearLoader from "../../atoms/LineLoader/LineLoader";
 import ApiCalls from "../../../apis/ApiCalls";
@@ -17,7 +18,7 @@ const SignupFormMolecules = () => {
   } = useForm({
     mode: "onChange",
   });
-  //   const navigate = useNavigate();
+    const navigate = useNavigate();
 
   const api = new ApiCalls();
   const onSubmit = async (data) => {
@@ -40,6 +41,7 @@ const SignupFormMolecules = () => {
       console.error("Error creating client:", error.message);
     } finally {
       setLoading(false);
+      navigate("/login");
     }
   };
 
