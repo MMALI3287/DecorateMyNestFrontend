@@ -1,6 +1,6 @@
 import React from "react";
 import "./footer.style.scss";
-import twitter from "./images/twitter.png";
+
 
 const Footer = () => {
   return (

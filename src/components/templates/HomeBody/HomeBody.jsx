@@ -12,7 +12,6 @@ import step2Image from "./images/design-development.png";
 import step3Image from "./images/place-booking.png";
 import step4Image from "./images/installation-process.png";
 import step5Image from "./images/you-moving-in.png";
-import facebook from "./images/facebook.png";
 import { Link } from "react-router-dom";
 
 const HomeBody = () => {
