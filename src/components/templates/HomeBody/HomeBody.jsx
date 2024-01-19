@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./homeBody.style.scss";
+import Button from "../../atoms/Buttons/Button";
 import logo from "./images/logo.png";
 import residential from "./images/residential.png";
 import commercial from "./images/commercial.png";
@@ -32,20 +33,19 @@ const HomeBody = () => {
 
         <div className="sign-up-container">
           <Link to={"/signup"} className="title">
-            <button className="sign-up-button">SIGN UP</button>
+            <Button text="SignUp" />
           </Link>
         </div>
         <div className="login-container">
           <Link to={"/Login"} className="title">
-            <button className="login-button">LOG IN</button>
+            <Button text="SignIn" />
           </Link>
         </div>
       </div>
       <div className="content">
         <p className="middle-text">
           Create A Space
-          <br /> Where
-          You Want To Stay
+          <br /> Where You Want To Stay
         </p>
         <div className="services-section">
           <h2>Services</h2>
