@@ -5,7 +5,7 @@ import Signup from "./../../templates/SignUp/SignUp";
 const Register = () => {
   return (
     <div>
-      {/* <Header /> */}
+      <Header />
       <Signup />
     </div>
   );
