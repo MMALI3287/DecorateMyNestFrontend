@@ -26,6 +26,7 @@ const SignupOrganism = () => {
             Register to get access to all the features
           </p>
           <SignupFormMolecules />
+          <img src=""
         </div>
       </div>
     </>
