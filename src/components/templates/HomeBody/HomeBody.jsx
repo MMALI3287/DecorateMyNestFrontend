@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./homeBody.style.scss";
+import Button from "../../atoms/Buttons/Button";
 import logo from "./images/logo.png";
 import residential from "./images/residential.png";
 import commercial from "./images/commercial.png";
@@ -45,7 +46,7 @@ const HomeBody = () => {
 
         <div className="sign-up-container">
           <Link to={"/signup"} className="title">
-            <button className="sign-up-button">SIGN UP</button>
+            <Button text="SignUp" />
           </Link>
         </div>
         {value ? (

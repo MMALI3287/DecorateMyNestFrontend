@@ -1,0 +1,41 @@
+// molecules/HomeBodyHeader.style.scss
+@import '../../../index.scss';
+
+.menu {
+    background-color: #fbb200;
+    width: 365px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    overflow-x: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+}
+
+.menu h1 {
+    color: 191919;
+    font-size: 70px;
+    font-weight: bold;
+    font-family: "Fredoka One", cursive;
+    transform: rotate(-90deg);
+    transform-origin: center;
+    padding-bottom: 2px;
+}
+
+.menu button {
+    background-color: #fbb200;
+    color: 191919;
+    border: 9px solid 191919;
+    font-weight: bold;
+    font-family: "Fredoka One", cursive;
+    padding: 20px;
+    font-size: 28px;
+    cursor: pointer;
+    margin-bottom: 40px;
+    border-radius: 30px;
+
+}

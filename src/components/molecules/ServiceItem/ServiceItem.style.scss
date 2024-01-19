@@ -1,0 +1,14 @@
+// molecules/ServiceItem.style.scss
+@import '../../../index.scss';
+
+.service-item {
+    text-align: center;
+}
+
+.service-image {
+    width: 50px;
+    height: auto;
+    margin-right: 10px;
+}
+
+// Add additional styles as needed
