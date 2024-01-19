@@ -45,26 +45,6 @@ const Header = () => {
                 HOME
               </NavLink>
             </li>
-            <li>
-              <NavLink activeclassname="active" to="/books">
-                BOOKS
-              </NavLink>
-            </li>
-            <li>
-              <NavLink activeclassname="active" to="/users">
-                USERS
-              </NavLink>
-            </li>
-            <li>
-              <NavLink activeclassname="active" to="/orders">
-                ORDERS
-              </NavLink>
-            </li>
-            <li>
-              <NavLink activeclassname="active" to="/discounts">
-                DISCOUNTS
-              </NavLink>
-            </li>
           </ul>
         </div>
         <div className="nav_icons">
@@ -117,21 +97,6 @@ const Header = () => {
             <li>
               <NavLink activeclassname="active" to="/">
                 HOME
-              </NavLink>
-            </li>
-            <li>
-              <NavLink activeclassname="active" to="/books">
-                BOOKS
-              </NavLink>
-            </li>
-            <li>
-              <NavLink activeclassname="active" to="/about">
-                ABOUT
-              </NavLink>
-            </li>
-            <li>
-              <NavLink activeclassname="active" to="/contact">
-                CONTACT
               </NavLink>
             </li>
           </ul>
