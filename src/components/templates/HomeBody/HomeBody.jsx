@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./homeBody.style.scss";
 import logo from "./images/logo.png";
 import residential from "./images/residential.png";
@@ -13,9 +13,22 @@ import step3Image from "./images/place-booking.png";
 import step4Image from "./images/installation-process.png";
 import step5Image from "./images/you-moving-in.png";
 import { Link } from "react-router-dom";
+import { Toaster, toast } from "sonner";
 
 const HomeBody = () => {
+  const logout = () => {
+    localStorage.clear();
+    <Toaster richColors />;
+    toast.success("Successfully logged out!");
+    window.location.reload();
+  };
   const [isImageVisible, setIsImageVisible] = useState({});
+
+  const [value, setValue] = useState("");
+
+  useEffect(() => {
+    setValue(localStorage.getItem("signinemail"));
+  });
 
   const handleImageHover = (stepName) => {
     setIsImageVisible({ ...isImageVisible, [stepName]: true });
@@ -35,17 +48,24 @@ const HomeBody = () => {
             <button className="sign-up-button">SIGN UP</button>
           </Link>
         </div>
-        <div className="login-container">
-          <Link to={"/Login"} className="title">
-            <button className="login-button">LOG IN</button>
-          </Link>
-        </div>
+        {value ? (
+          <div className="login-container">
+            <button className="login-button" onClick={logout}>
+              LOG OUT
+            </button>
+          </div>
+        ) : (
+          <div className="login-container">
+            <Link to={"/Login"} className="title">
+              <button className="login-button">LOG IN</button>
+            </Link>
+          </div>
+        )}
       </div>
       <div className="content">
         <p className="middle-text">
           Create A Space
-          <br /> Where
-          You Want To Stay
+          <br /> Where You Want To Stay
         </p>
         <div className="services-section">
           <h2>Services</h2>

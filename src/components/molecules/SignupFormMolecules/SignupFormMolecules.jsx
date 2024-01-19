@@ -18,7 +18,7 @@ const SignupFormMolecules = () => {
   } = useForm({
     mode: "onChange",
   });
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const api = new ApiCalls();
   const onSubmit = async (data) => {
