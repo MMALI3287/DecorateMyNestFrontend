@@ -10,7 +10,7 @@
 }
 
 .menu {
-  background-color: $white-color;
+  background-color: $black-color;
   width: 365px;
   display: flex;
   flex-direction: column;
@@ -25,7 +25,7 @@
 }
 
 .menu h1 {
-  color: $white-color;
+  color: whitesmoke;
   font-size: 70px;
   font-weight: bold;
   font-family: "Fredoka One", cursive;
@@ -49,13 +49,14 @@
 
 .content {
   flex: 1;
-  background-color: $gray-color;
+  background-color: $white-color;
   color: white;
   text-align: center;
   padding: 50px 0 50px 365px;
 }
 .menu .logo {
   width: 70px;
+  background-color: whitesmoke;
   height: auto;
   height: auto;
   margin-right: 250px;
@@ -298,6 +299,7 @@ table {
 
 th,
 td {
+  color: #000;
   padding: 10px;
   border-bottom: 2px solid #000000;
 }

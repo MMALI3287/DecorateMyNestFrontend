@@ -1,9 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 $danger-color: #ff3d00;
 $success-color: #00e676;
 $warning-color: #ff9100;
 
-$white-color: #fbb200;
-$black-color: #191919;
+$white-color: #161b2e;
+$black-color: #111525;
 $gray-color: #c9c9c9;
 $gray-dark-color: #dcdcdc;
 $gray-light-color: #ededed;
