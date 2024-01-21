@@ -60,6 +60,10 @@ const SignupFormMolecules = () => {
               value: 20,
               message: "Username should be less than 20 characters",
             },
+            minLength: {
+              value: 6,
+              message: "Username should be greater than 6 characters",
+            },
           }}
         />
 

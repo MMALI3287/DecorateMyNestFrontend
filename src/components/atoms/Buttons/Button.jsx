@@ -2,7 +2,9 @@
 import "./Button.style.scss";
 const Button = ({ type, text, onClick, className, disabled }) => {
   const handleClick = () => {
-    onClick();
+    if (onClick) {
+      onClick();
+    }
   };
   return (
     <>

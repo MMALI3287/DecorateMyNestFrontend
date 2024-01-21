@@ -8,14 +8,13 @@ import "./homeBody.style.scss";
 const HomeBody = () => {
   // State and other functions
 
+  Window.reload();
+
   return (
     <div className="App">
-      {/* HomeBodyHeader Molecule */}
       <HomeBodyHeader />
 
-      <div className="content">
-        {/* Rest of the content */}
-      </div>
+      <div className="content"></div>
     </div>
   );
 };

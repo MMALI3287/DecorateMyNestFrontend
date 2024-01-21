@@ -3,11 +3,17 @@ class ApiCalls {
     this.baseURL = "https://localhost:44315/api";
   }
 
-  async fetchData(endpoint, options = {}) {
+  async fetchData(endpoint, options = {}, token) {
     const url = `${this.baseURL}/${endpoint}`;
 
     try {
-      const response = await fetch(url, options);
+      const response = await fetch(url, {
+        ...options,
+        headers: {
+          ...options.headers,
+          Authorization: `Bearer ${token}`,
+        },
+      });
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
@@ -20,12 +26,13 @@ class ApiCalls {
     }
   }
 
-  async createData(endpoint, method, data) {
+  async createData(endpoint, method, data, token) {
     const url = `${this.baseURL}/${endpoint}`;
     const options = {
       method: method,
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(data),
     };
@@ -721,6 +728,33 @@ class ApiCalls {
   async deleteSalaryTransaction(transactionId) {
     return await this.fetchData(`salarytransactions/${transactionId}`, {
       method: "DELETE",
+    });
+  }
+
+  async getTokens(token) {
+    return await this.fetchData("tokens", token);
+  }
+
+  async loginUser(username, password) {
+    return await this.fetchData(`login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ username: username, password: password }),
+    });
+  }
+
+  async getUserByUsername(username) {
+    return await this.fetchData(`authentications/users/${username}`);
+  }
+
+  async googleLogin(username) {
+    return await this.fetchData(`googlelogin/${username}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
     });
   }
 }

@@ -15,20 +15,23 @@ import step4Image from "./images/installation-process.png";
 import step5Image from "./images/you-moving-in.png";
 import { Link } from "react-router-dom";
 import { Toaster, toast } from "sonner";
+import ApiCalls from "../../../apis/ApiCalls";
 
 const HomeBody = () => {
+  const api = new ApiCalls();
   const logout = () => {
     localStorage.clear();
+    sessionStorage.clear();
     <Toaster richColors />;
     toast.success("Successfully logged out!");
-    window.location.reload();
+    setTimeout(window.location.reload(), 2000);
   };
   const [isImageVisible, setIsImageVisible] = useState({});
 
   const [value, setValue] = useState("");
 
   useEffect(() => {
-    setValue(localStorage.getItem("signinemail"));
+    setValue(localStorage.getItem("role") || sessionStorage.getItem("role"));
   });
 
   const handleImageHover = (stepName) => {

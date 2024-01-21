@@ -9,9 +9,7 @@ import RoundLoader from "../../atoms/RoundLoader/RoundLoader";
 import Checkbox from "../../atoms/CheckBox/Checkbox";
 import LinearLoader from "./../../atoms/LineLoader/LineLoader";
 import ApiCalls from "../../../apis/ApiCalls";
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { addRole, addUser } from "../../../Store/Slices/userSlice";
+import { useState, useEffect } from "react";
 const SigninFormMolecules = () => {
   const {
     handleSubmit,
@@ -23,36 +21,47 @@ const SigninFormMolecules = () => {
   });
 
   const navigate = useNavigate();
-  let dispatch = useDispatch();
+
+  const [errorMessage, setErrorMessage] = useState(null);
 
   const [loading, setLoading] = useState(false);
+
+  const [rememberMe, setRememberMe] = useState(false);
+
   const api = new ApiCalls();
+
+  useEffect(() => {
+    console.log(rememberMe);
+  }, [rememberMe]);
 
   const onSubmit = async (data) => {
     setLoading(true);
     try {
-      const authenticationData = await api.getAuthenticaions();
+      const authenticated = await api.loginUser(data.username, data.password);
 
-      const authId = authenticationData.map(async (item, index) => {
-        if (
-          item.EmailAddress === data.email.trim() &&
-          item.Password === data.password.trim()
-        ) {
-          await api.getAuthenticationById(item.AuthId);
+      if (authenticated) {
+        const authData = await api.getUserByUsername(data.username);
 
-          console.log("Email and password match:", item.AuthId);
-          dispatch(addUser(item.AuthId));
-          if (item.AuthId != null) {
-            navigate("/");
-          } else {
-            console.log("Invalid email or password");
-          }
-          return item.AuthId;
+        if (rememberMe) {
+          localStorage.setItem("bearerToken", authenticated.TokenKey);
+          localStorage.setItem("username", authenticated.UserId);
+          localStorage.setItem("authId", authData.AuthId);
+          localStorage.setItem("role", authData.Role);
+          localStorage.setItem("picture", authData.ProfilePictrue);
+        } else {
+          sessionStorage.setItem("bearerToken", authenticated.TokenKey);
+          sessionStorage.setItem("username", authenticated.UserId);
+          sessionStorage.setItem("authId", authData.AuthId);
+          sessionStorage.setItem("role", authData.Role);
+          sessionStorage.setItem("picture", authData.ProfilePictrue);
         }
-        return null;
-      });
+
+        navigate("/");
+      }
     } catch (error) {
       console.error("Error fetching authentication data:", error.message);
+
+      setErrorMessage("Invalid username or password");
     } finally {
       setLoading(false);
     }
@@ -60,24 +69,32 @@ const SigninFormMolecules = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <FormInput
-        labelText="Email"
-        type="email"
-        name="email"
+        labelText="Username"
+        type="text"
+        name="username"
         defaultValue={""}
         control={control}
         errors={errors}
         rules={{
-          required: "Email is required",
-          pattern: {
-            value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-            message: "Invalid email address",
+          required: "Username is required",
+          maxLength: {
+            value: 20,
+            message: "Username should be less than 20 letters",
+          },
+          minLength: {
+            value: 6,
+            message: "Username should be more than 6 letters",
           },
         }}
       />
       <PasswordInput control={control} errors={errors} />
       <div className="input-group-checkbox">
         <div>
-          <Checkbox text="Remember me" display="flex" />
+          <Checkbox
+            text="Remember me"
+            display="flex"
+            onChange={() => setRememberMe(!rememberMe)}
+          />
         </div>
         <div>
           <Link to="/forgot-password">
@@ -85,6 +102,7 @@ const SigninFormMolecules = () => {
           </Link>
         </div>
       </div>
+      {errorMessage && <div className="error-message">{errorMessage}</div>}
       {loading ? (
         <Button type="submit" disabled={true} text={<LinearLoader />} />
       ) : (

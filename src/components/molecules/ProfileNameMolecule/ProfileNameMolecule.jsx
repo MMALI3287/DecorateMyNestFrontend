@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { addRole, deleteUser } from "../../../Store/Slices/userSlice";
 import "./ProfileNameMolecule.style.scss";
 import { useNavigate } from "react-router-dom";
 import {
@@ -18,8 +16,6 @@ const ProfileName = ({ username, profileImage }) => {
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
-  const dispatch = useDispatch();
-  const role = useSelector((state) => state.user.role);
 
   return (
     <div className="profile-dropdown">
@@ -62,9 +58,7 @@ const ProfileName = ({ username, profileImage }) => {
             <div
               className="options flex-start gap-1 "
               onClick={() => {
-                dispatch(deleteUser());
-                localStorage.removeItem("token");
-                dispatch(addRole("user"));
+                localStorage.removeItem("bearerToken");
                 navigate("/signin");
               }}
             >

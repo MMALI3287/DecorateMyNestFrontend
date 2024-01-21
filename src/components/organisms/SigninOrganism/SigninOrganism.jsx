@@ -6,22 +6,37 @@ import { auth, provider } from "../../../apis/FirebaseSDK";
 import { signInWithPopup } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { Toaster, toast } from "sonner";
+import ApiCalls from "../../../apis/ApiCalls";
 const SigninOrganism = () => {
   const navigate = useNavigate();
 
   const [value, setValue] = useState("");
 
   const signinwithgoogle = () => {
-    signInWithPopup(auth, provider).then((data) => {
+    const api = new ApiCalls();
+    signInWithPopup(auth, provider).then(async (data) => {
       setValue(data.user.email);
-      localStorage.setItem("signinemail", data.user.email);
-      <Toaster richColors />;
-      toast.success("Successfully logged in!");
+      const authenticated = await api.googleLogin(
+        data.user.email.split("@")[0]
+      );
+      if (authenticated) {
+        const authData = await api.getUserByUsername(
+          data.user.email.split("@")[0]
+        );
+        console.log(authData);
+        localStorage.setItem("bearerToken", authenticated.TokenKey);
+        localStorage.setItem("username", authenticated.UserId);
+        localStorage.setItem("authId", authData.AuthId);
+        localStorage.setItem("role", authData.Role);
+        localStorage.setItem("picture", authData.ProfilePictrue);
+        <Toaster richColors />;
+        toast.success("Successfully logged in!");
+      }
     });
   };
 
   useEffect(() => {
-    setValue(localStorage.getItem("signinemail"));
+    setValue(localStorage.getItem("role"));
   });
   return (
     <>

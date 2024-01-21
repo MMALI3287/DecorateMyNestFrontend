@@ -1,5 +1,5 @@
 import "./Checkbox.style.scss";
-const Checkbox = ({ text, display, checked }) => {
+const Checkbox = ({ text, display, checked, onChange }) => {
   return (
     <div
       style={{
@@ -13,6 +13,7 @@ const Checkbox = ({ text, display, checked }) => {
         type="checkbox"
         className="ui-checkbox"
         {...(checked === "true" ? { checked } : null)}
+        onChange={onChange}
       ></input>
       <label
         style={{

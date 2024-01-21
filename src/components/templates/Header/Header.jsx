@@ -10,21 +10,19 @@ import { SlPlus } from "react-icons/sl";
 import { SlSettings } from "react-icons/sl";
 
 const Header = () => {
-  const email = useSelector((state) => state.user.email);
+  const email = localStorage.getItem("email");
   const [user, setUser] = useState(null);
   const [token, setToken] = useState("");
-  const user_role = useSelector((state) => state.user.role);
+  const user_role = localStorage.getItem("role");
 
-  useEffect(() => {
-    if (localStorage.getItem("token")) {
-      setUser(jwtDecode(localStorage.getItem("token")));
-      setToken(localStorage.getItem("token"));
-    } else {
-      setToken("");
-    }
-  }, [email]);
-
-  const dispatch = useDispatch();
+  // useEffect(() => {
+  //   if (localStorage.getItem("token")) {
+  //     setUser(jwtDecode(localStorage.getItem("token")));
+  //     setToken(localStorage.getItem("token"));
+  //   } else {
+  //     setToken("");
+  //   }
+  // }, [email]);
 
   return user_role === "admin" ? (
     <div>
@@ -64,7 +62,7 @@ const Header = () => {
                 <div className="sign-in-up">
                   <li>
                     <NavLink activeclassname="active" to="/signin">
-                      SIGN IN
+                      SIGN
                     </NavLink>
                   </li>
                   <li>

@@ -28,6 +28,16 @@ const PasswordInput = ({ control, errors, text, watch }) => {
             value: 32,
             message: "Password should be less than 32 characters",
           },
+          minLength: {
+            value: 8,
+            message: "Password should be at least 8 characters",
+          },
+          pattern: {
+            value:
+              /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+])[A-Za-z\d!@#$%^&*()_+]+$/,
+            message:
+              "Password should include at least:\n- one small letter\n- one capital letter\n- one number\n- one symbol",
+          },
         }}
         render={({ field }) => (
           <>
