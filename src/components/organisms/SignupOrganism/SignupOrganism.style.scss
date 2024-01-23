@@ -4,7 +4,7 @@
     position: relative;
     // transform: translate(-50%, -50%);
     background-color: $white-color;
-    height: 35rem;
+    height: 42rem;
     width: 30dvw;
     box-shadow:
         rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
@@ -14,5 +14,6 @@
     box-sizing: border-box;
 }
 .signUpImage {
+    margin-top: 1rem;
     width: 100%;
 }

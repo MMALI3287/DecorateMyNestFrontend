@@ -10,6 +10,8 @@ import { SlPlus } from "react-icons/sl";
 import { SlSettings } from "react-icons/sl";
 
 const Header = () => {
+
+  
   const email = localStorage.getItem("email");
   const [user, setUser] = useState(null);
   const [token, setToken] = useState("");
@@ -24,7 +26,11 @@ const Header = () => {
   //   }
   // }, [email]);
 
+
+
   return user_role === "admin" ? (
+    
+
     <div>
       {" "}
       <div className="navbar">

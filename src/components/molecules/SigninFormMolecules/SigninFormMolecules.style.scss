@@ -1,7 +1,14 @@
 @import "../../../index.scss";
 *{
-    color: $black-color;
+    color: whitesmoke;
 }
+
+
+
+.form-input-wrapper {
+    color: $black-color;
+  }
+
 .input-group-checkbox {
     display: flex;
     justify-content: space-between;
@@ -13,6 +20,7 @@
     label {
         font-size: 14px;
         font-weight: 600;
+        color: whitesmoke;
     }
     p {
         font-size: 14px;

@@ -64,6 +64,10 @@ const SignupFormMolecules = () => {
               value: 6,
               message: "Username should be greater than 6 characters",
             },
+            pattern: {
+              value: /^[a-zA-Z][a-zA-Z0-9]*$/,
+              message: "Username should start with an alphabet and contain only alphanumeric characters",
+            },
           }}
         />
 
