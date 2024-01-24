@@ -10,7 +10,7 @@ const FormInput = ({
   defaultValue,
 }) => {
   return (
-    <div className="input-group">
+    <div className="input-group text-black w-1/2 mx-auto font-bold text-2xl">
       <label className="label-text" htmlFor={name}>
         {labelText}
       </label>
@@ -22,6 +22,7 @@ const FormInput = ({
         render={({ field }) => (
           <>
             <input
+            className="p-3 rounded-xl"
               {...field}
               type={type}
               id={name}
