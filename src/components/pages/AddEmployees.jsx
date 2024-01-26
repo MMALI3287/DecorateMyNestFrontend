@@ -1,73 +1,91 @@
-// LoginForm.jsx
 
-import React from "react";
+
+// import React from "react";
 import { useForm } from "react-hook-form";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import FormInput from "../atoms/FormInput/FormInput";
+
 
 const AddEmployees = () => {
-  const [loading, setLoading] = useState(false);
   const {
     handleSubmit,
     control,
     formState: { errors },
-    watch,
-    reset,
+    // reset,
   } = useForm({
     mode: "onChange",
   });
-  const navigate = useNavigate();
-
-  const onSubmit = (data) => {
-    console.log(data);
-  };
 
   return (
-    <></>
-    // <form onSubmit={handleSubmit(onSubmit)}>
-    //   <FormInput
-    //     labelText="Username"
-    //     type="text"
-    //     name="username"
-    //     control={control}
-    //     errors={errors}
-    //     rules={{
-    //       required: "Username is required",
-    //       maxLength: {
-    //         value: 20,
-    //         message: "Username should be less than 20 characters",
-    //       },
-    //     }}
-    //   />
+    <div className="font-sans">
+      <h1 className='text-3xl w-96 font-bold text-white bg-gradient-to-b from-blue-900 to-black p-3 my-10 text-center mx-auto rounded-xl shadow-2xl'>
+        Add Employees</h1>
+      <form onSubmit={handleSubmit()}>
 
-    //   <FormInput
-    //     labelText="Email"
-    //     type="email"
-    //     name="emailaddress"
-    //     control={control}
-    //     errors={errors}
-    //     rules={{
-    //       required: "Email is required",
-    //       pattern: {
-    //         value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-    //         message: "Invalid email address",
-    //       },
-    //     }}
-    //   />
+        <FormInput
+          className="border-2"
+          labelText="Department"
+          type="text"
+          name="name"
+          defaultValue={""}
+          control={control}
+          errors={errors}
+          rules={{
+            required: "First Name is required",
+            maxLength: {
+              value: 20,
+              message: "First Name should be less than 20 letters",
+            },
+            minLength: {
+              value: 6,
+              message: "First Name should be more than 6 letters",
+            },
+          }}
+        />
+        <FormInput
+          className="border-2"
+          labelText="Designation"
+          type="text"
+          name="name"
+          defaultValue={""}
+          control={control}
+          errors={errors}
+          rules={{
+            required: "Designation is required",
+            maxLength: {
+              value: 20,
+              message: "Designation should be less than 20 letters",
+            },
+            minLength: {
+              value: 6,
+              message: "Designation should be more than 6 letters",
+            },
+          }}
+        />
 
-    //   <PasswordInput control={control} errors={errors} />
-    //   <PasswordInput
-    //     control={control}
-    //     errors={errors}
-    //     text="Confirm password"
-    //     watch={watch}
-    //   />
-    //   {loading ? (
-    //     <Button type="submit" disabled={true} text={<LinearLoader />} />
-    //   ) : (
-    //     <Button type="submit" text="Sign Up" />
-    //   )}
-    // </form>
+        <FormInput
+          className="border-2"
+          labelText="Salary"
+          type="number"
+          name="number"
+          defaultValue={""}
+          control={control}
+          errors={errors}
+          rules={{
+            required: "PSalary is required",
+            maxLength: {
+              value: 20,
+              message: "Salary be less than 20 letters",
+            },
+            minLength: {
+              value: 6,
+              message: "Salary should be more than 6 letters",
+            },
+          }}
+        />
+
+      </form>
+    </div>
+
   );
 };
 
