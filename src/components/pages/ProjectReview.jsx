@@ -15,7 +15,7 @@ const ProjectReview = () => {
     <div className='font-sans'>
       <h1 className='text-3xl w-96 font-bold text-white bg-gradient-to-b from-blue-900 to-black p-3 my-5 text-center mx-auto rounded-xl shadow-2xl'>
         Project Review</h1>
-      <form onSubmit={handleSubmit()}>
+      <form onSubmit={handleSubmit()} className='w-1/2 mx-auto'>
         <FormInput
           className="border-2"
           labelText="Name"

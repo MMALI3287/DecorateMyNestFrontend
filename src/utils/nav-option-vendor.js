@@ -3,12 +3,12 @@ export const vendorOptions = [
       menu: "Payment",
       subMenu: [
         {
-          name: "Reservation Payment",
-          link: "/dashboard/payment-status",
+          name: "New Order",
+          link: "/dashboard/new-order",
         },
         {
-          name: "Installment Payment",
-          link: "/dashboard/installment-payment",
+          name: "Order History",
+          link: "/dashboard/order-history",
         }
       ],
     },

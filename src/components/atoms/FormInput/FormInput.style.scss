@@ -14,7 +14,7 @@
     select {
         background-color: $gray-dark-color;
         padding: 0.5rem 1rem;
-        color: black;
+        color: rgb(0, 0, 0);
         border-radius: 5px;
         margin-top: 0.3rem;
         width: 100%;
@@ -23,7 +23,7 @@
     label {
         text-align: start;
         font-weight: 500;
-        color: #9b0f0f;
+        color: #110a70;
         font-size: 4.5rem;
     }
 }

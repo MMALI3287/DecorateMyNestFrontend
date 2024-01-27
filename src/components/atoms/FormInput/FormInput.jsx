@@ -10,7 +10,7 @@ const FormInput = ({
   defaultValue,
 }) => {
   return (
-    <div className="input-group text-blue-950  mx-auto font-bold text-xl rounded-lg w-1/2">
+    <div className="input-group text-blue-950  mx-auto font-bold text-xl rounded-lg w-full">
       <label className="label-text" htmlFor={name}>
         {labelText}
       </label>

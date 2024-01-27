@@ -111,8 +111,8 @@ const AddCatalog = () => {
       </form> */}
 
       <div className="my-8">
-        <form onSubmit={handleSubmit()}>
-          <select className="select select-bordered mx-auto my-auto block w-2/4 p-2 text-black font-semibold bg-gray-200">
+        <form onSubmit={handleSubmit()} className="w-1/2 mx-auto">
+          <select className="select select-bordered mx-auto my-auto block w-full p-2 text-black font-semibold bg-gray-200">
             <option className="text-black" disabled selected>Who shot first?</option>
             <option className="text-black">Han Solo</option>
             <option className="text-black">Greedo</option>
@@ -159,14 +159,14 @@ const AddCatalog = () => {
           />
           <label className="form-control">
             <div className="label">
-              <span className="label-text mx-auto my-auto block w-2/4 font-bold text-blue-900">Your bio</span>
+              <span className="label-text mx-auto my-auto block w-full font-bold text-blue-900">Your bio</span>
 
             </div>
-            <textarea className="mx-auto my-auto block w-2/4 p-2 textarea textarea-bordered h-24" placeholder="Bio"></textarea>
+            <textarea className="mx-auto my-auto block w-full p-2 textarea textarea-bordered h-24" placeholder="Bio"></textarea>
 
           </label>
-          <span className="label-text mx-auto my-auto block w-2/4 font-bold text-blue-900 mt-10">Picture Input</span>
-          <input type="file" className="file-input file-input-bordered  mx-auto block w-2/4 p-2 mt-5 border-2 bg-gray-200 text-black" />
+          <span className="label-text mx-auto my-auto block full font-bold text-blue-900 mt-10">Picture Input</span>
+          <input type="file" className="file-input file-input-bordered  mx-auto block w-full p-2 mt-5 border-2 bg-gray-200 text-black" />
 
         </form>
       </div>

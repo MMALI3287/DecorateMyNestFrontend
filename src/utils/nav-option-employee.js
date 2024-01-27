@@ -9,15 +9,23 @@ export const employeeOptions = [
       ],
     },
     {
-      menu: "Payment",
+      menu: "Projects",
       subMenu: [
         {
-          name: "Reservation Payment",
-          link: "/dashboard/payment-status",
+          name: "Ongoing Projects",
+          link: "/dashboard/ongoing-project",
         },
+        
+       
+      ],
+    },
+    {
+      menu: "Meetings",
+      subMenu: [
+        
         {
-          name: "Installment Payment",
-          link: "/dashboard/installment-payment",
+          name: "Meeting Schedule",
+          link: "/dashboard/meeting-schedule",
         }
       ],
     },

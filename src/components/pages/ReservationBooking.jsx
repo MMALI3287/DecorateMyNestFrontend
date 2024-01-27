@@ -67,7 +67,7 @@ const ReservationBooking = () => {
         
       </div>
       <h1 className="text-3xl font-bold text-center text-blue-950 mb-5 mt-20">Reservation amount :</h1>
-      <form onSubmit={handleSubmit()}>
+      <form onSubmit={handleSubmit()} className="w-1/2 mx-auto">
         <FormInput
         className="border-2"
           labelText="Amount"

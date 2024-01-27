@@ -5,7 +5,13 @@ import { IoArrowRedo } from "react-icons/io5";
 const Sidebar = ({ options }) => {
   return (
     <div className="flex-none w-72 min-h-screen p-8 bg-gradient-to-b from-[#355E3B] from-5% via-[#013220] via-30% to-black to-90% ...">
-      <h1 className="text-4xl font-bold mb-20 text-white font-sans">Dashboard</h1>
+      <h1 className="text-4xl font-bold mb-10 text-white font-sans text-center">Logo</h1>
+      <div className="avatar">
+        <div className="w-32 ml-10 rounded-full mx-auto ">
+          <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+        </div>
+      </div>
+      <h2 className="text-white text-xl text-center my-5">John Doe</h2>
       {options.map((menuItem, index) => (
         <div key={index} className="mb-4">
           <div>
@@ -15,17 +21,17 @@ const Sidebar = ({ options }) => {
           </div>
           <ul >
             {menuItem.subMenu.map((subMenuItem, subIndex) => (
-               <li
-                  key={subIndex}
-                  className="mb-2 text-white font-sans flex gap-3"
+              <li
+                key={subIndex}
+                className="mb-2 text-white font-sans flex gap-3"
 
-                >
-                  <IoArrowRedo className="mt-1"/>
-                  <NavLink to={subMenuItem.link} activeclassname="active">
-                    {subMenuItem.name}
-                  </NavLink>
-                </li>
-             
+              >
+                <IoArrowRedo className="mt-1" />
+                <NavLink to={subMenuItem.link} activeclassname="active">
+                  {subMenuItem.name}
+                </NavLink>
+              </li>
+
             ))}
           </ul>
         </div>

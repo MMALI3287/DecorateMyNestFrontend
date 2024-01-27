@@ -27,10 +27,14 @@ import OrderItems from "./Components/Pages/OrderItems";
 import NewOrder from "./Components/Pages/NewOrder";
 import PaymentStatus from "./Components/Pages/PaymentStatus";
 import InstallmentPayment from "./Components/Pages/InstallmentPayment";
+import OrderHistory from "./Components/Pages/OrderHistory";
+import OngoingProjects from "./Components/Pages/OngoingProjects";
+import MeetingSchedule from "./Components/Pages/MeetingSchedule";
 
 // import ReservationStatus from "./Components/Pages/ReservationStatus";
 import Dashboard from "./Components/pages/Dashboard";
 import PopUp from "./components/pages/PopUp";
+import ProfilePage from "./components/pages/ProfilePage";
 
 function App() {
   return (
@@ -38,6 +42,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/signup" element={<Register />} />
+        <Route path="/profile" element={<ProfilePage />} />
         <Route path="/popUp" element={<PopUp />} />
         <Route path="/login" element={<Login />} />
         <Route path="/test" element={<Temp />} />
@@ -121,6 +126,19 @@ function App() {
             path="/dashboard/installment-payment"
             element={<InstallmentPayment />}
           />
+          <Route
+            path="/dashboard/order-history"
+            element={<OrderHistory />}
+          />
+          <Route
+            path="/dashboard/ongoing-project"
+            element={<OngoingProjects />}
+          />
+          <Route
+            path="/dashboard/meeting-schedule"
+            element={<MeetingSchedule />}
+          />
+          
           <Route path="*" element={<h1>Not Found</h1>} />
         </Route>
       </Routes>

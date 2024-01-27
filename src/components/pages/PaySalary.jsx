@@ -10,8 +10,8 @@ const PaySalary = () => {
       <h1 className='text-3xl font-bold text-blue-950 my-5 text-center'>
       Employee Name :</h1>
 
-      <div className="flex items-center justify-center font-semibold w-full mt-3">
-        <select className="select select-info w-1/2 text-black">
+      <div className="flex items-center justify-center font-semibold w-full mt-3 overflow-hidden">
+        <select className="select select-info w-1/3 text-black">
           <option disabled selected className="text-black">Pick your favorite anime</option>
           <option className="text-black">One Piece</option>
           <option className="text-black">Naruto</option>
