@@ -50,7 +50,7 @@ const ReservationBooking = () => {
             </a>
             <a href="#slide2">
               <FaArrowRight className="text-6xl  border-2 bg-yellow-700" />
-            </a> */}
+            </a> 
           </div>
         </div>
         <div id="slide2" className="carousel-item  w-full">
