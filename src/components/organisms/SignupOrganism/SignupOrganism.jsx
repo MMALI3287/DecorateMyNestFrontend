@@ -5,7 +5,7 @@ import signin from "../../../assets/images/googlesignup.jpg";
 import { auth, provider } from "../../../apis/FirebaseSDK";
 import { signInWithPopup } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import ApiCalls from "../../../apis/ApiCalls";
+import ApiCalls from "../../../apis/APICalls";
 import { Toaster, toast } from "sonner";
 
 const SignupOrganism = () => {

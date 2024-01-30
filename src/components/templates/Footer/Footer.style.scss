@@ -1,36 +1,35 @@
 @import "../../../index.scss";
 
-.footer {
-    background-color: $white-color;
-    color: #191919;
-    padding: 20px;
-    text-align: center;
-    margin-left: 18vw;
-  }
-  
-  .footer-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .footer-description {
-    font-size: 16px;
-    line-height: 1.5;
-  }
-  
-  .footer-social-icons {
-    display: flex;
-    gap: 10px;
-  }
-  
-  .footer-social-icons img {
-    width: 20px;
-    height: 20px;
-  }
-  
-  .footer-contact-items {
-    display: flex;
-    gap: 20px;
-  }
-  
+// .footer {
+//     background-color: $white-color;
+//     color: #191919;
+//     padding: 20px;
+//     text-align: center;
+//     margin-left: 18vw;
+//   }
+
+//   .footer-container {
+//     display: flex;
+//     justify-content: space-between;
+//     align-items: center;
+//   }
+
+//   .footer-description {
+//     font-size: 16px;
+//     line-height: 1.5;
+//   }
+
+//   .footer-social-icons {
+//     display: flex;
+//     gap: 10px;
+//   }
+
+//   .footer-social-icons img {
+//     width: 20px;
+//     height: 20px;
+//   }
+
+//   .footer-contact-items {
+//     display: flex;
+//     gap: 20px;
+//   }

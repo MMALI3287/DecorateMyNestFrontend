@@ -3,7 +3,7 @@ import "./App.scss";
 import Register from "./components/pages/Register/Register";
 import Login from "./components/pages/Login/Login";
 import Home from "./components/pages/Home/Home";
-import Temp from "./../temp";
+// import Temp from "./../temp";
 
 import AssignMeetings from "./Components/pages/AssignMeetings";
 import AddVendor from "./Components/pages/AddVendor";
@@ -49,7 +49,7 @@ function App() {
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/popUp" element={<PopUp />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/test" element={<Temp />} />
+        {/* <Route path="/test" element={<Temp />} /> */}
         <Route path="/about" element={<AboutPage />} />
         <Route path="/contact" element={<About />} />
         <Route path="/portfolio" element={<Portfolio />} />
