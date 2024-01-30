@@ -7,7 +7,7 @@ import Temp from "./../temp";
 
 import AssignMeetings from "./Components/pages/AssignMeetings";
 import AddVendor from "./Components/pages/AddVendor";
-import AddEmployees from "./Components/pages/AddEmployees";
+import AddEmployees from "./components/pages/AddEmployees";
 import AddCatalog from "./Components/pages/AddCatalog";
 import AppointmentBooking from "./Components/Pages/AppointmentBooking";
 import AppointmentStatus from "./Components/Pages/AppointmentStatus";
@@ -18,7 +18,7 @@ import ProjectReview from "./Components/Pages/ProjectReview";
 import ProjectStatus from "./Components/Pages/ProjectStatus";
 import Message from "./Components/Pages/Message";
 import InventoryTracking from "./Components/Pages/InventoryTracking";
-import PaySalary from "./Components/Pages/PaySalary";
+import PaySalary from "./components/pages/PaySalary";
 import ConfirmReservation from "./Components/Pages/ConfirmReservation";
 import ConfirmInstallment from "./Components/Pages/ConfirmInstallment";
 import ProjectProgress from "./Components/Pages/ProjectProgress";
@@ -32,13 +32,13 @@ import OngoingProjects from "./Components/Pages/OngoingProjects";
 import MeetingSchedule from "./Components/Pages/MeetingSchedule";
 
 // import ReservationStatus from "./Components/Pages/ReservationStatus";
-import Dashboard from "./Components/pages/Dashboard";
+import Dashboard from "./components/pages/Dashboard";
 import PopUp from "./components/pages/PopUp";
 import ProfilePage from "./components/pages/ProfilePage";
-import AboutPage from "./components/pages/Home/AboutPage"
-import About from "./components/pages/Home/About"
-import Portfolio from "./components/pages/Home/Portfolio"
-import Services from "./components/pages/Home/Services"
+import AboutPage from "./components/pages/Home/AboutPage";
+import About from "./components/pages/Home/About";
+import Portfolio from "./components/pages/Home/Portfolio";
+import Services from "./components/pages/Home/Services";
 
 function App() {
   return (
@@ -79,14 +79,8 @@ function App() {
             path="/dashboard/reservation-payment"
             element={<ReservationPayment />}
           />
-          <Route
-            path="/dashboard/project-review"
-            element={<ProjectReview />}
-          />
-          <Route
-            path="/dashboard/project-status"
-            element={<ProjectStatus />}
-          />
+          <Route path="/dashboard/project-review" element={<ProjectReview />} />
+          <Route path="/dashboard/project-status" element={<ProjectStatus />} />
           <Route
             path="/dashboard/project-in-progress/dashboard/message"
             element={<Message />}
@@ -99,10 +93,7 @@ function App() {
             path="/dashboard/inventory-tracking"
             element={<InventoryTracking />}
           />
-          <Route
-            path="/dashboard/pay-salary"
-            element={<PaySalary />}
-          />
+          <Route path="/dashboard/pay-salary" element={<PaySalary />} />
           <Route
             path="/dashboard/confirm-reservation"
             element={<ConfirmReservation />}
@@ -111,34 +102,16 @@ function App() {
             path="/dashboard/confirm-installment"
             element={<ConfirmInstallment />}
           />
-          <Route
-            path="/dashboard/message"
-            element={<ProjectProgress />}
-          />
-          <Route
-            path="/dashboard/edit-catalog"
-            element={<EditCatalog />}
-          />
-          <Route
-            path="/dashboard/view-order-items"
-            element={<OrderItems />}
-          />
-          <Route
-            path="/dashboard/new-order"
-            element={<NewOrder />}
-          />
-          <Route
-            path="/dashboard/payment-status"
-            element={<PaymentStatus />}
-          />
+          <Route path="/dashboard/message" element={<ProjectProgress />} />
+          <Route path="/dashboard/edit-catalog" element={<EditCatalog />} />
+          <Route path="/dashboard/view-order-items" element={<OrderItems />} />
+          <Route path="/dashboard/new-order" element={<NewOrder />} />
+          <Route path="/dashboard/payment-status" element={<PaymentStatus />} />
           <Route
             path="/dashboard/installment-payment"
             element={<InstallmentPayment />}
           />
-          <Route
-            path="/dashboard/order-history"
-            element={<OrderHistory />}
-          />
+          <Route path="/dashboard/order-history" element={<OrderHistory />} />
           <Route
             path="/dashboard/ongoing-project"
             element={<OngoingProjects />}

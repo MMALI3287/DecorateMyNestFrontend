@@ -1,6 +1,6 @@
-@import'../../../index.scss';
-.button-base{
-    color: whitesmoke;
+@import "../../../index.scss";
+.button-base {
+    color: black;
     padding: 0.5rem 1rem;
     border-radius: 5px;
     margin-top: 0.3rem;
@@ -13,11 +13,11 @@ button[type="submit"] {
     background-color: $black-color;
 }
 
-.black-button{
+.black-button {
     background-color: $black-color;
 }
 
-.ash-button{
+.ash-button {
     background-color: $gray-light-color;
     color: $black-color;
-}  
+}

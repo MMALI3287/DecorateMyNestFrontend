@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import "./homeBody.style.scss";
 import Button from "../../atoms/Buttons/Button";
 import logo from "./images/logo.png";
 import residential from "./images/residential.png";
@@ -15,7 +14,7 @@ import step4Image from "./images/installation-process.png";
 import step5Image from "./images/you-moving-in.png";
 import { Link } from "react-router-dom";
 import { Toaster, toast } from "sonner";
-import ApiCalls from "../../../apis/ApiCalls";
+import ApiCalls from "../../../apis/APICalls";
 
 const HomeBody = () => {
   const api = new ApiCalls();
