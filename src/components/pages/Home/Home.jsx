@@ -2,7 +2,7 @@ import { FaPlus } from "react-icons/fa";
 import { FaLocationArrow } from "react-icons/fa";
 import ScrollTrigger from "react-scroll-trigger";
 import CountUp from "react-countup";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
@@ -59,7 +59,7 @@ const Home = () => {
             </div> */}
 
             <Swiper
-              spaceBetween={10}
+              spaceBetween={30}
               centeredSlides={true}
               autoplay={{
                 delay: 2500,
@@ -67,7 +67,7 @@ const Home = () => {
               }}
               // navigation={true}
               modules={[Autoplay, Pagination, Navigation]}
-              className="mySwiper h-[700px]"
+              className="mySwiper h-[600px]"
             >
               <SwiperSlide>
                 <div className="card w-full h-full shadow-xl image-full">
@@ -308,12 +308,13 @@ const Home = () => {
             </SwiperSlide>
           </Swiper>
         </div>
-        <div className="md:w-6/12" data-aos="zoom-out-down">
+        {/* <div className="md:w-6/12" data-aos="zoom-out-down">
           <div className="flex mt-10 gap-20 md:ml-20">
             <h2 className="text-xl font-bold text-blue-950">History</h2>
             <h2 className="text-xl font-bold text-blue-950">Mission</h2>
             <h2 className="text-xl font-bold text-blue-950">Vision</h2>
           </div>
+
           <p className="mt-10 text-blue-600 text-lg">
             Renovatio, we believe that every space has the potential to be
             transformed into a work of art. With a passion for design and a
@@ -337,17 +338,331 @@ const Home = () => {
             <h1>Project Challenges and Solutions</h1>
             <p>75%</p>
           </div>
-          <hr className="" />
+          <hr className="" /> */}
+        <div
+          role="tablist"
+          className="tabs tabs-bordered grid grid-cols-3 justify-evenly"
+        >
+          <input
+            type="radio"
+            name="my_tabs_1"
+            role="tab"
+            className="tab text-2xl"
+            aria-label="History"
+          />
+          <div role="tabpanel" className="tab-content p-10">
+            <p className=" text-blue-600 text-lg">
+              Renovatio, we believe that every space has the potential to be
+              transformed into a work of art. With a passion for design and a
+              commitment to excellence, we strive to create captivating
+              interiors that reflect the unique personalities and aspirations of
+              our clients.Our team of talented designers, architects, and
+              craftsmen collaborates closely with each client to understand
+              their vision and bring it to life.
+            </p>
+            <p className="mt-10 text-blue-600 text-lg">
+              Renovatio, we believe that every space has the potential to be
+              transformed into a work of art. With a passion for design and a
+              commitment to excellence, we strive to create captivating
+              interiors that reflect the unique personalities and aspirations of
+              our clients.Our team of talented designers, architects, and
+              craftsmen collaborates closely with each client to understand
+              their vision and bring it to life.
+            </p>
+            <div className="flex justify-between mt-5 font-semibold text-blue-950 mr-20">
+              <h1>Space Planning and Layout</h1>
+              <p>95%</p>
+            </div>
+            <hr className="" />
+            <div className="flex justify-between mt-5 font-semibold text-blue-950 mr-20">
+              <h1>Sustainability and Eco-Friendly Features</h1>
+              <p>85%</p>
+            </div>
+            <hr className="" />
+            <div className="flex justify-between mt-5 font-semibold text-blue-950 mr-20">
+              <h1>Project Challenges and Solutions</h1>
+              <p>75%</p>
+            </div>
+            <hr className="" />
+          </div>
+
+          <input
+            type="radio"
+            name="my_tabs_1"
+            role="tab"
+            className="tab text-2xl"
+            aria-label="Mission"
+            checked
+          />
+          <div role="tabpanel" className="tab-content p-10">
+            <p className=" text-green-600 text-lg">
+              Renovatio, we believe that every space has the potential to be
+              transformed into a work of art. With a passion for design and a
+              commitment to excellence, we strive to create captivating
+              interiors that reflect the unique personalities and aspirations of
+              our clients.Our team of talented designers, architects, and
+              craftsmen collaborates closely with each client to understand
+              their vision and bring it to life.
+            </p>
+            <p className="mt-10 text-blue-600 text-lg">
+              Renovatio, we believe that every space has the potential to be
+              transformed into a work of art. With a passion for design and a
+              commitment to excellence, we strive to create captivating
+              interiors that reflect the unique personalities and aspirations of
+              our clients.Our team of talented designers, architects, and
+              craftsmen collaborates closely with each client to understand
+              their vision and bring it to life.
+            </p>
+            <div className="flex justify-between mt-5 font-semibold text-blue-950 mr-20">
+              <h1>Space Planning and Layout</h1>
+              <p>95%</p>
+            </div>
+            <hr className="" />
+            <div className="flex justify-between mt-5 font-semibold text-blue-950 mr-20">
+              <h1>Sustainability and Eco-Friendly Features</h1>
+              <p>85%</p>
+            </div>
+            <hr className="" />
+            <div className="flex justify-between mt-5 font-semibold text-blue-950 mr-20">
+              <h1>Project Challenges and Solutions</h1>
+              <p>75%</p>
+            </div>
+            <hr className="" />
+          </div>
+
+          <input
+            type="radio"
+            name="my_tabs_1"
+            role="tab"
+            className="tab text-2xl"
+            aria-label="Vision"
+          />
+          <div role="tabpanel" className="tab-content p-10">
+            <p className=" text-red-600 text-lg">
+              Renovatio, we believe that every space has the potential to be
+              transformed into a work of art. With a passion for design and a
+              commitment to excellence, we strive to create captivating
+              interiors that reflect the unique personalities and aspirations of
+              our clients.Our team of talented designers, architects, and
+              craftsmen collaborates closely with each client to understand
+              their vision and bring it to life.
+            </p>
+            <p className="mt-10 text-blue-600 text-lg">
+              Renovatio, we believe that every space has the potential to be
+              transformed into a work of art. With a passion for design and a
+              commitment to excellence, we strive to create captivating
+              interiors that reflect the unique personalities and aspirations of
+              our clients.Our team of talented designers, architects, and
+              craftsmen collaborates closely with each client to understand
+              their vision and bring it to life.
+            </p>
+            <div className="flex justify-between mt-5 font-semibold text-blue-950 mr-20">
+              <h1>Space Planning and Layout</h1>
+              <p>95%</p>
+            </div>
+            <hr className="" />
+            <div className="flex justify-between mt-5 font-semibold text-blue-950 mr-20">
+              <h1>Sustainability and Eco-Friendly Features</h1>
+              <p>85%</p>
+            </div>
+            <hr className="" />
+            <div className="flex justify-between mt-5 font-semibold text-blue-950 mr-20">
+              <h1>Project Challenges and Solutions</h1>
+              <p>75%</p>
+            </div>
+            <hr className="" />
+          </div>
         </div>
       </div>
 
+      {/* tab picture */}
+
+      <div className="mx-20">
+        <h1 className="text-8xl font-bold text-blue-950 mt-20">Our Approch</h1>
+
+        <h3 className="text-3xl font-semibold text-blue-950 mt-10">
+          Our Working Process is very minimal, <br /> See it for yourself
+        </h3>
+      </div>
+
+      <div
+        role="tablist"
+        className="tabs tabs-lifted mx-40 mt-20 grid grid-cols-5 justify-evenly"
+      >
+        <input
+          type="radio"
+          name="my_tabs_2"
+          role="tab"
+          className="tab text-2xl font-bold"
+          aria-label="Meet and Greet"
+        />
+        <div
+          role="tabpanel"
+          className="tab-content bg-base-100 border-base-300 rounded-box p-6"
+        >
+          <img
+            className="w-full h-[700px]"
+            src="https://www.minimallimited.com/wp-content/uploads/2022/10/Minimal-Meet-and-Greet.svg"
+            alt=""
+          />
+
+          <p className="text-2xl">70%</p>
+
+          <progress
+            className="progress progress-error w-full"
+            value="70"
+            max="100"
+          ></progress>
+
+          <p className="text-xl mt-5">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+            Repellendus minus debitis nulla quam accusamus doloremque. Tempora
+            natus minus aperiam molestias necessitatibus dolorum odio quas
+            neque, repellendus, dolor aspernatur eos sapiente.
+          </p>
+        </div>
+
+        <input
+          type="radio"
+          name="my_tabs_2"
+          role="tab"
+          className="tab text-2xl font-bold"
+          aria-label="Design Development"
+          checked
+        />
+        <div
+          role="tabpanel"
+          className="tab-content bg-base-100 border-base-300 rounded-box p-6"
+        >
+          <img
+            className="w-full h-[700px]"
+            src="https://www.minimallimited.com/wp-content/uploads/2022/10/Minimal-Design-Development.svg"
+            alt=""
+          />
+
+          <p className="text-2xl">60%</p>
+
+          <progress
+            className="progress progress-error w-full"
+            value="60"
+            max="100"
+          ></progress>
+
+          <p className="text-xl mt-5">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+            Repellendus minus debitis nulla quam accusamus doloremque. Tempora
+            natus minus aperiam molestias necessitatibus dolorum odio quas
+            neque, repellendus, dolor aspernatur eos sapiente.
+          </p>
+        </div>
+
+        <input
+          type="radio"
+          name="my_tabs_2"
+          role="tab"
+          className="tab text-2xl font-bold"
+          aria-label="Place Your Order"
+        />
+        <div
+          role="tabpanel"
+          className="tab-content bg-base-100 border-base-300 rounded-box p-6"
+        >
+          <img
+            className="w-full h-[700px]"
+            src="https://www.minimallimited.com/wp-content/uploads/2022/10/place-the-order-at-minimal.svg"
+            alt=""
+          />
+
+          <p className="text-2xl">50%</p>
+
+          <progress
+            className="progress progress-error w-full"
+            value="50"
+            max="100"
+          ></progress>
+
+          <p className="text-xl mt-5">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+            Repellendus minus debitis nulla quam accusamus doloremque. Tempora
+            natus minus aperiam molestias necessitatibus dolorum odio quas
+            neque, repellendus, dolor aspernatur eos sapiente.
+          </p>
+        </div>
+        <input
+          type="radio"
+          name="my_tabs_2"
+          role="tab"
+          className="tab text-2xl font-bold"
+          aria-label="Installation"
+        />
+        <div
+          role="tabpanel"
+          className="tab-content bg-base-100 border-base-300 rounded-box p-6"
+        >
+          <img
+            className="w-full h-[700px]"
+            src="https://www.minimallimited.com/wp-content/uploads/2022/10/Minimal-Installation-Process.svg"
+            alt=""
+          />
+
+          <p className="text-2xl">70%</p>
+
+          <progress
+            className="progress progress-error w-full"
+            value="70"
+            max="100"
+          ></progress>
+
+          <p className="text-xl mt-5">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+            Repellendus minus debitis nulla quam accusamus doloremque. Tempora
+            natus minus aperiam molestias necessitatibus dolorum odio quas
+            neque, repellendus, dolor aspernatur eos sapiente.
+          </p>
+        </div>
+        <input
+          type="radio"
+          name="my_tabs_2"
+          role="tab"
+          className="tab text-2xl font-bold"
+          aria-label="Move In"
+        />
+        <div
+          role="tabpanel"
+          className="tab-content bg-base-100 border-base-300 rounded-box p-6"
+        >
+          <img
+            className="w-full h-[700px]"
+            src="https://www.minimallimited.com/wp-content/uploads/2022/10/Minimal-Moving-In.svg"
+            alt=""
+          />
+
+          <p className="text-2xl">80%</p>
+
+          <progress
+            className="progress progress-error w-full"
+            value="80"
+            max="100"
+          ></progress>
+
+          <p className="text-xl mt-5">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+            Repellendus minus debitis nulla quam accusamus doloremque. Tempora
+            natus minus aperiam molestias necessitatibus dolorum odio quas
+            neque, repellendus, dolor aspernatur eos sapiente.
+          </p>
+        </div>
+      </div>
+
+      {/* our team */}
+
       <div className="mx-20">
         <h1 className="text-7xl font-bold text-blue-950 mt-20">
-          Why Choose Us
+          Meet the Masters of <br /> Interior Design
         </h1>
         <hr className="mt-5" />
-        <h3 className="text-3xl font-semibold text-blue-600 mt-10">
-          Our Unique Features
+        <h3 className="text-3xl font-semibold text-blue-950 mt-10">
+          One Team, Infinite Possibilities
         </h3>
       </div>
 
