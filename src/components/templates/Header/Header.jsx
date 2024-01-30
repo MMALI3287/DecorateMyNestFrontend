@@ -11,7 +11,7 @@ import { SlSettings } from "react-icons/sl";
 import { FaPlus } from "react-icons/fa";
 import { FaBell } from "react-icons/fa6";
 import { FaLocationArrow } from "react-icons/fa";
-import logo from "../../../assets/images/logo.png";
+import logo from "./../../../assets/images/imagelogo.png";
 
 import { useNavigate } from "react-router-dom";
 
@@ -55,7 +55,7 @@ const Header = () => {
             </div>
           </div>
           <a className="btn btn-ghost text-xl text-gray font-barbie">
-            <img src="../../../assets/images/logo.png"></img>
+            <img src={logo} alt="logo" className="w-56 h-10"></img>
           </a>
         </div>
         <div className="navbar-center hidden lg:flex gap-10 lg:ml-40">
