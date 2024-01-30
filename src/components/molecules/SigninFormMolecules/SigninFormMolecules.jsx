@@ -8,7 +8,7 @@ import PasswordInput from "../../atoms/PasswordInput/PasswordInput";
 import RoundLoader from "../../atoms/RoundLoader/RoundLoader";
 import Checkbox from "../../atoms/CheckBox/Checkbox";
 import LinearLoader from "./../../atoms/LineLoader/LineLoader";
-import ApiCalls from "../../../apis/ApiCalls";
+import ApiCalls from "../../../apis/APICalls";
 import { useState, useEffect } from "react";
 const SigninFormMolecules = () => {
   const {
@@ -108,6 +108,12 @@ const SigninFormMolecules = () => {
       ) : (
         <Button type="submit" text="Login" />
       )}
+      <h2 className="text-center">
+        Do not have an account?{" "}
+        <Link to="/signup" className="text-lg text-violet-700">
+          Sign Up
+        </Link>
+      </h2>
     </form>
   );
 };

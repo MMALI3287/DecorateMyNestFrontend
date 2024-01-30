@@ -6,7 +6,8 @@ import Button from "../../atoms/Buttons/Button";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import LinearLoader from "../../atoms/LineLoader/LineLoader";
-import ApiCalls from "../../../apis/ApiCalls";
+import ApiCalls from "../../../apis/APICalls";
+import { Link } from "react-router-dom";
 const SignupFormMolecules = () => {
   const [loading, setLoading] = useState(false);
   const {
@@ -66,7 +67,8 @@ const SignupFormMolecules = () => {
             },
             pattern: {
               value: /^[a-zA-Z][a-zA-Z0-9]*$/,
-              message: "Username should start with an alphabet and contain only alphanumeric characters",
+              message:
+                "Username should start with an alphabet and contain only alphanumeric characters",
             },
           }}
         />
@@ -98,6 +100,12 @@ const SignupFormMolecules = () => {
         ) : (
           <Button type="submit" text="Sign Up" />
         )}
+        <h2 className="text-center">
+          Do not have an account?{" "}
+          <Link to="/login" className="text-lg text-violet-700">
+            Sign In
+          </Link>
+        </h2>
       </form>
     </>
   );

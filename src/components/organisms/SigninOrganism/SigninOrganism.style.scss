@@ -16,13 +16,13 @@
     width: 100%;
     height: 100dvh;
     position: relative;
-    // background-color: $black-color;
+    background-color: $black-color;
     .content {
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        // background-color: $white-color;
+        background-color: whitesmoke;
         height: 34rem;
         width: 30rem;
         box-shadow:
