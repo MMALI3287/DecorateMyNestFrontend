@@ -35,10 +35,14 @@ import MeetingSchedule from "./Components/Pages/MeetingSchedule";
 import Dashboard from "./Components/pages/Dashboard";
 import PopUp from "./components/pages/PopUp";
 import ProfilePage from "./components/pages/ProfilePage";
+import AboutPage from "./components/pages/Home/AboutPage"
+import About from "./components/pages/Home/About"
+import Portfolio from "./components/pages/Home/Portfolio"
+import Services from "./components/pages/Home/Services"
 
 function App() {
   return (
-    <Router>
+    <Router basename="/">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/signup" element={<Register />} />
@@ -46,6 +50,11 @@ function App() {
         <Route path="/popUp" element={<PopUp />} />
         <Route path="/login" element={<Login />} />
         <Route path="/test" element={<Temp />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/contact" element={<About />} />
+        <Route path="/portfolio" element={<Portfolio />} />
+        <Route path="/services" element={<Services />} />
+
         <Route path="/dashboard" element={<Dashboard />}>
           <Route
             path="/dashboard/assign-meetings"
@@ -138,7 +147,7 @@ function App() {
             path="/dashboard/meeting-schedule"
             element={<MeetingSchedule />}
           />
-          
+
           <Route path="*" element={<h1>Not Found</h1>} />
         </Route>
       </Routes>

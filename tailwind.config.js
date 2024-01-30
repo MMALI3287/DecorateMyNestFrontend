@@ -3,6 +3,12 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      backgroundImage: {
+        "banner-bg": "url('./src/assets/bg.jpg')",
+      },
+      backgroundSize: {
+        "banner-bg": "cover",
+      },
       colors: {
         "background-dark": "#111525",
         "background-light": "#161B2E",
