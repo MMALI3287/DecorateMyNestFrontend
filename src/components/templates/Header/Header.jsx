@@ -11,6 +11,7 @@ import { SlSettings } from "react-icons/sl";
 import { FaPlus } from "react-icons/fa";
 import { FaBell } from "react-icons/fa6";
 import { FaLocationArrow } from "react-icons/fa";
+import logo from "../../../assets/images/logo.png";
 
 import { useNavigate } from "react-router-dom";
 
@@ -53,86 +54,108 @@ const Header = () => {
               </svg>
             </div>
           </div>
-          <a className="btn btn-ghost text-xl text-white">daisyUI</a>
+          <a className="btn btn-ghost text-xl text-gray font-barbie">
+            <img src="../../../assets/images/logo.png"></img>
+          </a>
         </div>
-        <div className="navbar-center hidden lg:flex gap-10">
+        <div className="navbar-center hidden lg:flex gap-10 lg:ml-40">
           <ul className="menu menu-horizontal px-1">
-            <li className="hover:text-blue-500 cursor-pointer">Home</li>
-            <li className="hover:text-blue-500 cursor-pointer pl-10">Pages</li>
-            <li className="hover:text-blue-500 cursor-pointer pl-10">
+            <li
+              className="hover:text-blue-500 cursor-pointer pl-10"
+              onClick={() => navigate("/")}
+            >
+              Home
+            </li>
+            <li
+              className="hover:text-blue-500 cursor-pointer pl-10"
+              onClick={() => navigate("/services")}
+            >
               Services
             </li>
-            <li className="hover:text-blue-500 cursor-pointer pl-10">
+            <li
+              className="hover:text-blue-500 cursor-pointer pl-10"
+              onClick={() => navigate("/portfolio")}
+            >
               Portfolio
             </li>
-            <li className="hover:text-blue-500 cursor-pointer pl-10">Blog</li>
-            <li className="hover:text-blue-500 cursor-pointer pl-10">Shop</li>
+            <li
+              className="hover:text-blue-500 cursor-pointer pl-10"
+              onClick={() => navigate("/about")}
+            >
+              About Us
+            </li>
+            <li
+              className="hover:text-blue-500 cursor-pointer pl-10"
+              onClick={() => navigate("/contact")}
+            >
+              Contact Us
+            </li>
           </ul>
         </div>
-        <div className="navbar-end pr-10">
-          {localStorage.getItem("role") == "" ? (
-            <div>
-              <button
-                className="w-48 h-14 bg-gradient-to-r from-blue-500 to-violet-600 text-white hover:text-black uppercase text-sm font-semibold rounded-md hover:bg-darkRed duration-300"
-                onClick={() => navigate("/login")}
-              >
-                Login
-              </button>
-            </div>
-          ) : (
-            <div className="navbar-end pr-10">
-              <div className="z-50 drawer-end">
-                <input
-                  id="my-drawer-4"
-                  type="checkbox"
-                  className="drawer-toggle"
-                />
-                <div className="drawer-content">
-                  {/* Page content here */}
-                  <label
-                    htmlFor="my-drawer-4"
-                    className="drawer-button btn btn-primary"
-                  >
-                    <FaBell />
-                  </label>
-                </div>
-                <div className="drawer-side">
-                  <label
-                    htmlFor="my-drawer-4"
-                    aria-label="close sidebar"
-                    className="drawer-overlay"
-                  ></label>
-                  <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
-                    {/* Sidebar content here */}
-                    <li>
-                      <div>
-                        <img
-                          className="w-20 h-20 rounded-full"
-                          src="https://images.unsplash.com/photo-1706354924674-0304751469e8?q=80&w=1528&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                          alt=""
-                        />
-                        <div>
-                          <p className="pl-2">
-                            Lorem ipsum dolor sit amet consectetur{" "}
-                          </p>
-                        </div>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div>
-                <img
-                  src="https://images.unsplash.com/photo-1706354924674-0304751469e8?q=80&w=1528&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                  alt=""
-                />
-              </div>
-            </div>
-          )}
+        <div className="navbar-end">
           {/* {
                   user ? <><li><Link to='/dashboard'>Dashboard</Link></li><li><button className="btn btn-ghost">Logout</button></li><img className='w-10 h-10 rounded-full' src={user?.photoURL} alt="" /></> : <><li><Link to='/login'>Login</Link></li></>
                 } */}
         </div>
+        {localStorage.getItem("role") == "" ? (
+          <div>
+            <button
+              className="w-48 h-14 bg-gradient-to-r from-blue-500 to-violet-600 text-white hover:text-black uppercase text-sm font-semibold rounded-md hover:bg-darkRed duration-300"
+              onClick={() => navigate("/login")}
+            >
+              Login
+            </button>
+          </div>
+        ) : (
+          <div className="navbar-end ">
+            <div className="z-50 drawer-end">
+              <input
+                id="my-drawer-4"
+                type="checkbox"
+                className="drawer-toggle"
+              />
+              <div className="drawer-content">
+                {/* Page content here */}
+                <label
+                  htmlFor="my-drawer-4"
+                  className="drawer-button btn btn-primary"
+                >
+                  <FaBell />
+                </label>
+              </div>
+              <div className="drawer-side">
+                <label
+                  htmlFor="my-drawer-4"
+                  aria-label="close sidebar"
+                  className="drawer-overlay"
+                ></label>
+                <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
+                  {/* Sidebar content here */}
+                  <li>
+                    <div>
+                      <img
+                        className="w-20 h-20 rounded-full"
+                        src="https://images.unsplash.com/photo-1706354924674-0304751469e8?q=80&w=1528&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        alt=""
+                      />
+                      <div>
+                        <p className="pl-2">
+                          Lorem ipsum dolor sit amet consectetur{" "}
+                        </p>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div>
+              {/* <img
+                  src="https://images.unsplash.com/photo-1706354924674-0304751469e8?q=80&w=1528&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  alt=""
+                /> */}
+            </div>
+          </div>
+        )}
       </div>
       {/* <div className="max-w-screen-2xl h-full mx-auto px-4 flex items-center justify-between">
         <h1 className="text-2xl uppercase font-bold">Logo</h1>

@@ -35,8 +35,8 @@ const Home = () => {
     <>
       <Header />
       <div className="w-full h-[650px] bg-cover">
-        <div className="w-full h-full bg-black opacity-80">
-          <div className="w-full h-20 lg:h-28 border-b-[1px] border-gray-500 text-black lg:text-white bg-white lg:bg-transparent">
+        <div className="w-full h-full bg-blue opacity-200">
+          <div className="w-full h-20 lg:h-28 border-b-[1px] border-blue-500 text-black lg:text-white bg-white lg:bg-transparent">
             {/* <div className="max-w-screen-2xl h-full mx-auto px-4 flex items-center justify-between">
               <h1 className="text-2xl uppercase font-bold">Logo</h1>
               <ul className="md:flex items-center gap-8 uppercase font-semibold">
@@ -59,7 +59,7 @@ const Home = () => {
             </div> */}
 
             <Swiper
-              spaceBetween={30}
+              spaceBetween={10}
               centeredSlides={true}
               autoplay={{
                 delay: 2500,
@@ -67,7 +67,7 @@ const Home = () => {
               }}
               // navigation={true}
               modules={[Autoplay, Pagination, Navigation]}
-              className="mySwiper h-[600px]"
+              className="mySwiper h-[700px]"
             >
               <SwiperSlide>
                 <div className="card w-full h-full shadow-xl image-full">
@@ -79,8 +79,8 @@ const Home = () => {
                     />
                   </figure>
                   <div className="card-body text-center w-full">
-                    <p className="text-7xl mt-20 font-bold">
-                      If a dog chews shoes whose shoes does he choose?
+                    <p className="text-7xl mt-56 font-bold">
+                      Simplicity is the ultimate sophistication
                     </p>
                   </div>
                 </div>
@@ -95,8 +95,8 @@ const Home = () => {
                     />
                   </figure>
                   <div className="card-body text-center w-full">
-                    <p className="text-7xl mt-20 font-bold">
-                      If a dog chews shoes whose shoes does he choose?
+                    <p className="text-7xl mt-56 font-bold">
+                      You are the author of an empty room
                     </p>
                   </div>
                 </div>
@@ -111,8 +111,8 @@ const Home = () => {
                     />
                   </figure>
                   <div className="card-body text-center w-full">
-                    <p className="text-7xl mt-20 font-bold">
-                      If a dog chews shoes whose shoes does he choose?
+                    <p className="text-7xl mt-56 font-bold">
+                      Your home should reflect your soul
                     </p>
                   </div>
                 </div>
@@ -127,8 +127,8 @@ const Home = () => {
                     />
                   </figure>
                   <div className="card-body text-center w-full">
-                    <p className="text-7xl mt-20 font-bold">
-                      If a dog chews shoes whose shoes does he choose?
+                    <p className="text-7xl mt-56 font-bold">
+                      Luxury is when it seems flawless
                     </p>
                   </div>
                 </div>
@@ -140,7 +140,8 @@ const Home = () => {
 
       <div className="md:mx-40">
         <h1 className="text-8xl font-bold text-blue-950 mt-20">
-          Elevate Your <br /> Interiors
+          Elevate Your <br />
+          Interiors
         </h1>
         <div className="md:flex justify-between">
           <h3 className="text-2xl font-semibold text-blue-950 mt-10">
@@ -193,7 +194,7 @@ const Home = () => {
             </div>
             <div className="flex">
               <FaPlus className="mt-4 mr-2" />
-              <p className="pt-3 cursor-pointer"> Consultation</p>
+              <p className="pt-3 cursor-pointer"> Planning</p>
             </div>
           </div>
         </div>
@@ -342,11 +343,11 @@ const Home = () => {
 
       <div className="mx-20">
         <h1 className="text-7xl font-bold text-blue-950 mt-20">
-          Meet the Masters of <br /> Interior Design
+          Why Choose Us
         </h1>
         <hr className="mt-5" />
-        <h3 className="text-3xl font-semibold text-blue-950 mt-10">
-          One Team, Infinite Possibilities
+        <h3 className="text-3xl font-semibold text-blue-600 mt-10">
+          Our Unique Features
         </h3>
       </div>
 
