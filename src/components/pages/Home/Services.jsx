@@ -190,18 +190,18 @@ const Services = () => {
             />
             <div className="mt-20" data-aos="zoom-out-down">
               <h1 className="text-3xl font-semibold">Installation Process</h1>
-              <div className="pl-10 mt-5 border-l-4 border-dashed border-gray-500 text-lg">
-                <p className=" font-semibold text-gray-500">
+              <div className="pl-10 mt-5 border-l-4 border-dashed border-green-800 text-lg">
+                <p className=" font-semibold text-orange-800">
                   Pay 95% at the execution milestone{" "}
                 </p>
-                <p className="text-sm text-gray-500 border-b-[1px] border-gray-500 pb-6">
+                <p className="text-sm text-gray-500 border-b-[1px] border-green-800 pb-6">
                   {" "}
                   With our woodwork almost complete and coloring work in
                   progress, <br /> your project is now midway.
                 </p>
               </div>
-              <div className="pl-10 mt-5 border-l-4 border-dashed border-gray-500 text-lg">
-                <p className=" font-semibold text-gray-500 pt-8">
+              <div className="pl-10 mt-5 border-l-4 border-dashed border-green-800 text-lg">
+                <p className=" font-semibold text-orange-800 pt-8">
                   Installation
                 </p>
                 <p className="text-sm text-gray-500">
@@ -220,10 +220,10 @@ const Services = () => {
               data-aos="zoom-out-down"
             />
             <div className="mt-20" data-aos="zoom-out-down">
-              <h1 className="text-3xl font-semibold">Moving in</h1>
-              <div className="pl-10 mt-5 border-l-4 border-dashed border-gray-500 text-lg">
-                <p className=" font-semibold text-gray-500">Move in</p>
-                <p className="text-sm text-gray-500 border-b-[1px] border-gray-500 pb-6">
+              <h1 className="text-3xl font-semibold ">Moving in</h1>
+              <div className="pl-10 mt-5 border-l-4 border-dashed border-green-800 text-lg">
+                <p className=" font-semibold text-orange-800">Move in</p>
+                <p className="text-sm text-gray-500 border-b-[1px] border-green-800 pb-6">
                   The work is done, and your dream interior has become a
                   reality. <br />
                   Capture this moment with our complimentary professional

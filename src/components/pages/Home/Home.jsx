@@ -9,6 +9,11 @@ import "swiper/css";
 import "swiper/css/effect-creative";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+import logo from "./../../../assets/images/balcony1.jpg";
+import logo from "./../../../assets/images/balcony2.jpg";
+import logo from "./../../../assets/images/kids1.jpg";
+import logo from "./../../../assets/images/kids2.jpg";
+import logo from "./../../../assets/images/kids3.jpg";
 
 import {
   EffectCoverflow,
@@ -279,32 +284,19 @@ const Home = () => {
             className="mySwiper"
           >
             <SwiperSlide>
-              <img
-                className="w-full"
-                src="https://images.unsplash.com/photo-1682687221213-56e250b36fdd?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHx8"
-                alt=""
-              />
+              <img src={logo} alt="logo" className="balcony1"></img>
             </SwiperSlide>
             <SwiperSlide>
-              <img
-                className="w-full"
-                src="https://images.unsplash.com/photo-1683009427037-c5afc2b8134d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHw2fHx8ZW58MHx8fHx8"
-                alt=""
-              />
+              <img src={logo} alt="logo" className="balcony2"></img>
             </SwiperSlide>
             <SwiperSlide>
-              <img
-                className="w-full"
-                src="https://images.unsplash.com/photo-1682695794816-7b9da18ed470?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxMXx8fGVufDB8fHx8fA%3D%3D"
-                alt=""
-              />
+              <img src={logo} alt="logo" className="kids1"></img>
             </SwiperSlide>
             <SwiperSlide>
-              <img
-                className="w-full"
-                src="https://images.unsplash.com/photo-1705599773334-b73b8f707101?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxNHx8fGVufDB8fHx8fA%3D%3D"
-                alt=""
-              />
+              <img src={logo} alt="logo" className="kids2"></img>
+            </SwiperSlide>
+            <SwiperSlide>
+              <img src={logo} alt="logo" className="kids3"></img>
             </SwiperSlide>
           </Swiper>
         </div>

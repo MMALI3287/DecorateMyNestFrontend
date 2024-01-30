@@ -54,7 +54,7 @@ const Header = () => {
               </svg>
             </div>
           </div>
-          <a className="btn btn-ghost text-xl text-gray font-barbie">
+          <a className="btn btn-ghost ">
             <img src={logo} alt="logo" className="w-56 h-10"></img>
           </a>
         </div>
