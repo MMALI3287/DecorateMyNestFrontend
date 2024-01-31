@@ -58,34 +58,34 @@ const Header = () => {
             <img src={logo} alt="logo" className="w-56 h-10"></img>
           </a>
         </div>
-        <div className="navbar-center hidden lg:flex gap-10 lg:ml-40">
+        <div className="navbar-center hidden lg:flex gap-10 lg:ml-60">
           <ul className="menu menu-horizontal px-1">
             <li
-              className="hover:text-blue-500 cursor-pointer pl-10"
+              className="hover:text-blue-900 cursor-pointer pl-10 font-serif text-2xl"
               onClick={() => navigate("/")}
             >
               Home
             </li>
             <li
-              className="hover:text-blue-500 cursor-pointer pl-10"
+              className="hover:text-blue-900 cursor-pointer pl-10 font-serif text-2xl"
               onClick={() => navigate("/services")}
             >
               Services
             </li>
             <li
-              className="hover:text-blue-500 cursor-pointer pl-10"
+              className="hover:text-blue-900 cursor-pointer pl-10 font-serif text-2xl"
               onClick={() => navigate("/portfolio")}
             >
               Portfolio
             </li>
             <li
-              className="hover:text-blue-500 cursor-pointer pl-10"
+              className="hover:text-blue-900 cursor-pointer pl-10 font-serif text-2xl"
               onClick={() => navigate("/about")}
             >
               About Us
             </li>
             <li
-              className="hover:text-blue-500 cursor-pointer pl-10"
+              className="hover:text-blue-900 cursor-pointer pl-10 font-serif text-2xl"
               onClick={() => navigate("/contact")}
             >
               Contact Us
@@ -118,7 +118,7 @@ const Header = () => {
                 {/* Page content here */}
                 <label
                   htmlFor="my-drawer-4"
-                  className="drawer-button btn btn-primary"
+                  className="drawer-button btn btn-white text-black "
                 >
                   <FaBell />
                 </label>

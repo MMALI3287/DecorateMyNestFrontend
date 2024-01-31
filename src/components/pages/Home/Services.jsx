@@ -20,47 +20,47 @@ const Services = () => {
       <Header />
 
       <div>
-        <h1 className="text-4xl font-bold text-blue-950 mt-20 text-center border-b-[1px] border-gray-500 pb-10 mx-20">
+        <h1 className="text-5xl font-bold text-blue-950 mt-20 text-center border-b-[2px] border-gray-500 pb-10 mx-20 font-serif">
           Experience the Journey from Ideation to Execution
         </h1>
-        <p className="text-gray-500 text-center md:mx-40 mt-10">
+        <p className="text-gray-500 text-center text-2xl md:mx-40 mt-10 font-serif">
           Take a sneak peek behind the scenes and witness our meticulous work
           process. From generating innovative ideas to delivering top-notch
           interiors, we have been dedicated to fulfilling our clients’ desired
           visions.
         </p>
-        <p className="text-gray-500 text-center md:mx-40 mt-10">
+        <p className="text-gray-500 text-center text-2xl md:mx-40 mt-10 font-serif">
           7 years after the inception of DecorateMyNest, we have a greater
           vision to become the foremost lifestyle brand, introducing a great way
           of living.
         </p>
-        <p className="text-gray-500 text-center md:mx-40 mt-10">
+        <p className="text-gray-500 text-center text-2xl md:mx-40 mt-10 font-serif">
           DecorateMyNest is uniquely identified with sensible design thinking
           and a connection to heritage and culture. Our goal is to make your
           space feel connected and alive, while maintaining balance and harmony,
           by having less but meaningful items.
         </p>
 
-        <h1 className="text-4xl font-bold text-blue-950 mt-20 text-center  border-gray-500 mx-20">
+        <h1 className="text-4xl font-bold text-blue-950 mt-20 text-center  border-gray-500 mx-20 font-serif">
           Your Desired Interior <br /> in 5 Simple Steps
         </h1>
-        <p className="text-sm text-gray-500 text-center mt-5">
+        <p className=" text-gray-500 text-center text-3xl mt-5 font-serif">
           Thinking of building a new home? <br /> Here’s how you can get
           started.
         </p>
 
         {/* icons */}
 
-        <div className="flex mx-20 justify-around mt-20">
-          <div className="w-36" data-aos="zoom-out-down">
-            <FaPeopleArrows className="text-6xl mx-auto text-lime-800" />
+        <div className="flex mx-20 justify-around mt-20 font-serif">
+          <div className="w-36" data-aos="zoom-out-down font-serif">
+            <FaPeopleArrows className="text-6xl mx-auto text-lime-800 font-serif" />
             <p className="text-center mt-3 italic">Meet and Greet</p>
           </div>
           <div>
-            <IoMdArrowForward className="text-4xl mt-5" />
+            <IoMdArrowForward className="text-4xl mt-5 font-serif" />
           </div>
           <div className="w-36" data-aos="zoom-out-down">
-            <MdOutlineDesignServices className="text-6xl mx-auto text-orange-800" />
+            <MdOutlineDesignServices className="text-6xl mx-auto text-orange-800 font-serif" />
             <p className="text-center mt-3 italic">Design Development</p>
           </div>
           <div>
@@ -88,8 +88,8 @@ const Services = () => {
 
         {/* services */}
 
-        <div className="mx-20">
-          <div className="flex justify-items-start gap-10 mt-10">
+        <div className="mx-20 font-serif">
+          <div className="flex justify-items-start gap-10 mt-10 font-serif">
             <img
               className="w-1/2 h-96"
               src="https://www.minimallimited.com/wp-content/uploads/2022/10/Minimal-Meet-and-Greet.svg"
@@ -141,7 +141,7 @@ const Services = () => {
                 <p className=" font-semibold text-orange-800 pt-8">
                   Finalize your design
                 </p>
-                <p className="text-sm border-green-800">
+                <p className="text-sm  text-gray-500  border-green-800">
                   Based on your requirements and our ideas, we will develop{" "}
                   <br /> design options for you to choose from. Simply decide{" "}
                   <br /> which one you want.
@@ -236,9 +236,9 @@ const Services = () => {
 
         {/* the team */}
 
-        <div className="mt-20 bg-blue-500 pt-16">
+        <div className="mt-20 bg-blue-400 pt-16">
           <h1 className="text-5xl font-bold text-white mt-20 text-center  pb-10 mx-20">
-            The Team Behind Minimal
+            The Team Behind DecorateMyNest
           </h1>
           <p className="text-sm text-white pb-6 text-center">
             Our diverse team of architects, engineers, and business managers{" "}

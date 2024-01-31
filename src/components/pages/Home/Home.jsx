@@ -9,11 +9,18 @@ import "swiper/css";
 import "swiper/css/effect-creative";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import logo from "./../../../assets/images/balcony1.jpg";
-import logo from "./../../../assets/images/balcony2.jpg";
-import logo from "./../../../assets/images/kids1.jpg";
-import logo from "./../../../assets/images/kids2.jpg";
-import logo from "./../../../assets/images/kids3.jpg";
+import balcony1 from "./../../../assets/images/balcony1.jpg";
+import balcony2 from "./../../../assets/images/balcony2.jpg";
+import kids1 from "./../../../assets/images/kids1.jpg";
+import kids2 from "./../../../assets/images/kids2.jpg";
+import kids3 from "./../../../assets/images/kids3.jpg";
+import d1 from "./../../../assets/images/d1.jpg";
+import d2 from "./../../../assets/images/d2.jpg";
+import d3 from "./../../../assets/images/d3.jpg";
+import d4 from "./../../../assets/images/d4.jpg";
+import d5 from "./../../../assets/images/d5.jpg";
+import d6 from "./../../../assets/images/d6.jpg";
+import d7 from "./../../../assets/images/d7.jpg";
 
 import {
   EffectCoverflow,
@@ -41,7 +48,7 @@ const Home = () => {
       <Header />
       <div className="w-full h-[650px] bg-cover">
         <div className="w-full h-full bg-blue opacity-200">
-          <div className="w-full h-20 lg:h-28 border-b-[1px] border-blue-500 text-black lg:text-white bg-white lg:bg-transparent">
+          <div className="w-full h-20 lg:h-28 border-b-[1px] border-blue-500 text-black lg:text-white bg-white lg:bg-transparent font-serif">
             {/* <div className="max-w-screen-2xl h-full mx-auto px-4 flex items-center justify-between">
               <h1 className="text-2xl uppercase font-bold">Logo</h1>
               <ul className="md:flex items-center gap-8 uppercase font-semibold">
@@ -72,7 +79,7 @@ const Home = () => {
               }}
               // navigation={true}
               modules={[Autoplay, Pagination, Navigation]}
-              className="mySwiper h-[600px]"
+              className="mySwiper h-[700px]"
             >
               <SwiperSlide>
                 <div className="card w-full h-full shadow-xl image-full">
@@ -84,7 +91,7 @@ const Home = () => {
                     />
                   </figure>
                   <div className="card-body text-center w-full">
-                    <p className="text-7xl mt-56 font-bold">
+                    <p className="text-7xl mt-80 font-serif">
                       Simplicity is the ultimate sophistication
                     </p>
                   </div>
@@ -100,7 +107,7 @@ const Home = () => {
                     />
                   </figure>
                   <div className="card-body text-center w-full">
-                    <p className="text-7xl mt-56 font-bold">
+                    <p className="text-7xl mt-80  font-serif">
                       You are the author of an empty room
                     </p>
                   </div>
@@ -116,7 +123,7 @@ const Home = () => {
                     />
                   </figure>
                   <div className="card-body text-center w-full">
-                    <p className="text-7xl mt-56 font-bold">
+                    <p className="text-7xl mt-80 font-serif">
                       Your home should reflect your soul
                     </p>
                   </div>
@@ -132,7 +139,7 @@ const Home = () => {
                     />
                   </figure>
                   <div className="card-body text-center w-full">
-                    <p className="text-7xl mt-56 font-bold">
+                    <p className="text-7xl mt-80  font-serif">
                       Luxury is when it seems flawless
                     </p>
                   </div>
@@ -144,22 +151,22 @@ const Home = () => {
       </div>
 
       <div className="md:mx-40">
-        <h1 className="text-8xl font-bold text-blue-950 mt-20">
+        <h1 className="text-7xl font-bold text-blue-950 mt-20 font-serif">
           Elevate Your <br />
           Interiors
         </h1>
         <div className="md:flex justify-between">
-          <h3 className="text-2xl font-semibold text-blue-950 mt-10">
+          <h3 className="text-2xl font-semibold text-blue-950 mt-10 font-serif">
             Designing Interiors That Leave a Lasting Impression
           </h3>
           <div className="flex">
-            <h3 className="text-2xl font-semibold text-blue-950 mt-10">
+            <h3 className="text-2xl font-semibold text-blue-950 mt-10 font-serif">
               All services{" "}
             </h3>
             <FaLocationArrow className="mt-12 text-blue-950 ml-2" />
           </div>
         </div>
-        <div className="md:flex gap-64 justify-center text-blue-950 font-semibold mt-10">
+        <div className="md:flex gap-64 justify-center text-blue-950 font-semibold mt-10 font-serif">
           <div>
             <div className="flex">
               <FaPlus className="mt-7 mr-2" />
@@ -251,7 +258,7 @@ const Home = () => {
               )}{" "}
               <span className="text-8xl font-bold">K</span>
               <br />
-              <span className="text-2xl mt-3">Total Acheivment</span>
+              <span className="text-2xl mt-3">Total Achievement</span>
             </div>
           </div>
         </ScrollTrigger>
@@ -262,7 +269,7 @@ const Home = () => {
           About Our Design <br /> Philosophy
         </h1>
         <hr className="mt-5" />
-        <h3 className="text-3xl font-semibold text-blue-950 mt-10">
+        <h3 className="text-3xl font-semibold text-blue-950 mt-10 font-serif">
           Your Vision, Our Design Expertise
         </h3>
       </div>
@@ -284,19 +291,19 @@ const Home = () => {
             className="mySwiper"
           >
             <SwiperSlide>
-              <img src={logo} alt="logo" className="balcony1"></img>
+              <img src={balcony1} alt="logo" className="balcony1"></img>
             </SwiperSlide>
             <SwiperSlide>
-              <img src={logo} alt="logo" className="balcony2"></img>
+              <img src={balcony2} alt="logo" className="balcony2"></img>
             </SwiperSlide>
             <SwiperSlide>
-              <img src={logo} alt="logo" className="kids1"></img>
+              <img src={kids1} alt="logo" className="kids1"></img>
             </SwiperSlide>
             <SwiperSlide>
-              <img src={logo} alt="logo" className="kids2"></img>
+              <img src={kids2} alt="logo" className="kids2"></img>
             </SwiperSlide>
             <SwiperSlide>
-              <img src={logo} alt="logo" className="kids3"></img>
+              <img src={kids3} alt="logo" className="kids3"></img>
             </SwiperSlide>
           </Swiper>
         </div>
@@ -343,36 +350,31 @@ const Home = () => {
             aria-label="History"
           />
           <div role="tabpanel" className="tab-content p-10">
-            <p className=" text-blue-600 text-lg">
-              Renovatio, we believe that every space has the potential to be
-              transformed into a work of art. With a passion for design and a
-              commitment to excellence, we strive to create captivating
-              interiors that reflect the unique personalities and aspirations of
-              our clients.Our team of talented designers, architects, and
-              craftsmen collaborates closely with each client to understand
-              their vision and bring it to life.
+            <p className=" text-blue-600 text-xl font-serif">
+              In 2023, our interior decoration project unfolded as a captivating
+              narrative of design evolution. Guided by a commitment to harmonize
+              modern aesthetics with enduring elegance, our team embarked on a
+              meticulous journey. By seamlessly weaving together personalized
+              client preferences, architectural intricacies, and a carefully
+              curated palette of textures and materials, we crafted spaces that
+              transcend mere functionality. The project stands as a testament to
+              our unwavering dedication to innovation, collaborative excellence,
+              and the artistry of creating environments that seamlessly blend
+              contemporary allure with timeless sophistication.
             </p>
-            <p className="mt-10 text-blue-600 text-lg">
-              Renovatio, we believe that every space has the potential to be
-              transformed into a work of art. With a passion for design and a
-              commitment to excellence, we strive to create captivating
-              interiors that reflect the unique personalities and aspirations of
-              our clients.Our team of talented designers, architects, and
-              craftsmen collaborates closely with each client to understand
-              their vision and bring it to life.
-            </p>
-            <div className="flex justify-between mt-5 font-semibold text-blue-950 mr-20">
-              <h1>Space Planning and Layout</h1>
+
+            <div className="flex justify-between mt-5 font-semibold text-blue-950 mr-20 text-xl font-serif">
+              <h1>Design from a user view</h1>
               <p>95%</p>
             </div>
             <hr className="" />
-            <div className="flex justify-between mt-5 font-semibold text-blue-950 mr-20">
-              <h1>Sustainability and Eco-Friendly Features</h1>
+            <div className="flex justify-between mt-5 font-semibold text-blue-950 mr-20 text-xl font-serif">
+              <h1>Compare with other related websites</h1>
               <p>85%</p>
             </div>
             <hr className="" />
-            <div className="flex justify-between mt-5 font-semibold text-blue-950 mr-20">
-              <h1>Project Challenges and Solutions</h1>
+            <div className="flex justify-between mt-5 font-semibold text-blue-950 mr-20 text-xl font-serif">
+              <h1>Work as a team</h1>
               <p>75%</p>
             </div>
             <hr className="" />
@@ -387,37 +389,30 @@ const Home = () => {
             checked
           />
           <div role="tabpanel" className="tab-content p-10">
-            <p className=" text-green-600 text-lg">
-              Renovatio, we believe that every space has the potential to be
-              transformed into a work of art. With a passion for design and a
-              commitment to excellence, we strive to create captivating
-              interiors that reflect the unique personalities and aspirations of
-              our clients.Our team of talented designers, architects, and
-              craftsmen collaborates closely with each client to understand
-              their vision and bring it to life.
+            <p className=" text-green-600 text-xl font-serif">
+              Our mission is to elevate living spaces through innovative and
+              timeless design solutions. We are dedicated to understanding and
+              exceeding our clients' expectations, fostering lasting
+              relationships built on trust and creativity. With a commitment to
+              sustainability and functionality, we strive to create environments
+              that inspire and enhance the quality of life. Our mission extends
+              beyond aesthetics, aiming to make a positive and meaningful impact
+              on the way people experience and interact with their surroundings.
             </p>
-            <p className="mt-10 text-blue-600 text-lg">
-              Renovatio, we believe that every space has the potential to be
-              transformed into a work of art. With a passion for design and a
-              commitment to excellence, we strive to create captivating
-              interiors that reflect the unique personalities and aspirations of
-              our clients.Our team of talented designers, architects, and
-              craftsmen collaborates closely with each client to understand
-              their vision and bring it to life.
-            </p>
-            <div className="flex justify-between mt-5 font-semibold text-blue-950 mr-20">
+
+            <div className="flex justify-between mt-5 font-semibold text-blue-950 mr-20 text-xl font-serif">
               <h1>Space Planning and Layout</h1>
-              <p>95%</p>
+              <p>93%</p>
             </div>
             <hr className="" />
-            <div className="flex justify-between mt-5 font-semibold text-blue-950 mr-20">
-              <h1>Sustainability and Eco-Friendly Features</h1>
-              <p>85%</p>
+            <div className="flex justify-between mt-5 font-semibold text-blue-950 mr-20 text-xl font-serif">
+              <h1>Sustainable</h1>
+              <p>82%</p>
             </div>
             <hr className="" />
-            <div className="flex justify-between mt-5 font-semibold text-blue-950 mr-20">
-              <h1>Project Challenges and Solutions</h1>
-              <p>75%</p>
+            <div className="flex justify-between mt-5 font-semibold text-blue-950 mr-20 text-xl font-serif">
+              <h1>Complete project challenges</h1>
+              <p>78%</p>
             </div>
             <hr className="" />
           </div>
@@ -429,38 +424,32 @@ const Home = () => {
             className="tab text-2xl"
             aria-label="Vision"
           />
-          <div role="tabpanel" className="tab-content p-10">
-            <p className=" text-red-600 text-lg">
-              Renovatio, we believe that every space has the potential to be
-              transformed into a work of art. With a passion for design and a
-              commitment to excellence, we strive to create captivating
-              interiors that reflect the unique personalities and aspirations of
-              our clients.Our team of talented designers, architects, and
-              craftsmen collaborates closely with each client to understand
-              their vision and bring it to life.
+          <div role="tabpanel" className="tab-content p-10 font-serif">
+            <p className=" text-violet-600 text-xl font-serif">
+              Our vision is to be at the forefront of transformative design,
+              shaping environments that inspire and endure. We aspire to set new
+              standards for creativity, sustainability, and client satisfaction,
+              becoming synonymous with excellence in the field. By fostering a
+              culture of innovation and collaboration, we aim to continually
+              push boundaries and redefine the possibilities of interior and
+              architectural design. Ultimately, our vision is to leave an
+              indelible mark on the world, creating spaces that resonate with
+              beauty, functionality, and a profound sense of purpose.
             </p>
-            <p className="mt-10 text-blue-600 text-lg">
-              Renovatio, we believe that every space has the potential to be
-              transformed into a work of art. With a passion for design and a
-              commitment to excellence, we strive to create captivating
-              interiors that reflect the unique personalities and aspirations of
-              our clients.Our team of talented designers, architects, and
-              craftsmen collaborates closely with each client to understand
-              their vision and bring it to life.
-            </p>
-            <div className="flex justify-between mt-5 font-semibold text-blue-950 mr-20">
+
+            <div className="flex justify-between mt-5 font-semibold text-blue-950 mr-20 text-xl font-serif">
               <h1>Space Planning and Layout</h1>
-              <p>95%</p>
-            </div>
-            <hr className="" />
-            <div className="flex justify-between mt-5 font-semibold text-blue-950 mr-20">
-              <h1>Sustainability and Eco-Friendly Features</h1>
               <p>85%</p>
             </div>
             <hr className="" />
-            <div className="flex justify-between mt-5 font-semibold text-blue-950 mr-20">
-              <h1>Project Challenges and Solutions</h1>
+            <div className="flex justify-between mt-5 font-semibold text-blue-950 mr-20 text-xl font-serif">
+              <h1>Sustainability and Eco-Friendly Features</h1>
               <p>75%</p>
+            </div>
+            <hr className="" />
+            <div className="flex justify-between mt-5 font-semibold text-blue-950 mr-20 text-xl font-serif">
+              <h1>Project Challenges and Solutions</h1>
+              <p>95%</p>
             </div>
             <hr className="" />
           </div>
@@ -470,16 +459,18 @@ const Home = () => {
       {/* tab picture */}
 
       <div className="mx-20">
-        <h1 className="text-8xl font-bold text-blue-950 mt-20">Our Approch</h1>
+        <h1 className="text-7xl font-bold text-blue-950 mt-20 font-serif">
+          Our Approach
+        </h1>
 
-        <h3 className="text-3xl font-semibold text-blue-950 mt-10">
-          Our Working Process is very minimal, <br /> See it for yourself
+        <h3 className="text-2xl font-semibold text-green-950 mt-10 font-serif">
+          Our Working Process is very simple, <br /> See it for yourself
         </h3>
       </div>
 
       <div
         role="tablist"
-        className="tabs tabs-lifted mx-40 mt-20 grid grid-cols-5 justify-evenly"
+        className="tabs tabs-lifted mx-60 mt-20 grid grid-cols-5 justify-evenly"
       >
         <input
           type="radio"
@@ -493,16 +484,16 @@ const Home = () => {
           className="tab-content bg-base-100 border-base-300 rounded-box p-6"
         >
           <img
-            className="w-full h-[700px]"
+            className="w-full h-[450px]"
             src="https://www.minimallimited.com/wp-content/uploads/2022/10/Minimal-Meet-and-Greet.svg"
             alt=""
           />
 
-          <p className="text-2xl">70%</p>
+          <p className="text-2xl">10%</p>
 
           <progress
             className="progress progress-error w-full"
-            value="70"
+            value="10"
             max="100"
           ></progress>
 
@@ -527,16 +518,16 @@ const Home = () => {
           className="tab-content bg-base-100 border-base-300 rounded-box p-6"
         >
           <img
-            className="w-full h-[700px]"
+            className="w-full h-[450px]"
             src="https://www.minimallimited.com/wp-content/uploads/2022/10/Minimal-Design-Development.svg"
             alt=""
           />
 
-          <p className="text-2xl">60%</p>
+          <p className="text-2xl">30%</p>
 
           <progress
             className="progress progress-error w-full"
-            value="60"
+            value="30"
             max="100"
           ></progress>
 
@@ -560,7 +551,7 @@ const Home = () => {
           className="tab-content bg-base-100 border-base-300 rounded-box p-6"
         >
           <img
-            className="w-full h-[700px]"
+            className="w-full h-[450px]"
             src="https://www.minimallimited.com/wp-content/uploads/2022/10/place-the-order-at-minimal.svg"
             alt=""
           />
@@ -592,7 +583,7 @@ const Home = () => {
           className="tab-content bg-base-100 border-base-300 rounded-box p-6"
         >
           <img
-            className="w-full h-[700px]"
+            className="w-full h-[450px]"
             src="https://www.minimallimited.com/wp-content/uploads/2022/10/Minimal-Installation-Process.svg"
             alt=""
           />
@@ -624,16 +615,16 @@ const Home = () => {
           className="tab-content bg-base-100 border-base-300 rounded-box p-6"
         >
           <img
-            className="w-full h-[700px]"
+            className="w-full h-[450px]"
             src="https://www.minimallimited.com/wp-content/uploads/2022/10/Minimal-Moving-In.svg"
             alt=""
           />
 
-          <p className="text-2xl">80%</p>
+          <p className="text-2xl">100%</p>
 
           <progress
             className="progress progress-error w-full"
-            value="80"
+            value="100"
             max="100"
           ></progress>
 
@@ -646,7 +637,7 @@ const Home = () => {
         </div>
       </div>
 
-      {/* our team */}
+      {/* our team
 
       <div className="mx-20">
         <h1 className="text-7xl font-bold text-blue-950 mt-20">
@@ -734,7 +725,7 @@ const Home = () => {
             </button>
           </div>
         </div>
-      </div>
+      </div> */}
 
       <Swiper
         effect={"coverflow"}
@@ -758,39 +749,19 @@ const Home = () => {
         className="swiper_container mt-36"
       >
         <SwiperSlide>
-          <img
-            className="w-full"
-            src="https://images.unsplash.com/photo-1682687221213-56e250b36fdd?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHx8"
-            alt="slide_image"
-          />
+          <img src={d1} alt="logo" className="d1"></img>
         </SwiperSlide>
         <SwiperSlide>
-          <img
-            className="w-full"
-            src="https://images.unsplash.com/photo-1682687220866-c856f566f1bd?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHw2fHx8ZW58MHx8fHx8"
-            alt="slide_image"
-          />
+          <img src={d2} alt="logo" className="d2"></img>
         </SwiperSlide>
         <SwiperSlide>
-          <img
-            className="w-full"
-            src="https://images.unsplash.com/photo-1682687982167-d7fb3ed8541d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxMXx8fGVufDB8fHx8fA%3D%3D"
-            alt="slide_image"
-          />
+          <img src={d3} alt="logo" className="d3"></img>
         </SwiperSlide>
         <SwiperSlide>
-          <img
-            className="w-full"
-            src="https://images.unsplash.com/photo-1682685797769-481b48222adf?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxNnx8fGVufDB8fHx8fA%3D%3D"
-            alt="slide_image"
-          />
+          <img src={d4} alt="logo" className="d4"></img>
         </SwiperSlide>
         <SwiperSlide>
-          <img
-            className="w-full"
-            src="https://plus.unsplash.com/premium_photo-1703385177412-2f4930c9fe2a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyMnx8fGVufDB8fHx8fA%3D%3D"
-            alt="slide_image"
-          />
+          <img src={d5} alt="logo" className="d5"></img>
         </SwiperSlide>
 
         <div className="slider-controler">
@@ -809,30 +780,30 @@ const Home = () => {
         data-aos="flip-right"
       >
         <div>
-          <h1 className="font-bold text-2xl">New york office</h1>
-          <p className="mt-4">6555-7788</p>
+          <h1 className="font-bold text-2xl font-serif">Dhaka Office</h1>
+          <p className="mt-4">+8806555-7788</p>
           <p>info@email.com</p>
           <p className="mt-4">
             123 Main Street, Suite 200 <br />
-            City: Anytown State: StateName
+            City: Dhaka
           </p>
         </div>
         <div>
-          <h1 className="font-bold text-2xl">Berlin office</h1>
-          <p className="mt-4">6555-7788</p>
+          <h1 className="font-bold text-2xl font-serif">Chittagong office</h1>
+          <p className="mt-4">+8806555-7788</p>
           <p>info@email.com</p>
           <p className="mt-4">
             123 Main Street, Suite 200 <br />
-            City: Anytown State: StateName
+            City: Chittagong
           </p>
         </div>
         <div>
-          <h1 className="font-bold text-2xl">Paris office</h1>
+          <h1 className="font-bold text-2xl font-serif">Barisal office</h1>
           <p className="mt-4">6555-7788</p>
           <p>info@email.com</p>
           <p className="mt-4">
-            123 Main Street, Suite 200 <br />
-            City: Anytown State: StateName
+            123 mina Street, Suite 200 <br />
+            City: Barisal
           </p>
         </div>
       </div>

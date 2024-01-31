@@ -15,12 +15,12 @@ const About = () => {
     <>
       <Header />
       <div className="">
-        <h1 className="text-5xl font-bold text-blue-950 mt-20 text-center border-b-[1px] border-gray-500 pb-10">
+        <h1 className="text-6xl font-bold text-blue-950 mt-20 text-center border-b-[1px] border-gray-500 pb-10 font-serif">
           Get in Touch With us
         </h1>
 
         <div>
-          <div className="grid md:grid-cols-2 justify-center mx-20">
+          <div className="grid md:grid-cols-2 justify-center mx-20 font-serif">
             <div className="md:ml-40">
               <h1 className="text-3xl font-bold text-blue-950 mt-10">
                 Our Office
@@ -33,7 +33,7 @@ const About = () => {
               <div className="flex mt-4">
                 <p className="font-bold text-2xl mr-3 mt-1">@</p>
                 <p className="md:text-3xl font-semibold">
-                  sales@minimallimited.com
+                  decoratemynest@gmail.com
                 </p>
               </div>
               <div className="flex mt-5">
@@ -47,7 +47,7 @@ const About = () => {
 
             {/* right side  */}
 
-            <div className="md:ml-40">
+            <div className="md:ml-70">
               <h1 className="text-3xl font-bold text-blue-950 mt-10">
                 Contact us
               </h1>
@@ -56,15 +56,7 @@ const About = () => {
                 type="text"
                 name=""
                 id=""
-                className="border-[2px] md:px-40 py-2 mt-3 border-black rounded-lg"
-              />{" "}
-              <br />
-              <input
-                placeholder="Name"
-                type="text"
-                name=""
-                id=""
-                className="border-[2px] md:px-40 py-2 mt-3 border-black rounded-lg"
+                className=" md:px-40 py-2 mt-3  rounded-lg border-2 border-solid border-blue-500"
               />{" "}
               <br />
               <input
@@ -72,7 +64,7 @@ const About = () => {
                 type="email"
                 name=""
                 id=""
-                className="border-[2px] md:px-40 py-2 mt-3 border-black rounded-lg"
+                className=" md:px-40 py-2 mt-3  rounded-lg border-2 border-solid border-blue-500"
               />{" "}
               <br />
               <input
@@ -80,7 +72,7 @@ const About = () => {
                 type="text"
                 name=""
                 id=""
-                className="border-[2px] md:px-40 py-8 mt-3 border-black rounded-lg"
+                className=" md:px-40 py-8 mt-3  rounded-lg border-2 border-solid border-blue-500"
               />
               <br />
               <button className="w-48 h-14 bg-gradient-to-r from-blue-500 to-blue-800 text-white hover:text-black uppercase text-sm font-semibold rounded-md hover:bg-darkRed duration-300 mt-2">
