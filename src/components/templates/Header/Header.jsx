@@ -54,18 +54,18 @@ const Header = () => {
               </svg>
             </div>
           </div>
-          <a className="btn btn-ghost ">
+          <a className="btn btn-ghost" onClick={() => navigate("/")}>
             <img src={logo} alt="logo" className="w-56 h-10"></img>
           </a>
         </div>
         <div className="navbar-center hidden lg:flex gap-10 lg:ml-60">
           <ul className="menu menu-horizontal px-1">
-            <li
+            {/* <li
               className="hover:text-blue-900 cursor-pointer pl-10 font-serif text-2xl"
               onClick={() => navigate("/")}
             >
               Home
-            </li>
+            </li> */}
             <li
               className="hover:text-blue-900 cursor-pointer pl-10 font-serif text-2xl"
               onClick={() => navigate("/services")}

@@ -172,14 +172,20 @@ const AboutPage = () => {
             />
           </div>
 
-          <p className="text-gray-600 mx-40 mt-20" data-aos="zoom-out-down">
+          <p
+            className="text-2xl text-gray-600 mx-40 mt-20"
+            data-aos="zoom-out-down"
+          >
             Thomas Jayne reflects: “I have always been attracted to history and
             to objects linked with it. I find their connections and evolution
             fascinating.” The emphasis in his work has always been to discover
             relationships and associations that add texture, richness, and
             depth; the elements that give a room its spirit and character.
           </p>
-          <p className="text-gray-600 mx-40 mt-10" data-aos="zoom-out-down">
+          <p
+            className=" text-2xltext-gray-600 mx-40 mt-10"
+            data-aos="zoom-out-down"
+          >
             Thomas Jayne reflects: “I have always been attracted to history and
             to objects linked with it. I find their connections and evolution
             fascinating.” The emphasis in his work has always been to discover
@@ -193,7 +199,10 @@ const AboutPage = () => {
             alt=""
             data-aos="zoom-out-down"
           />
-          <p className="text-gray-600 mx-40 mt-20" data-aos="zoom-out-down">
+          <p
+            className="text-2xl text-gray-600 mx-40 mt-20"
+            data-aos="zoom-out-down"
+          >
             Jayne’s academic training greatly influenced his design philosophy.
             A graduate of the University of Oregon School of Architecture and
             Allied Arts, he studied with the noted architectural historian
@@ -217,7 +226,7 @@ const AboutPage = () => {
             alt=""
             data-aos="zoom-out-down"
           />
-          <p className="text-gray-600 mt-20" data-aos="zoom-out-down">
+          <p className="text-2xl text-gray-600 mt-20" data-aos="zoom-out-down">
             Jayne’s academic training greatly influenced his design philosophy.
             A graduate of the University of Oregon School of Architecture and
             Allied Arts, he studied with the noted architectural historian
