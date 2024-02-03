@@ -12,7 +12,7 @@ const SigninOrganism = () => {
 
   const [value, setValue] = useState("");
 
-  const signinwithgoogle = () => {
+  const signinwithgoogle = async () => {
     const api = new ApiCalls();
     signInWithPopup(auth, provider).then(async (data) => {
       setValue(data.user.email);

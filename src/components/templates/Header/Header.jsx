@@ -100,7 +100,7 @@ const Header = () => {
         {localStorage.getItem("role") == "" ? (
           <div>
             <button
-              className="w-48 h-14 bg-gradient-to-r from-blue-500 to-violet-600 text-white hover:text-black uppercase text-sm font-semibold rounded-md hover:bg-darkRed duration-300"
+              className="w-48 h-12 bg-gradient-to-r from-blue-500 to-violet-600 text-white hover:text-black uppercase text-sm font-semibold rounded-md hover:bg-darkRed duration-300"
               onClick={() => navigate("/login")}
             >
               Login
@@ -108,6 +108,27 @@ const Header = () => {
           </div>
         ) : (
           <div className="navbar-end ">
+            <div className="flex flex-column">
+              <button
+                className="w-28 h-12 me-3 bg-gradient-to-r from-blue-500 to-violet-600 text-white hover:text-black uppercase text-sm font-semibold rounded-md hover:bg-darkRed duration-300"
+                onClick={() => {
+                  localStorage.clear();
+                  sessionStorage.clear();
+                  navigate("/");
+                  window.location.reload();
+                }}
+              >
+                LOG OUT
+              </button>
+              <button
+                className="w-28 h-12 me-3 bg-gradient-to-r from-blue-800 to-violet-200 text-white hover:text-black uppercase text-sm font-semibold rounded-md hover:bg-darkRed duration-300"
+                onClick={() => {
+                  navigate("/dashboard");
+                }}
+              >
+                Dashboard
+              </button>
+            </div>
             <div className="z-50 drawer-end">
               <input
                 id="my-drawer-4"
@@ -115,7 +136,6 @@ const Header = () => {
                 className="drawer-toggle"
               />
               <div className="drawer-content">
-                {/* Page content here */}
                 <label
                   htmlFor="my-drawer-4"
                   className="drawer-button btn btn-white text-black "
@@ -130,7 +150,6 @@ const Header = () => {
                   className="drawer-overlay"
                 ></label>
                 <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
-                  {/* Sidebar content here */}
                   <li>
                     <div>
                       <img

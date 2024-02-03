@@ -38,6 +38,20 @@ import Footer from "../../templates/Footer/Footer";
 
 const Home = () => {
   const [counterOn, setCounterOn] = useState(false);
+  const [userRole, setRole] = useState(null);
+
+  useEffect(() => {
+    const role = localStorage.getItem("role");
+    if (
+      role !== "client" &&
+      role !== "admin" &&
+      role !== "employee" &&
+      role !== "vendor"
+    ) {
+      localStorage.setItem("role", "");
+      setRole(userRole);
+    }
+  }, [userRole]);
 
   useEffect(() => {
     AOS.init({ duration: 500 });

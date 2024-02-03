@@ -88,10 +88,14 @@ const ReservationBooking = () => {
       </div> */}
       <div>
         <div>
-          <h1 className="text-3xl font-bold text-center text-blue-950 mb-5 mt-20">Select Option :</h1>
+          <h1 className="text-3xl font-bold text-center text-blue-950 mb-5 mt-20">
+            Select Option :
+          </h1>
           <div className="w-full flex font-semibold">
             <select className="select select-info w-3/5 mx-auto text-black ">
-              <option disabled selected className="text-black">Pick your favorite anime</option>
+              <option disabled selected className="text-black">
+                Pick your favorite anime
+              </option>
               <option className="text-black">One Piece</option>
               <option className="text-black">Naruto</option>
               <option className="text-black">Death Note</option>
@@ -102,12 +106,13 @@ const ReservationBooking = () => {
             </select>
           </div>
         </div>
-        
       </div>
-      <h1 className="text-3xl font-bold text-center text-blue-950 mb-5 mt-20">Reservation amount :</h1>
+      <h1 className="text-3xl font-bold text-center text-blue-950 mb-5 mt-20">
+        Reservation amount :
+      </h1>
       <form onSubmit={handleSubmit()} className="w-1/2 mx-auto">
         <FormInput
-        className="border-2"
+          className="border-2"
           labelText="Amount"
           type="number"
           name="number"

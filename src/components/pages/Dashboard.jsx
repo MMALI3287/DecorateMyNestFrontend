@@ -20,17 +20,15 @@ const Dashboard = () => {
             role === "client"
               ? clientOptions
               : role === "admin"
-                ? adminOptions
-                : role === "vendor"
-                  ? vendorOptions
-                  : role === "employee"
-                    ? employeeOptions
-                    : []
+              ? adminOptions
+              : role === "vendor"
+              ? vendorOptions
+              : role === "employee"
+              ? employeeOptions
+              : []
           }
         />
         <div className="flex-1 p-8 bg-white">
-        
-
           <Outlet />{" "}
         </div>
       </div>

@@ -53,6 +53,7 @@ const SigninFormMolecules = () => {
           sessionStorage.setItem("username", authenticated.UserId);
           sessionStorage.setItem("authId", authData.AuthId);
           sessionStorage.setItem("role", authData.Role);
+          localStorage.setItem("role", authData.Role);
           sessionStorage.setItem("picture", authData.ProfilePictrue);
         }
 
