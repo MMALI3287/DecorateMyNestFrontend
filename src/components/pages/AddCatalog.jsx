@@ -9,6 +9,8 @@ import Footer from "../templates/Footer/Footer";
 // import Navbar2 from "./Navbar/Navbar2";
 
 const AddCatalog = () => {
+  const [success, setSuccess] = useState(false);
+
   const {
     handleSubmit,
     control,
@@ -48,6 +50,8 @@ const AddCatalog = () => {
     console.log(data);
     try {
       await api.createCatalog(data);
+      setSuccess(true);
+      window.location.reload();
     } catch (error) {
       console.log(error);
     }
@@ -263,6 +267,9 @@ const AddCatalog = () => {
               alt="Selected"
               className="mt-5 "
             />
+          )}
+          {success && (
+            <p className="text-green-500">Catalog updated successfully</p>
           )}
           <button type="submit" className="text-xl btn btn-primary w-full mt-5">
             Add Catalog

@@ -63,11 +63,11 @@ const SignupFormMolecules = () => {
   const api = new ApiCalls();
 
   const handleDatabase = async () => {
-    console.log("database");
     try {
       const authenticationData = {
         ...userData,
         role: "client",
+        verified: true,
       };
       const createdAuthentication = await api.createAuthentication(
         authenticationData

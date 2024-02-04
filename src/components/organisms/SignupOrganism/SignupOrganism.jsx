@@ -50,25 +50,25 @@ const SignupOrganism = () => {
     // } catch (error) {
     //   console.error("Error sending data to backend:", error);
     // }
-    // signInWithPopup(auth, provider).then(async (data) => {
-    //   setValue(data.user.email);
-    //   const authenticationData = {
-    //     username: data.user.email.split("@")[0],
-    //     emailaddress: data.user.email,
-    //     role: "client",
-    //   };
-    //   const createdAuthentication = await api.createAuthentication(
-    //     authenticationData
-    //   );
-    //   const clientData = {
-    //     AuthId: createdAuthentication.AuthId,
-    //   };
-    //   const createdClient = await api.createClient(clientData);
-    //   localStorage.setItem("email", data.user.email);
-    //   localStorage.setItem("username", data.user.email.split("@")[0]);
-    //   <Toaster richColors />;
-    //   toast.success("Successfully logged in!");
-    // });
+    signInWithPopup(auth, provider).then(async (data) => {
+      setValue(data.user.email);
+      const authenticationData = {
+        username: data.user.email.split("@")[0],
+        emailaddress: data.user.email,
+        role: "client",
+      };
+      const createdAuthentication = await api.createAuthentication(
+        authenticationData
+      );
+      const clientData = {
+        AuthId: createdAuthentication.AuthId,
+      };
+      const createdClient = await api.createClient(clientData);
+      localStorage.setItem("email", data.user.email);
+      localStorage.setItem("username", data.user.email.split("@")[0]);
+      <Toaster richColors />;
+      toast.success("Successfully logged in!");
+    });
   };
 
   useEffect(() => {

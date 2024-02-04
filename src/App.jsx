@@ -6,24 +6,24 @@ import Home from "./components/pages/Home/Home";
 // import Temp from "./../temp";
 
 import AssignMeetings from "./Components/pages/AssignMeetings";
-import AddVendor from "./Components/pages/AddVendor";
+import AddVendor from "./components/pages/AddVendor";
 import AddEmployees from "./components/pages/AddEmployees";
-import AddCatalog from "./Components/pages/AddCatalog";
+import AddCatalog from "./components/pages/AddCatalog";
 import AppointmentBooking from "./Components/Pages/AppointmentBooking";
 import AppointmentStatus from "./Components/Pages/AppointmentStatus";
 import ReservationBooking from "./Components/Pages/ReservationBooking";
 import ReservationStatus from "./Components/Pages/ReservationStatus";
 import ReservationPayment from "./Components/Pages/ReservationPayment";
 import ProjectReview from "./Components/Pages/ProjectReview";
-import ProjectStatus from "./Components/Pages/ProjectStatus";
+import ProjectStatus from "./components/pages/ProjectStatus";
 import Message from "./Components/Pages/Message";
 import InventoryTracking from "./Components/Pages/InventoryTracking";
 import PaySalary from "./components/pages/PaySalary";
 import ConfirmReservation from "./Components/Pages/ConfirmReservation";
 import ConfirmInstallment from "./Components/Pages/ConfirmInstallment";
 import ProjectProgress from "./Components/Pages/ProjectProgress";
-import EditCatalog from "./Components/Pages/EditCatalog";
-import OrderItems from "./Components/Pages/OrderItems";
+import EditCatalog from "./components/pages/EditCatalog";
+import OrderItems from "./components/pages/OrderItems";
 import NewOrder from "./Components/Pages/NewOrder";
 import PaymentStatus from "./Components/Pages/PaymentStatus";
 import InstallmentPayment from "./Components/Pages/InstallmentPayment";
@@ -102,6 +102,7 @@ function App() {
             path="/dashboard/confirm-installment"
             element={<ConfirmInstallment />}
           />
+          <Route path="/dashboard/order-items" element={<OrderItems />} />
           <Route path="/dashboard/message" element={<ProjectProgress />} />
           <Route path="/dashboard/edit-catalog" element={<EditCatalog />} />
           <Route path="/dashboard/view-order-items" element={<OrderItems />} />

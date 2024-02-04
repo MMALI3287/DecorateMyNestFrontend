@@ -1,10 +1,81 @@
 import React from "react";
 import "./footer.style.scss";
+import { FaFacebook, FaTwitter, FaLinkedin, FaGithub } from "react-icons/fa";
 
 const Footer = () => {
   return (
     <>
-      <footer className="footer p-10 bg-gray-500  text-white">
+      <footer className="flex justify-between p-6 bg-gray-800 text-white">
+        <div>
+          <h3 className="text-xl font-bold text-white">
+            Decorate<span className="text-red-500">MyNest</span>
+          </h3>
+
+          <p className="flex space-x-4 mt-4 text-white">
+            <a href="/" className="hover:underline text-white">
+              Home
+            </a>
+            <a href="#" className="hover:underline text-white">
+              About
+            </a>
+            <a href="#" className="hover:underline text-white">
+              Contact
+            </a>
+          </p>
+
+          <p className="mt-4 text-white">DecorateMyNest © 2024</p>
+        </div>
+
+        <div className="space-y-4 text-white">
+          <div className="flex items-center space-x-2 text-white">
+            <i className="fas fa-map-marker-alt"></i>
+            <p className="text-white">
+              <span className="font-bold text-white">Dhaka,</span> Bangladesh
+            </p>
+          </div>
+
+          <div className="flex items-center space-x-2 text-white">
+            <i className="fas fa-phone"></i>
+            <p className="text-white">+880 1789515232</p>
+          </div>
+
+          <div className="flex items-center space-x-2 text-white">
+            <i className="fas fa-envelope"></i>
+            <p>
+              <a
+                href="mailto:support@dmcn.com"
+                className="underline text-white"
+              >
+                support@dcmn.com
+              </a>
+            </p>
+          </div>
+        </div>
+
+        <div className="text-white ">
+          <p className="mb-4 text-white">
+            <span className="font-bold text-white ">About the company</span>
+            <br />
+            DecorateMyNest is your interior design solution
+          </p>
+
+          <div className="flex space-x-7 text-white">
+            <a href="#">
+              <FaFacebook color="white" fontSize="2rem" />
+            </a>
+            <a href="#">
+              <FaTwitter color="white" fontSize="2rem" />
+            </a>
+            <a href="#">
+              <FaLinkedin color="white" fontSize="2rem" />
+            </a>
+            <a href="#">
+              <FaGithub color="white" fontSize="2rem" />
+            </a>
+          </div>
+        </div>
+      </footer>
+      {/* <footer className="footer p-10 bg-gray-500  text-white">
         <nav>
           <header className="footer-title text-xl font-serif">Services</header>
           <a className="link link-hover">Branding</a>
@@ -81,7 +152,7 @@ const Footer = () => {
             </a>
           </div>
         </nav>
-      </footer>
+      </footer> */}
     </>
   );
 };
