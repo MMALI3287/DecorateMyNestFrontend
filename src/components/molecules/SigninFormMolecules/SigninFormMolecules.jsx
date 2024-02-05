@@ -48,6 +48,7 @@ const SigninFormMolecules = () => {
           localStorage.setItem("authId", authData.AuthId);
           localStorage.setItem("role", authData.Role);
           localStorage.setItem("picture", authData.ProfilePictrue);
+          localStorage.setItem("mime", authData.MimeType);
         } else {
           sessionStorage.setItem("bearerToken", authenticated.TokenKey);
           sessionStorage.setItem("username", authenticated.UserId);
@@ -55,6 +56,7 @@ const SigninFormMolecules = () => {
           sessionStorage.setItem("role", authData.Role);
           localStorage.setItem("role", authData.Role);
           sessionStorage.setItem("picture", authData.ProfilePictrue);
+          sessionStorage.setItem("mime", authData.MimeType);
         }
 
         navigate("/");

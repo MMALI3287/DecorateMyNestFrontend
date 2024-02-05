@@ -1,38 +1,133 @@
 // import React from 'react'
-
+import ApiCalls from "../../apis/APICalls";
+import LinearLoader from "../atoms/LineLoader/LineLoader";
+import Button from "../atoms/Buttons/Button";
+import React, { useEffect, useState } from "react";
 const AppointmentStatus = () => {
+  const [loading, setLoading] = useState(false);
+  const [appointments, setAppointments] = useState([]);
+  const [authenticatedAccounts, setAuthenticatedAccounts] = useState([]);
+  const [employees, setEmployees] = useState([]);
+  const api = new ApiCalls();
+
+  useEffect(() => {
+    async function fetchData() {
+      const allAppointments = await api.getAppointments();
+      const clientId = Number(localStorage.getItem("clientId"));
+      const clientAppointments = allAppointments.filter(
+        (appointment) => appointment.ClientId === clientId
+      );
+      setAppointments(clientAppointments);
+      const employees = await api.getEmployeeRosters();
+      const authenticatedAccounts = await api.getAuthenticaions();
+      const matchedEmployees = employees.map((employee) => {
+        const account = authenticatedAccounts.find(
+          (acc) => acc.AuthId === employee.AuthId
+        );
+        return {
+          ...employee,
+          ...account,
+        };
+      });
+      setAuthenticatedAccounts(authenticatedAccounts);
+      setEmployees(matchedEmployees);
+    }
+
+    fetchData();
+  }, []);
+
+  const getEmployeeName = (employeeId) => {
+    const employee = employees.find((emp) => emp.EmployeeId === employeeId);
+    if (employee) {
+      return `${employee.FirstName} ${employee.LastName}`;
+    }
+    return "";
+  };
+
   return (
-    <div className='font-sans'>
-      <h1 className='text-6xl font-bold text-blue-950 my-5 text-center shadow-lg'>
-        Appointment Status</h1>
+    <div className="font-sans">
+      <h1 className="text-3xl w-96 font-bold text-white bg-gradient-to-b from-blue-900 to-black p-3 my-10 text-center mx-auto rounded-xl shadow-2xl">
+        Appointment Status
+      </h1>
       {/* <p className="text-white italic text-center my-10">Lorem ipsum dolor sit amet consectetur <br />adipisicing elit. Quibusdam at ut eligendi asperiores ratione eaque.</p> */}
       <div className="overflow-x-auto rounded-lg border-blue-500">
         <table className="table">
-          {/* head */}
           <thead>
-            <tr className=' text-base'>
-              <th className='bg-pink-300'>Index</th>
-              <th className='text-black bg-pink-200'>Name</th>
-              <th className='text-black bg-pink-300'>Date</th>
-              <th className='text-black bg-pink-200'>Room No</th>
-              <th className='text-black bg-pink-300'>Status</th>
+            <tr className=" text-base">
+              <th className="px-6 py-3 text-center text-base font-bold  bg-yellow-300 border border-slate-600 uppercase tracking-wider text-black">
+                AppointmentId
+              </th>
+              <th className="px-6 py-3 text-center text-base font-bold  bg-yellow-200 border border-slate-600 uppercase tracking-wider text-black">
+                Employee Name
+              </th>
+              <th className="px-6 py-3 text-center text-base font-bold  bg-yellow-300 border border-slate-600 uppercase tracking-wider text-black">
+                Appointment Date
+              </th>
+              <th className="px-6 py-3 text-center text-base font-bold  bg-yellow-200 border border-slate-600 uppercase tracking-wider text-black">
+                Room No
+              </th>
+              <th className="px-6 py-3 text-center text-base font-bold  bg-yellow-300 border border-slate-600 uppercase tracking-wider text-black">
+                Status
+              </th>
             </tr>
           </thead>
           <tbody>
-            {/* row 1 */}
-            <tr>
-              <th className='text-black bg-pink-300'>1</th>
-              <td className='text-black bg-pink-200'>Cy Ganderton</td>
-              <td className='text-black bg-pink-300'>Quality Control Specialist</td>
-              <td className='text-black bg-pink-200'>Blue</td>
-              <td className='text-black bg-pink-300'>Blue</td>
-            </tr>
-
+            {appointments.map((appointment, index) => (
+              <tr key={index}>
+                <th className="px-6 py-4 whitespace-nowrap border border-slate-600 text-center">
+                  {appointment.AppointmentId}
+                </th>
+                <td className="px-6 py-4 whitespace-nowrap border border-slate-600 text-center">
+                  {appointment.EmployeeId === 0
+                    ? "Not Appointed Yet"
+                    : getEmployeeName(appointment.EmployeeId)}
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap border border-slate-600 text-center">
+                  {new Date(appointment.AppointmentDate).toLocaleDateString(
+                    "en-GB",
+                    {
+                      day: "numeric",
+                      month: "short",
+                      year: "numeric",
+                    }
+                  )}
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap border border-slate-600 text-center">
+                  {appointment.AppointmentRoom === 0
+                    ? "Pending Selection"
+                    : appointment.AppointmentRoom}
+                </td>
+                <td className="bg-yellow-500 p-2 text-white text-xl font-normal border border-slate-600 text-center">
+                  {appointment.EmployeeId === 0 ||
+                  appointment.AppointmentRoom === 0 ? (
+                    <button
+                      style={{
+                        backgroundColor: "orange",
+                        color: "white",
+                        padding: "5px 10px",
+                      }}
+                    >
+                      Pending
+                    </button>
+                  ) : (
+                    <button
+                      style={{
+                        backgroundColor: "green",
+                        color: "white",
+                        padding: "5px 10px",
+                      }}
+                    >
+                      Approved
+                    </button>
+                  )}
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default AppointmentStatus
+export default AppointmentStatus;

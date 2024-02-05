@@ -17,7 +17,7 @@ export const adminOptions = [
     subMenu: [
       {
         name: "Project Status",
-        link: "/dashboard/project-status",
+        link: "/dashboard/project-status-admin",
       },
     ],
   },

@@ -1,16 +1,18 @@
 // import "../molecules/SigninFormMolecules/SigninFormMolecules";
-// import { Link } from "react-router-dom";
-import { useForm } from "react-hook-form";
+// import { Link } from "react-router-dom"
 // import { useNavigate } from "react-router-dom";
 import FormInput from "../atoms/FormInput/FormInput";
-// import Navbar2 from "./Navbar/Navbar2";
-
-
-
-
-
+// import Navbar2 from "./Navbar/Navbar2";import React, { useEffect, useState } from "react";
+import { useForm, Controller, useWatch } from "react-hook-form";
+import ApiCalls from "../../apis/APICalls";
+import LinearLoader from "../atoms/LineLoader/LineLoader";
+import Button from "../atoms/Buttons/Button";
+import React, { useEffect, useState } from "react";
 
 const AppointmentBooking = () => {
+  const api = new ApiCalls();
+  const [loading, setLoading] = useState(false);
+
   const {
     handleSubmit,
     control,
@@ -20,39 +22,56 @@ const AppointmentBooking = () => {
     mode: "onChange",
   });
 
+  const onSubmit = async (data) => {
+    setLoading(true);
+    try {
+      data["ClientId"] = localStorage.getItem("clientId");
+      data["AppointmentDate"] = new Date(data["Date"]).toISOString();
+      data["EmployeeId"] = null;
+      console.log(data);
+      const createdAppointment = await api.createAppointment(data);
+      console.log("Appointment created:", createdAppointment);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+      window.location.reload();
+    }
+  };
 
   return (
-
     <div className="font-sans">
-     
-      <h1 className='text-7xl font-bold text-blue-950 mt-20 text-center'>
-        Put In Your Date</h1>
-      <p className="text-gray-500 italic text-center my-10">Lorem ipsum dolor sit amet consectetur <br />adipisicing elit. Quibusdam at ut eligendi asperiores ratione eaque.</p>
-      <form onSubmit={handleSubmit()} className="w-1/2 mx-auto">
+      <h1 className="text-6xl font-bold text-blue-950 mt-20 text-center">
+        Just Select A Date
+      </h1>
+      <h1 className="text-4xl font-bold text-blue-950 mt-2 mb-20 text-center">
+        To Get Appointment
+      </h1>
+      {/* <p className="text-gray-500 italic text-center my-10">
+        Lorem ipsum dolor sit amet consectetur <br />
+        adipisicing elit. Quibusdam at ut eligendi asperiores ratione eaque.
+      </p> */}
+      <form onSubmit={handleSubmit(onSubmit)} className="w-1/2 mx-auto">
         <FormInput
           className="border-2"
           labelText="Date"
           type="date"
-          name="username"
+          name="Date"
           defaultValue={""}
           control={control}
           errors={errors}
           rules={{
             required: "Date is required",
-            // maxLength: {
-            //   value: 20,
-            //   message: "Date should be less than 20 letters",
-            // },
-            // minLength: {
-            //   value: 6,
-            //   message: "Username should be more than 6 letters",
-            // },
           }}
         />
+        {loading ? (
+          <Button type="submit" disabled={true} text={<LinearLoader />} />
+        ) : (
+          <Button type="submit" text="Book Appointment" />
+        )}
       </form>
     </div>
+  );
+};
 
-  )
-}
-
-export default AppointmentBooking
+export default AppointmentBooking;

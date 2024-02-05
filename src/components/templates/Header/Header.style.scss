@@ -66,3 +66,25 @@
 .cart-icon {
     position: relative;
 }
+
+.menu-popup {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    padding: 12px 16px;
+    z-index: 1;
+    border-radius: 10px; /* Rounded corners */
+    top: 2rem;
+    right: 1rem;
+}
+
+.menu-popup.visible {
+    display: block;
+}
+
+.menu-popup button {
+    display: block;
+    margin-bottom: 10px; /* Space between buttons */
+}

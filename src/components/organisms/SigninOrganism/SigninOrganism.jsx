@@ -15,23 +15,29 @@ const SigninOrganism = () => {
   const signinwithgoogle = async () => {
     const api = new ApiCalls();
     signInWithPopup(auth, provider).then(async (data) => {
-      setValue(data.user.email);
-      const authenticated = await api.googleLogin(
-        data.user.email.split("@")[0]
-      );
-      if (authenticated) {
-        const authData = await api.getUserByUsername(
-          data.user.email.split("@")[0]
+      try {
+        const authenticated = await api.googleLogin(
+          data.user.email.split("@")[0].replace(/[^a-zA-Z0-9]/g, "")
         );
-        console.log(authData);
-        localStorage.setItem("bearerToken", authenticated.TokenKey);
-        localStorage.setItem("username", authenticated.UserId);
-        localStorage.setItem("authId", authData.AuthId);
-        localStorage.setItem("role", authData.Role);
-        localStorage.setItem("picture", authData.ProfilePictrue);
-        <Toaster richColors />;
-        toast.success("Successfully logged in!");
+        if (authenticated) {
+          const authData = await api.getUserByUsername(
+            data.user.email.split("@")[0].replace(/[^a-zA-Z0-9]/g, "")
+          );
+          console.log(authData);
+          localStorage.setItem("bearerToken", authenticated.TokenKey);
+          localStorage.setItem("username", authenticated.UserId);
+          localStorage.setItem("authId", authData.AuthId);
+          localStorage.setItem("role", authData.Role);
+          localStorage.setItem("picture", authData.ProfilePictrue);
+          localStorage.setItem("mime", authData.MimeType);
+          <Toaster richColors />;
+          toast.success("Successfully logged in!");
+        }
+      } catch (error) {
+        console.log(error);
       }
+
+      setValue(data.user.email);
     });
   };
 

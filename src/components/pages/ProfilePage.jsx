@@ -2,262 +2,247 @@
 
 import { useForm } from "react-hook-form";
 import FormInput from "../atoms/FormInput/FormInput";
+import Header from "../templates/Header/Header";
+import ApiCalls from "../../apis/APICalls";
+import { useEffect, useState } from "react";
+import { Controller } from "react-hook-form";
 
 const ProfilePage = () => {
-    const {
-        handleSubmit,
-        control,
-        formState: { errors },
-        // reset,
-    } = useForm({
-        mode: "onChange",
-    });
-    return (
-        <div>
-            <div className="navbar bg-base-100">
-                <div className="flex-1">
-                    <a className="btn btn-ghost text-3xl text-blue-900">daisyUI</a>
-                </div>
-                <div className="flex-none gap-2">
-                    <div className="form-control">
-                        <input type="text" placeholder="Search" className="input input-bordered md:w-auto" />
-                    </div>
-                    <div className="dropdown dropdown-end">
-                        <div role="button" className="btn btn-ghost btn-circle avatar">
-                            <div className="w-10 rounded-full">
-                                <img alt="Tailwind CSS Navbar component" src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
-                            </div>
-                        </div>
+  const api = new ApiCalls();
+  const [userData, setUserData] = useState([]);
+  const [authId, setAuthId] = useState(
+    localStorage.getItem("authId") || sessionStorage.getItem("authId")
+  );
 
-                    </div>
-                </div>
+  useEffect(() => {
+    async function fetchData() {
+      if (authId) {
+        const userData = await api.getAuthenticationById(authId);
+        setUserData(userData);
+      }
+    }
+    fetchData();
+    loadPage();
+  }, [authId]);
+
+  const [success, setSuccess] = useState(false);
+  const [base64Image, setBase64Image] = useState(null);
+  const [mimeType, setMimeType] = useState(null);
+
+  const {
+    handleSubmit,
+    control,
+    formState: { errors },
+    setValue,
+  } = useForm({
+    mode: "onChange",
+  });
+
+  const loadPage = (event) => {
+    setValue("UserName", userData.Name);
+    setValue("Password", userData.Password);
+    setValue("FirstName", userData.FirstName);
+    setValue("LastName", userData.LastName);
+    setValue("EmailAddress", userData.EmailAddress);
+    setValue("PhoneNumber", userData.Picture);
+    setValue("Address", userData.Address);
+    setBase64Image(userData.Picture);
+    setMimeType(userData.MimeType);
+  };
+
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    console.log(file);
+    const reader = new FileReader();
+
+    reader.onloadend = () => {
+      // const base64 = reader.result;
+      const mimeType = reader.result.split(",")[0];
+      const base64 = reader.result.split(",")[1];
+      console.log("FileReader onloadend event fired", base64);
+      setBase64Image(base64);
+      setMimeType(mimeType);
+    };
+
+    if (file) {
+      reader.readAsDataURL(file);
+    } else {
+      setBase64Image(null);
+    }
+  };
+
+  const onSubmit = async (data) => {
+    data["Picture"] = base64Image;
+    data["MimeType"] = mimeType;
+    console.log(mimeType);
+    data["AuthId"] = authId;
+    try {
+      console.log(data);
+      const updated = await api.updateAuthentication(data);
+      console.log(updated);
+      // setSuccess(true);
+      // window.location.reload();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  return (
+    <>
+      <div>
+        <Header />
+        <div className=" flex justify-evenly gap-5 mx-10 font-sans">
+          <div className="w-2/3 mt-20 bg-[#d6f8fe] p-3 rounded-lg">
+            <div className="">
+              <h1 className="text-3xl font-semibold text-black ">
+                Profile Information
+              </h1>
             </div>
-            <div className=" flex justify-evenly gap-5 mx-10 font-sans">
-                <div className="w-2/3 mt-20 bg-blue-300 p-3 rounded-lg">
-                    <div className="">
-                        <h1 className="text-3xl font-semibold text-black ">General Information</h1>
-                    </div>
-                    <div className="grid grid-cols-2 gap-5">
-                        <form onSubmit={handleSubmit()} className="">
-                            <FormInput
-                                className=" w-full"
-                                labelText="Name"
-                                type="text"
-                                name="name"
-                                defaultValue={""}
-                                control={control}
-                                errors={errors}
-                                rules={{
-                                    required: "Name is required",
-                                    maxLength: {
-                                        value: 20,
-                                        message: "name should be less than 20 letters",
-                                    },
-                                    minLength: {
-                                        value: 6,
-                                        message: "Username should be more than 6 letters",
-                                    },
-                                }}
-                            />
-                            <FormInput
-                                className="border-2"
-                                labelText="Date"
-                                type="text"
-                                name="date"
-                                defaultValue={""}
-                                control={control}
-                                errors={errors}
-                                rules={{
-                                    required: "date is required",
-                                    maxLength: {
-                                        value: 20,
-                                        message: "date should be less than 20 letters",
-                                    },
-                                    minLength: {
-                                        value: 6,
-                                        message: "date should be more than 6 letters",
-                                    },
-                                }}
-                            />
-                            <FormInput
-                                className="border-2"
-                                labelText="Number"
-                                type="email"
-                                name="date"
-                                defaultValue={""}
-                                control={control}
-                                errors={errors}
-                                rules={{
-                                    required: "email is required",
-                                    maxLength: {
-                                        value: 20,
-                                        message: "email should be less than 20 letters",
-                                    },
-                                    minLength: {
-                                        value: 6,
-                                        message: "email should be more than 6 letters",
-                                    },
-                                }}
-                            />
-                        </form>
-                        <form onSubmit={handleSubmit()}>
-                            <FormInput
-                                className="border-2"
-                                labelText="Last Name"
-                                type="text"
-                                name="name"
-                                defaultValue={""}
-                                control={control}
-                                errors={errors}
-                                rules={{
-                                    required: "Last Name is required",
-                                    maxLength: {
-                                        value: 20,
-                                        message: "Last name should be less than 20 letters",
-                                    },
-                                    minLength: {
-                                        value: 6,
-                                        message: "Last name should be more than 6 letters",
-                                    },
-                                }}
-                            />
-                            <FormInput
-                                className="border-2"
-                                labelText="Gender"
-                                type="text"
-                                name="name"
-                                defaultValue={""}
-                                control={control}
-                                errors={errors}
-                                rules={{
-                                    required: "Last Name is required",
-                                    maxLength: {
-                                        value: 20,
-                                        message: "Last name should be less than 20 letters",
-                                    },
-                                    minLength: {
-                                        value: 6,
-                                        message: "Last name should be more than 6 letters",
-                                    },
-                                }}
-                            />
-                            <FormInput
-                                className="border-2"
-                                labelText="Phone"
-                                type="number"
-                                name="number"
-                                defaultValue={""}
-                                control={control}
-                                errors={errors}
-                                rules={{
-                                    required: "Number is required",
-                                    maxLength: {
-                                        value: 20,
-                                        message: "Number should be less than 20 letters",
-                                    },
-                                    minLength: {
-                                        value: 6,
-                                        message: "Number should be more than 6 letters",
-                                    },
-                                }}
-                            />
-                        </form>
-                    </div>
+            {userData?.UserName && (
+              <form onSubmit={handleSubmit(onSubmit)} className="">
+                <Controller
+                  name="UserName"
+                  control={control}
+                  defaultValue={userData?.UserName}
+                  rules={{
+                    required: "Username is required",
+                  }}
+                  render={({ field }) => (
                     <div>
-                        <FormInput
-                            className="border-2"
-                            labelText="Address"
-                            type="text"
-                            name="name"
-                            defaultValue={""}
-                            control={control}
-                            errors={errors}
-                            rules={{
-                                required: "Last Name is required",
-                                maxLength: {
-                                    value: 20,
-                                    message: "Last name should be less than 20 letters",
-                                },
-                                minLength: {
-                                    value: 6,
-                                    message: "Last name should be more than 6 letters",
-                                },
-                            }}
-                        />
-                        <div className="flex gap-5">
-                            <FormInput
-                                className="border-2"
-                                labelText="City"
-                                type="text"
-                                name="name"
-                                defaultValue={""}
-                                control={control}
-                                errors={errors}
-                                rules={{
-                                    required: "Last Name is required",
-                                    maxLength: {
-                                        value: 20,
-                                        message: "Last name should be less than 20 letters",
-                                    },
-                                    minLength: {
-                                        value: 6,
-                                        message: "Last name should be more than 6 letters",
-                                    },
-                                }}
-                            />
-                            <FormInput
-                                className="border-2"
-                                labelText="State"
-                                type="text"
-                                name="name"
-                                defaultValue={""}
-                                control={control}
-                                errors={errors}
-                                rules={{
-                                    required: "Last Name is required",
-                                    maxLength: {
-                                        value: 20,
-                                        message: "Last name should be less than 20 letters",
-                                    },
-                                    minLength: {
-                                        value: 6,
-                                        message: "Last name should be more than 6 letters",
-                                    },
-                                }}
-                            />
-                        </div>
+                      <label htmlFor="username">Username</label>
+                      <input {...field} id="username" className="w-full" />
                     </div>
-
-                </div>
-
-
-
-                <div className="items-center mt-20">
-                    <div className="card w-[full] bg-base-100 shadow-xl">
-                        <figure className="h-[250px]">
-                            <img src="https://orga.wpengine.com/wp-content/uploads/2018/03/img01.jpg" alt="Shoes" className="rounded-xl" />
-                        </figure>
-                        <div className='w-[250px] h-[250px] -mt-28 bg-white rounded-full mx-auto'>
-                            <img className="rounded-full h-full w-full" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" />
-                        </div>
-                        <div className="card-body items-center text-center">
-                            <h2 className="card-title text-blue-900 mt-0">ORGANIC APPLES</h2>
-                            <p className='mt-3 text-gray-500'>Donec nec justo eget felis facilisis<br /> ferme  ntum. Aliquam porttitor</p>
-
-                            <div className="flex mt-4 gap-5">
-                                <button className="btn btn-primary">Connect</button>
-                                <button className="btn btn-secondary">Message</button>
-                                <button className="btn bg-yellow-500 text-white">Edit</button> 
-
-                            </div>
-                        </div>
+                  )}
+                />
+                <Controller
+                  name="Password"
+                  control={control}
+                  defaultValue={userData?.Password}
+                  rules={{
+                    required: "Password is required",
+                    minLength: {
+                      value: 8,
+                      message: "Password should be more than 8 characters",
+                    },
+                  }}
+                  render={({ field }) => (
+                    <div>
+                      <label htmlFor="password">Password</label>
+                      <input
+                        {...field}
+                        id="password"
+                        type="password"
+                        className="w-full"
+                      />
                     </div>
+                  )}
+                />
 
-                </div>
+                <Controller
+                  name="FirstName"
+                  control={control}
+                  defaultValue={userData?.FirstName}
+                  render={({ field }) => (
+                    <div>
+                      <label htmlFor="firstName">First Name</label>
+                      <input {...field} id="firstName" className="w-full" />
+                    </div>
+                  )}
+                />
 
-            </div>
+                <Controller
+                  name="LastName"
+                  control={control}
+                  defaultValue={userData?.LastName}
+                  render={({ field }) => (
+                    <div>
+                      <label htmlFor="lastName">Last Name</label>
+                      <input {...field} id="lastName" className="w-full" />
+                    </div>
+                  )}
+                />
+
+                <Controller
+                  name="EmailAddress"
+                  control={control}
+                  defaultValue={userData?.EmailAddress}
+                  rules={{
+                    required: "Email is required",
+                    pattern: {
+                      value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                      message: "Invalid email address",
+                    },
+                  }}
+                  render={({ field }) => (
+                    <div>
+                      <label htmlFor="email">Email</label>
+                      <input
+                        {...field}
+                        id="email"
+                        type="email"
+                        className="w-full"
+                      />
+                    </div>
+                  )}
+                />
+
+                <Controller
+                  name="PhoneNumber"
+                  control={control}
+                  defaultValue={userData?.PhoneNumber}
+                  render={({ field }) => (
+                    <div>
+                      <label htmlFor="phone">Phone</label>
+                      <input {...field} id="phone" className="w-full" />
+                    </div>
+                  )}
+                />
+
+                <Controller
+                  name="Address"
+                  control={control}
+                  defaultValue={userData?.Address}
+                  render={({ field }) => (
+                    <div>
+                      <label htmlFor="address">Address</label>
+                      <input {...field} id="address" className="w-full" />
+                    </div>
+                  )}
+                />
+
+                <span className="label-text mx-auto my-auto block full font-bold font-scan text-blue-900">
+                  Profile Picture
+                </span>
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={handleFileChange}
+                  className="file-input file-input-bordered  mx-auto block w-full h-full p-2 mt-5 border-2 bg-gray-200 text-black"
+                />
+                {base64Image && (
+                  <img
+                    src={`${mimeType},${base64Image}`}
+                    // src={`data:image/png;base64,${base64Image}`}
+                    alt="Selected"
+                    className="mt-5 "
+                  />
+                )}
+                {success && (
+                  <p className="text-green-500">Profile updated successfully</p>
+                )}
+                <button
+                  type="submit"
+                  className="text-xl btn btn-primary w-full mt-5"
+                >
+                  Update Profile
+                </button>
+              </form>
+            )}
+          </div>
         </div>
-    );
+      </div>
+    </>
+  );
 };
 
 export default ProfilePage;

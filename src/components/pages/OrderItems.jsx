@@ -56,14 +56,31 @@ const OrderItems = () => {
     defaultValue: "",
   });
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     try {
-      data["TransactionDate"] = new Date();
-      const financialTrans = api.createFinancialTransaction(data);
+      console.log("Only data:", data);
+      const now = new Date();
+      const utcDate = new Date(
+        Date.UTC(
+          now.getUTCFullYear(),
+          now.getUTCMonth(),
+          now.getUTCDate(),
+          now.getUTCHours(),
+          now.getUTCMinutes(),
+          now.getUTCSeconds()
+        )
+      );
+      data["TransactionDate"] = utcDate;
+      console.log("Before API call:", data);
+      const financialTrans = await api.createFinancialTransaction(data);
+      console.log("After financialTransaction call:", financialTrans);
       data["TransactionId"] = financialTrans.TransactionId;
-      const materialTrans = api.createMaterialTransaction(data);
-      data["TransactionId"] = materialTrans.TransactionId;
-      const order = api.createOrder(data);
+      const materialTrans = await api.createMaterialTransaction(data);
+      console.log("After materialTransaction call:", materialTrans);
+      data["MaterialTransactionId"] = materialTrans.MaterialTransactionId;
+      const order = await api.createOrder(data);
+      console.log("After Order call:", order);
+      setSuccess(true);
     } catch (error) {
       console.log(error);
     }
@@ -71,7 +88,7 @@ const OrderItems = () => {
 
   return (
     <div className="font-sans">
-      <h1 className="text-3xl w-96 font-bold text-white bg-gradient-to-b from-blue-900 to-black p-3 my-10 text-center mx-auto rounded-xl shadow-2xl">
+      <h1 className="text-2xl w-96 font-bold text-white bg-gradient-to-b from-blue-900 to-black p-3 my-10 text-center mx-auto rounded-xl shadow-2xl">
         Order Items
       </h1>
       <form onSubmit={handleSubmit(onSubmit)} className="w-1/2 mx-auto">

@@ -4,6 +4,7 @@ import FormInput from "../atoms/FormInput/FormInput";
 import ApiCalls from "../../apis/APICalls";
 import Button from "../atoms/Buttons/Button";
 import PasswordInput from "../atoms/PasswordInput/PasswordInput";
+import LinearLoader from "../atoms/LineLoader/LineLoader";
 
 const AddVendor = () => {
   const [loading, setLoading] = useState(false);
@@ -40,6 +41,7 @@ const AddVendor = () => {
       window.location.reload();
     }
   };
+
   return (
     <div className="font-sans">
       <h1 className="text-3xl w-96 font-bold text-white bg-gradient-to-b from-blue-900 to-black p-3 my-10 text-center mx-auto rounded-xl shadow-2xl">

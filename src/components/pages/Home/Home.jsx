@@ -105,7 +105,7 @@ const Home = () => {
                     />
                   </figure>
                   <div className="card-body text-center w-full">
-                    <p className="text-7xl mt-80 font-serif">
+                    <p className="text-7xl mt-80 font-serif text-white">
                       Simplicity is the ultimate sophistication
                     </p>
                   </div>
@@ -121,7 +121,7 @@ const Home = () => {
                     />
                   </figure>
                   <div className="card-body text-center w-full">
-                    <p className="text-7xl mt-80  font-serif">
+                    <p className="text-7xl mt-80  font-serif text-white">
                       You are the author of an empty room
                     </p>
                   </div>
@@ -137,7 +137,7 @@ const Home = () => {
                     />
                   </figure>
                   <div className="card-body text-center w-full">
-                    <p className="text-7xl mt-80 font-serif">
+                    <p className="text-7xl mt-80 font-serif text-white">
                       Your home should reflect your soul
                     </p>
                   </div>
@@ -153,7 +153,7 @@ const Home = () => {
                     />
                   </figure>
                   <div className="card-body text-center w-full">
-                    <p className="text-7xl mt-80  font-serif">
+                    <p className="text-7xl mt-80  font-serif text-white">
                       Luxury is when it seems flawless
                     </p>
                   </div>

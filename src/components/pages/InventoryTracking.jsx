@@ -1,52 +1,159 @@
 // import React from 'react'
 
+import { useForm, Controller, useWatch } from "react-hook-form";
+import FormInput from "../../components/atoms/FormInput/FormInput";
+import ApiCalls from "../../apis/APICalls";
+import { useEffect, useState } from "react";
+
 const InventoryTracking = () => {
-  
+  const [materials, setMaterials] = useState([]);
+  const api = new ApiCalls();
+  const [selectedMaterial, setSelectedMaterial] = useState(null);
+  const [selected, setSelected] = useState(false);
+  const [progressBarWidth, setProgressBarWidth] = useState(0);
+
+  useEffect(() => {
+    if (selected) {
+      setProgressBarWidth(getProgressBarValue());
+    }
+  }, [selected]);
+
+  useEffect(() => {
+    async function fetchData() {
+      const materialItems = await api.getMaterialInventories();
+      setMaterials(materialItems);
+    }
+    fetchData();
+  }, []);
+
+  const handleRowClick = (material) => {
+    setSelectedMaterial(material);
+    setSelected(false);
+    setTimeout(() => setSelected(true), 0);
+  };
+
+  const getProgressBarColor = () => {
+    if (!selectedMaterial) return "bg-gray-600 dark:bg-gray-300";
+    return selectedMaterial.Quantity <= selectedMaterial.CriticalLimit
+      ? "bg-red-600 dark:bg-red-500"
+      : "bg-green-600 dark:bg-green-500";
+  };
+
+  const getProgressBarValue = () => {
+    if (
+      !selectedMaterial ||
+      !selectedMaterial.Quantity ||
+      !selectedMaterial.CriticalLimit
+    ) {
+      console.log("One of the required values is missing or falsy");
+      return 0;
+    } else {
+      const percentage =
+        (parseInt(selectedMaterial.Quantity) /
+          (parseInt(selectedMaterial.CriticalLimit) * 10)) *
+        100;
+      console.log("Percentage:", percentage);
+      return Math.min(percentage, 100);
+    }
+  };
+
   return (
     <div className="font-sans">
-       <h1 className='text-3xl w-96 font-bold text-white bg-gradient-to-b from-blue-900 to-black p-3 my-10 text-center mx-auto rounded-xl shadow-2xl'>
-       Inventory Tracking</h1>
-      {/* <p className="text-white italic text-center my-10">Lorem ipsum dolor sit amet consectetur <br />adipisicing elit. Quibusdam at ut eligendi asperiores ratione eaque.</p> */}
+      <h1 className="text-2xl min-w-96 font-bold text-white bg-gradient-to-b from-blue-900 to-black p-3 my-10 text-center mx-auto rounded-xl shadow-2xl">
+        Inventory Tracking
+      </h1>
       <div className="overflow-x-auto rounded-lg border-blue-500">
         <table className="table">
-          {/* head */}
           <thead>
-            <tr className=' text-base'>
-              <th className='bg-pink-300'>Index</th>
-              <th className='text-black bg-pink-200'>Name</th>
-              <th className='text-black bg-pink-300'>Quantity</th>
-              <th className='text-black bg-pink-200'>Remarks</th>
-              {/* <th className='text-black bg-pink-300'>Status</th> */}
+            <tr className=" text-base text-center">
+              <th
+                className="bg-[#f9ff8d] border border-slate-600"
+                style={{ width: "10%" }}
+              >
+                MaterialId
+              </th>
+              <th
+                className="text-black bg-[#f4ff28] border border-slate-600"
+                style={{ width: "25%" }}
+              >
+                Name
+              </th>
+              <th
+                className="text-black bg-[#f9ff8d]  border border-slate-600"
+                style={{ width: "15%" }}
+              >
+                Quantity
+              </th>
+              <th
+                className="text-black bg-[#f4ff28] border border-slate-600"
+                style={{ width: "35%" }}
+              >
+                Remarks
+              </th>
+              <th
+                className="text-black bg-[#f9ff8d] border border-slate-600"
+                style={{ width: "15%" }}
+              >
+                Critical Limit
+              </th>
             </tr>
           </thead>
           <tbody>
-            {/* row 1 */}
-            <tr>
-              <th className='text-black bg-pink-300'>1</th>
-              <td className='text-black bg-pink-200'>Cy Ganderton</td>
-              <td className='text-black bg-pink-300'>Quality Control Specialist</td>
-              <td className='text-black bg-pink-200'>Blue</td>
-              {/* <td className='text-black bg-pink-300'><button className="btn btn-warning">Warning</button></td> */}
-            </tr>
-
+            {materials.map((item, index) => (
+              <tr
+                key={index}
+                style={{
+                  backgroundColor: index % 2 === 0 ? "#add8ed " : "#e7edad",
+                }}
+                onClick={() => handleRowClick(item)}
+              >
+                <td className="text-center border border-slate-600">
+                  {item.MaterialId}
+                </td>
+                <td className="border border-slate-600">{item.Name}</td>
+                <td className="text-center border border-slate-600">
+                  {item.Quantity}
+                </td>
+                <td className="border border-slate-600">{item.Remarks}</td>
+                <td className="text-center border border-slate-600">
+                  {item.CriticalLimit}
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
 
-      {/* card */}
-
-
-      <div className="card w-96 bg-blue-950 text-primary-content mt-20 mx-auto">
+      <div className="card w-96 bg-gray-300 text-primary-content mt-20 mx-auto border border-slate-600">
         <div className="card-body">
-          <h2 className="card-title">Name: </h2>
-          <h2 className="card-title">Quantity: </h2>
-          <h2 className="card-title">Remarks: </h2>
-          <h2 className=" text-center">Progress: </h2>
-          <progress className="progress progress-info w-56 mt-7" value="70" max="100"></progress>
+          <h2 className="card-title">Name: {selectedMaterial?.Name}</h2>
+          <h2 className="card-title">Quantity: {selectedMaterial?.Quantity}</h2>
+          <h2 className="card-title">Remarks: {selectedMaterial?.Remarks}</h2>
+          <h2 className=" text-center">Stock: </h2>
+          <div className="w-full bg-gray-200 rounded-full h-3 mb-4 dark:bg-gray-700">
+            <div
+              className={`h-3 rounded-full ${getProgressBarColor()} 
+              ${selected ? "bounce" : ""}
+              `}
+              style={{
+                width: `${getProgressBarValue()}%`,
+                transition: "width 1s ease-in-out",
+                animation: selected ? `bounce 1.3s ease-in-out` : "none",
+              }}
+            >
+              <div className="top-0 h-3 w-1 bg-red-500 ml-7"></div>
+            </div>
+          </div>
+          {/* <progress
+            className={`progress progress-info ${getProgressBarColor()} mt-7`}
+            style={{
+              width: `${getProgressBarValue()}%`,
+            }}
+          ></progress> */}
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default InventoryTracking
+export default InventoryTracking;

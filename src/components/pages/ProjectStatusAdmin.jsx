@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import ApiCalls from "../../apis/APICalls";
 
-const ProjectStatus = () => {
+const ProjectStatusAdmin = () => {
   const api = new ApiCalls();
   const [reservations, setReservations] = useState([]);
-  const [clientIdd, setClientId] = useState();
 
   useEffect(() => {
     async function fetchData() {
@@ -15,9 +14,6 @@ const ProjectStatus = () => {
       const allClients = await api.getClients();
       const allCatalogs = await api.getCatalogs();
       const allEmployeeRosters = await api.getEmployeeRosters();
-      const clientIdd = localStorage.getItem("clientId");
-      console.log(clientIdd);
-      await setClientId(clientIdd);
       const combinedData = allReservations.map((reservation) => {
         const inProgressProject = allInProgressProjects.find(
           (ipp) => ipp.ReservationId === reservation.ReservationId
@@ -61,7 +57,7 @@ const ProjectStatus = () => {
 
   return (
     <div className="font-sans">
-      <h1 className="text-3xl w-96 font-bold text-white bg-gradient-to-b from-blue-900 to-black p-3 my-10 text-center mx-auto rounded-xl shadow-2xl">
+      <h1 className="text-2xl w-96 font-bold text-white bg-gradient-to-b from-blue-900 to-black p-3 my-10 text-center mx-auto rounded-xl shadow-2xl">
         Project Status
       </h1>
       {/* <p className="text-white italic text-center my-10">Lorem ipsum dolor sit amet consectetur <br />adipisicing elit. Quibusdam at ut eligendi asperiores ratione eaque.</p> */}
@@ -69,62 +65,58 @@ const ProjectStatus = () => {
         <table className="min-w-full divide-y divide-[#24289b]">
           <thead className="bg-[#47d9f3]">
             <tr>
-              <th className="px-6 py-3 text-center text-base font-bold  bg-yellow-300 border border-slate-600 uppercase tracking-wider text-black">
+              <th className="px-6 py-3 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border border-slate-600">
                 Reservation ID
               </th>
-              <th className="px-6 py-3 text-center text-base font-bold  bg-yellow-200 border border-slate-600 uppercase tracking-wider text-black">
+              <th className="px-6 py-3 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border border-slate-600">
                 Client Name
               </th>
-              <th className="px-6 py-3 text-center text-base font-bold  bg-yellow-300 border border-slate-600 uppercase tracking-wider text-black">
+              <th className="px-6 py-3 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border border-slate-600">
                 Catalog Name
               </th>
-              <th className="px-6 py-3 text-center text-base font-bold  bg-yellow-200 border border-slate-600 uppercase tracking-wider text-black">
+              <th className="px-6 py-3 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border border-slate-600">
                 Project ID
               </th>
-              <th className="px-6 py-3 text-center text-base font-bold  bg-yellow-300 border border-slate-600 uppercase tracking-wider text-black">
+              <th className="px-6 py-3 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border border-slate-600">
                 Start Date
               </th>
-              <th className="px-6 py-3 text-center text-base font-bold  bg-yellow-200 border border-slate-600 uppercase tracking-wider text-black">
+              <th className="px-6 py-3 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border border-slate-600">
                 Project Manager
               </th>
-              <th className="px-6 py-3 text-center text-base font-bold  bg-yellow-300 border border-slate-600 uppercase tracking-wider text-black">
+              <th className="px-6 py-3 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border border-slate-600">
                 Completion Date
               </th>
             </tr>
           </thead>
-          <tbody className="bg-white divide-y divide-gray-200">
-            {reservations
-              .filter(
-                (reservation) => String(reservation.ClientId) === clientIdd
-              )
-              .map((reservation, index) => (
-                <tr
-                  key={reservation.ReservationId}
-                  className={index % 2 === 0 ? "bg-[#d6f8fe]" : "bg-[#c0f4fc]"}
-                >
-                  <td className="px-6 py-4 whitespace-nowrap border border-slate-600 text-center">
-                    {reservation.ReservationId}
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap border border-slate-600 text-center">
-                    {reservation.ClientName}
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap border border-slate-600 text-center">
-                    {reservation.CatalogName}
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap border border-slate-600 text-center">
-                    {reservation.ProjectId}
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap border border-slate-600 text-center">
-                    {reservation.StartDate}
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap border border-slate-600 text-center">
-                    {reservation.ProjectManagerName}
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap border border-slate-600 text-center">
-                    {reservation.CompletionDate}
-                  </td>
-                </tr>
-              ))}
+          <tbody className="bg-white divide-y divide-gray-200 border border-slate-600">
+            {reservations.map((reservation, index) => (
+              <tr
+                key={reservation.ReservationId}
+                className={index % 2 === 0 ? "bg-[#d6f8fe]" : "bg-[#c0f4fc]"}
+              >
+                <td className="px-6 py-4 whitespace-nowrap border border-slate-600">
+                  {reservation.ReservationId}
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap border border-slate-600">
+                  {reservation.ClientName}
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap border border-slate-600">
+                  {reservation.CatalogName}
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap border border-slate-600">
+                  {reservation.ProjectId}
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap border border-slate-600">
+                  {reservation.StartDate}
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap border border-slate-600">
+                  {reservation.ProjectManagerName}
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap border border-slate-600">
+                  {reservation.CompletionDate}
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
@@ -132,4 +124,4 @@ const ProjectStatus = () => {
   );
 };
 
-export default ProjectStatus;
+export default ProjectStatusAdmin;

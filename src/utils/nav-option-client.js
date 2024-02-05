@@ -51,13 +51,13 @@ export const clientOptions = [
     menu: "PAYMENT",
     subMenu: [
       {
-        name: "Reservation Payment",
-        link: "/dashboard/reservation-payment",
+        name: "Payment History",
+        link: "/dashboard/payment-history",
       },
       {
         name: "Installment Payment",
         link: "/dashboard/installment-payment",
-      }
+      },
     ],
   },
 ];

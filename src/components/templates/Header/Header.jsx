@@ -3,7 +3,7 @@ import { SlBasket } from "react-icons/sl";
 import { SlHeart } from "react-icons/sl";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import ProfileName from "../../molecules/ProfileNameMolecule/ProfileNameMolecule";
 import RedDot from "../../atoms/CountDot/CountDot";
 import { SlPlus } from "react-icons/sl";
@@ -12,16 +12,35 @@ import { FaPlus } from "react-icons/fa";
 import { FaBell } from "react-icons/fa6";
 import { FaLocationArrow } from "react-icons/fa";
 import logo from "./../../../assets/images/imagelogo.png";
+import placeholder from "./../../../assets/images/placeholder.png";
 
 import { useNavigate } from "react-router-dom";
 
 const Header = () => {
   const navigate = useNavigate();
-
+  const menuRef = useRef();
   const email = localStorage.getItem("email");
   const [user, setUser] = useState(null);
   const [token, setToken] = useState("");
-  const user_role = localStorage.getItem("role");
+  const [user_role, setRole] = useState("");
+  const [isPopupVisible, setPopupVisible] = useState(false);
+  const [profileImage, setProfileImage] = useState();
+  const [profileImageMime, setProfileImageMime] = useState();
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setPopupVisible(false);
+      }
+    }
+
+    // Bind the event listener
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      // Unbind the event listener on clean up
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [menuRef]);
 
   // useEffect(() => {
   //   if (localStorage.getItem("token")) {
@@ -31,6 +50,16 @@ const Header = () => {
   //     setToken("");
   //   }
   // }, [email]);
+
+  useEffect(() => {
+    setRole(localStorage.getItem("role"));
+    setProfileImage(
+      localStorage.getItem("picture") || sessionStorage.getItem("picture")
+    );
+    setProfileImageMime(
+      localStorage.getItem("mime") || sessionStorage.getItem("mime")
+    );
+  }, []);
 
   return (
     <>
@@ -97,7 +126,7 @@ const Header = () => {
                   user ? <><li><Link to='/dashboard'>Dashboard</Link></li><li><button className="btn btn-ghost">Logout</button></li><img className='w-10 h-10 rounded-full' src={user?.photoURL} alt="" /></> : <><li><Link to='/login'>Login</Link></li></>
                 } */}
         </div>
-        {localStorage.getItem("role") == "" ? (
+        {user_role == "" ? (
           <div>
             <button
               className="w-48 h-12 bg-gradient-to-r from-blue-500 to-violet-600 text-white hover:text-black uppercase text-sm font-semibold rounded-md hover:bg-darkRed duration-300"
@@ -109,25 +138,55 @@ const Header = () => {
         ) : (
           <div className="navbar-end ">
             <div className="flex flex-column">
-              <button
-                className="w-28 h-12 me-3 bg-gradient-to-r from-blue-500 to-violet-600 text-white hover:text-black uppercase text-sm font-semibold rounded-md hover:bg-darkRed duration-300"
-                onClick={() => {
-                  localStorage.clear();
-                  sessionStorage.clear();
-                  navigate("/");
-                  window.location.reload();
-                }}
+              <div
+                ref={menuRef}
+                id="menuPopup"
+                className={`menu-popup ${
+                  isPopupVisible ? "visible" : ""
+                } mt-11 bg-gray-300 h-32`}
               >
-                LOG OUT
-              </button>
-              <button
-                className="w-28 h-12 me-3 bg-gradient-to-r from-blue-800 to-violet-200 text-white hover:text-black uppercase text-sm font-semibold rounded-md hover:bg-darkRed duration-300"
-                onClick={() => {
-                  navigate("/dashboard");
-                }}
-              >
-                Dashboard
-              </button>
+                <button
+                  className="ml-2 w-28 h-7 bg-gradient-to-r from-blue-500 to-violet-600 text-white hover:text-black uppercase text-sm font-semibold rounded-md hover:bg-darkRed duration-300"
+                  onClick={() => {
+                    navigate("/profile");
+                  }}
+                >
+                  Profile
+                </button>
+                <button
+                  className="ml-2 w-28 h-7 bg-gradient-to-r from-blue-500 to-violet-600 text-white hover:text-black uppercase text-sm font-semibold rounded-md hover:bg-darkRed duration-300"
+                  onClick={() => {
+                    navigate("/dashboard");
+                  }}
+                >
+                  Dashboard
+                </button>
+                <button
+                  className="ml-2 w-28 h-7 bg-gradient-to-r from-blue-500 to-violet-600 text-white hover:text-black uppercase text-sm font-semibold rounded-md hover:bg-darkRed duration-300"
+                  onClick={() => {
+                    localStorage.clear();
+                    sessionStorage.clear();
+                    navigate("/");
+                    window.location.reload();
+                  }}
+                >
+                  LOG OUT
+                </button>
+              </div>
+
+              <img
+                className="h-12 rounded-full cursor-pointer mr-4"
+                id="menuImage"
+                src={
+                  profileImage &&
+                  profileImageMime &&
+                  profileImage.includes("base64")
+                    ? `data:${profileImageMime};base64,${profileImage}`
+                    : placeholder
+                }
+                alt="Menu"
+                onClick={() => setPopupVisible(!isPopupVisible)}
+              />
             </div>
             <div className="z-50 drawer-end">
               <input

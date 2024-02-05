@@ -1,137 +1,243 @@
 // import React from 'react'
 // import { FaArrowRight } from "react-icons/fa6";
 // import { FaArrowLeft } from "react-icons/fa6";
-import { useForm } from "react-hook-form";
+import { useForm, Controller, useWatch } from "react-hook-form";
 import FormInput from "../atoms/FormInput/FormInput";
+import ApiCalls from "../../apis/APICalls";
+import { useEffect, useState } from "react";
 
 const ReservationBooking = () => {
+  const [catalogCategories, setCatalogCategories] = useState([]);
+  const [catalogs, setCatalogs] = useState([]);
+  const [success, setSuccess] = useState(false);
+
   const {
     handleSubmit,
     control,
     formState: { errors },
+    setValue,
     // reset,
   } = useForm({
     mode: "onChange",
   });
+
+  const selectedCatalogCategoryId = useWatch({
+    control,
+    name: "CatalogCategoryId",
+    defaultValue: "",
+  });
+
+  const selectedCatalogId = useWatch({
+    control,
+    name: "CatalogId",
+    defaultValue: "",
+  });
+
+  // const handleCatalogChange = (event) => {
+  //   const selectedCatalogId = Number(event.target.value);
+  //   const selectedCatalog = catalogs.find(
+  //     (catalog) => catalog.CatalogId === selectedCatalogId
+  //   );
+  //   if (selectedCatalog) {
+  //     setValue("Name", selectedCatalog.Name);
+  //     setValue("Description", selectedCatalog.Description);
+  //     setValue("EstimatedPrice", selectedCatalog.EstimatedPrice);
+  //     setValue("CatalogCategoryId", selectedCatalog.CatalogCategoryId);
+  //     setBase64Image(selectedCatalog.Picture);
+  //     setMimeType(selectedCatalog.MimeType);
+  //   }
+  // };
+
+  // const [base64Image, setBase64Image] = useState(null);
+  // const [mimeType, setMimeType] = useState(null);
+
+  // const handleFileChange = (event) => {
+  //   const file = event.target.files[0];
+  //   console.log(file);
+  //   const reader = new FileReader();
+
+  //   reader.onloadend = () => {
+  //     // const base64 = reader.result;
+  //     const mimeType = reader.result.split(",")[0];
+  //     const base64 = reader.result.split(",")[1];
+  //     console.log("FileReader onloadend event fired", base64);
+  //     setBase64Image(base64);
+  //     setMimeType(mimeType);
+  //   };
+
+  //   if (file) {
+  //     reader.readAsDataURL(file);
+  //   } else {
+  //     setBase64Image(null);
+  //   }
+  // };
+
+  const api = new ApiCalls();
+
+  const onSubmit = async (data) => {
+    try {
+      data["ClientId"] = localStorage.getItem("clientId");
+      const now = new Date();
+      const utcDate = new Date(
+        Date.UTC(
+          now.getUTCFullYear(),
+          now.getUTCMonth(),
+          now.getUTCDate(),
+          now.getUTCHours(),
+          now.getUTCMinutes(),
+          now.getUTCSeconds()
+        )
+      );
+      data["TransactionDate"] = utcDate;
+      data["ReservationDate"] = utcDate;
+      data["Status"] = "pending";
+      const createdReservation = await api.createReservation(data);
+      const FinancialTransaction = await api.createFinancialTransaction(data);
+      data["FinancialTransactionId"] = FinancialTransaction.TransactionId;
+      data["ReservationId"] = createdReservation.ReservationId;
+      const createdReservationTransaction =
+        await api.createReservationTransaction(data);
+      console.log(
+        "After reservationTransaction call:",
+        createdReservationTransaction,
+        data
+      );
+      setSuccess(true);
+      window.location.reload();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    async function fetchData() {
+      const categories = await api.getCatalogCategories();
+      const catalogs = await api.getCatalogs();
+      setCatalogCategories(categories);
+      setCatalogs(catalogs);
+    }
+    fetchData();
+  }, []);
+
   return (
     <div className="mx-10 font-sans">
       <h1 className="text-3xl w-96 font-bold text-white bg-gradient-to-b from-blue-900 to-black p-3 my-5 text-center mx-auto rounded-xl shadow-2xl">
         Reservation Booking
       </h1>
-      {/* 
-      <div className="carousel w-full">
-        <div id="slide1" className="carousel-item  w-full">
-          <div className="w-2/3">
-            <img
-              src="https://images.unsplash.com/photo-1537726235470-8504e3beef77?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              className="w-full h-[400px]"
-            />
-            <div className=" left-0 bottom-0 ">
-              <h2 className="text-5xl text-blue-500  pt-10 px-3">
-                Lorem ipsum dolor
-              </h2>
-            </div>
-          </div>
-          <p className='w-72 pl-5 text-blue-500'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Optio, corporis sapiente nemo odio itaque enim tenetur hic consectetur libero in? Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam vel adipisci cupiditate. In maiores enim, facilis corrupti expedita doloremque aliquam. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam veniam ex cupiditate. Praesentium commodi in possimus id, libero iusto itaque odio architecto obcaecati neque?</p>
-          <p className="w-72 pl-5">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Optio,
-            corporis sapiente nemo odio itaque enim tenetur hic consectetur
-            libero in? Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Laboriosam vel adipisci cupiditate. In maiores enim, facilis
-            corrupti expedita doloremque aliquam. Lorem, ipsum dolor sit amet
-            consectetur adipisicing elit. Numquam veniam ex cupiditate.
-            Praesentium commodi in possimus id, libero iusto itaque odio
-            architecto obcaecati neque?
-          </p>
-          <hr />
-          <div className="absolute flex justify-end gap-24 transform -translate-y-1/2 left-5 right-32 bottom-0">
-            {/* <a href="#slide1">
-              <FaArrowLeft className="text-6xl border-2  bg-yellow-700 hover:bg-yellow-300" />
-            </a>
-            <a href="#slide2">
-              <FaArrowRight className="text-6xl  border-2 bg-yellow-700" />
-            </a> 
-          </div>
-        </div>
-        <div id="slide2" className="carousel-item  w-full">
-          <div className="w-2/3">
-            <img
-              src="https://images.unsplash.com/photo-1505409628601-edc9af17fda6?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              className="w-full h-[400px]"
-            />
-            <div className=" left-0 bottom-0 ">
-              <h2 className="text-5xl pt-10 px-3 text-blue-500 ">
-                Lorem ipsum dolor
-              </h2>
-            </div>
-          </div>
-          <p className="w-72 pl-5 text-blue-500">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Optio,
-            corporis sapiente nemo odio itaque enim tenetur hic consectetur
-            libero in? Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Laboriosam vel adipisci cupiditate. In maiores enim, facilis
-            corrupti expedita doloremque aliquam. Lorem, ipsum dolor sit amet
-            consectetur adipisicing elit. Numquam veniam ex cupiditate.
-            Praesentium commodi in possimus id, libero iusto itaque odio
-            architecto obcaecati neque?
-          </p>
-          <hr />
-          <div className="absolute flex justify-end gap-24 transform -translate-y-1/2 left-5 right-32 bottom-0">
-            <a href="#slide2">
-              <FaArrowLeft className="text-6xl border-2" />
-            </a>
-            <a href="#slide1">
-              <FaArrowRight className="text-6xl border-2" />
-            </a>
-          </div>
-        </div>
-      </div> */}
       <div>
-        <div>
-          <h1 className="text-3xl font-bold text-center text-blue-950 mb-5 mt-20">
-            Select Option :
-          </h1>
-          <div className="w-full flex font-semibold">
-            <select className="select select-info w-3/5 mx-auto text-black ">
-              <option disabled selected className="text-black">
-                Pick your favorite anime
-              </option>
-              <option className="text-black">One Piece</option>
-              <option className="text-black">Naruto</option>
-              <option className="text-black">Death Note</option>
-              <option className="text-black">Attack on Titan</option>
-              <option className="text-black">Bleach</option>
-              <option className="text-black">Fullmetal Alchemist</option>
-              <option className="text-black">Jojos Bizarre Adventure</option>
-            </select>
-          </div>
-        </div>
+        <form onSubmit={handleSubmit(onSubmit)} className="w-1/2 mx-auto">
+          <Controller
+            name="CatalogCategoryId"
+            control={control}
+            defaultValue=""
+            rules={{ required: "Catalog Category is required" }}
+            render={({ field }) => (
+              <div>
+                <h6 className="text-sm font-bold text-blue-950 mb-1">
+                  Catalog Category
+                </h6>
+                <select
+                  {...field}
+                  className="select select-bordered mx-auto my-auto block w-full p-2 text-black font-semibold bg-gray-200"
+                >
+                  <option className="text-black" disabled value="">
+                    Choose an option
+                  </option>
+                  {catalogCategories.map((category) => (
+                    <option
+                      className="text-black"
+                      key={category.CatalogCategoryId}
+                      value={category.CatalogCategoryId}
+                    >
+                      {category.CategoryName}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            )}
+          />
+          <Controller
+            name="CatalogId"
+            control={control}
+            defaultValue=""
+            rules={{ required: "Catalog Name is required" }}
+            render={({ field }) => (
+              <div>
+                <h6 className="text-sm font-bold text-blue-950 mb-1">
+                  Catalog Name
+                </h6>
+                <select
+                  {...field}
+                  className="select select-bordered mx-auto my-auto block w-full p-2 text-black font-semibold bg-gray-200"
+                  onChange={(event) => {
+                    field.onChange(event);
+                    // handleCatalogChange(event);
+                  }}
+                >
+                  <option className="text-black" disabled value="">
+                    Choose an option
+                  </option>
+                  {catalogs
+                    .filter(
+                      (catalog) =>
+                        catalog.CatalogCategoryId ===
+                        Number(selectedCatalogCategoryId)
+                    )
+                    .map((catalog) => (
+                      <option
+                        className="text-black"
+                        key={catalog.CatalogId}
+                        value={catalog.CatalogId}
+                      >
+                        {catalog.Name}
+                      </option>
+                    ))}
+                </select>
+              </div>
+            )}
+          />
+
+          <Controller
+            name="Description"
+            control={control}
+            defaultValue=""
+            rules={{ required: "Description is required" }}
+            render={({ field }) => (
+              <label className="form-control">
+                <div className="label">
+                  <span className="label-text mx-auto my-auto block w-full font-bold text-blue-900">
+                    Description
+                  </span>
+                </div>
+                <textarea
+                  {...field}
+                  className="mx-auto my-auto block w-full p-2 textarea textarea-bordered h-24"
+                  placeholder="Payment Description"
+                />
+              </label>
+            )}
+          />
+          <FormInput
+            className="border-2"
+            labelText="Down Payment"
+            type="number"
+            name="Amount"
+            defaultValue={""}
+            control={control}
+            errors={errors}
+            rules={{
+              required: "Price is required",
+            }}
+          />
+
+          {success && (
+            <p className="text-green-500">Catalog updated successfully</p>
+          )}
+          <button type="submit" className="text-xl btn btn-primary w-full mt-5">
+            Update Catalog
+          </button>
+        </form>
       </div>
-      <h1 className="text-3xl font-bold text-center text-blue-950 mb-5 mt-20">
-        Reservation amount :
-      </h1>
-      <form onSubmit={handleSubmit()} className="w-1/2 mx-auto">
-        <FormInput
-          className="border-2"
-          labelText="Amount"
-          type="number"
-          name="number"
-          defaultValue={""}
-          control={control}
-          errors={errors}
-          rules={{
-            required: "Amount is required",
-            // maxLength: {
-            //   value: 20,
-            //   message: "Date should be less than 20 letters",
-            // },
-            // minLength: {
-            //   value: 6,
-            //   message: "Username should be more than 6 letters",
-            // },
-          }}
-        />
-      </form>
     </div>
   );
 };

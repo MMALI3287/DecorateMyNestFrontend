@@ -4,8 +4,54 @@ import { IoArrowRedo } from "react-icons/io5";
 import logo from "../../assets/images/imagelogo.png";
 import Header from "../templates/Header/Header";
 import Footer from "../templates/Footer/Footer";
+import { useEffect, useState } from "react";
+import ApiCalls from "../../apis/APICalls";
+import placeholder from "../../assets/images/placeholder.png";
 
 const Sidebar = ({ options }) => {
+  const [authenticatedAccounts, setAuthenticatedAccounts] = useState([]);
+  const [clients, setClients] = useState([]);
+  const api = new ApiCalls();
+  const [username, setUsername] = useState();
+
+  useEffect(() => {
+    setUsername(
+      localStorage.getItem("username") || sessionStorage.getItem("username")
+    );
+    if (
+      localStorage.getItem("role") === "client" &&
+      !localStorage.getItem("clietId")
+    ) {
+      const fetchData = async () => {
+        try {
+          const authentications = await api.getAuthenticaions();
+          setAuthenticatedAccounts(authentications);
+          const clients = await api.getClients();
+          setClients(clients);
+
+          const clientAuthId =
+            Number(localStorage.getItem("authId")) ||
+            Number(sessionStorage.getItem("authId"));
+
+          const client = clients.find((client) => {
+            return String(client.AuthId) === String(clientAuthId);
+          });
+
+          if (client) {
+            const clientId = client.ClientId;
+          } else {
+            console.log("Client not found");
+          }
+          localStorage.setItem("clientId", client.ClientId);
+        } catch (error) {
+          console.error("Error fetching authentications:", error);
+        }
+      };
+
+      fetchData();
+    }
+  }, []);
+
   return (
     <>
       <Header />
@@ -15,11 +61,11 @@ const Sidebar = ({ options }) => {
         </a> */}
         <div className="avatar">
           <div className="w-32 mt-4 rounded-full ml-12">
-            <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+            <img src={placeholder} alt="placeholder" />
           </div>
         </div>
         <h2 className="text-white text-3xl text-center my-5 font-bold">
-          Sarah Connor
+          {username}
         </h2>
         {options.map((menuItem, index) => (
           <div key={index} className="mb-4">

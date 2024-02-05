@@ -9,11 +9,11 @@ import AssignMeetings from "./Components/pages/AssignMeetings";
 import AddVendor from "./components/pages/AddVendor";
 import AddEmployees from "./components/pages/AddEmployees";
 import AddCatalog from "./components/pages/AddCatalog";
-import AppointmentBooking from "./Components/Pages/AppointmentBooking";
-import AppointmentStatus from "./Components/Pages/AppointmentStatus";
-import ReservationBooking from "./Components/Pages/ReservationBooking";
-import ReservationStatus from "./Components/Pages/ReservationStatus";
-import ReservationPayment from "./Components/Pages/ReservationPayment";
+import AppointmentBooking from "./components/pages/AppointmentBooking";
+import AppointmentStatus from "./components/pages/AppointmentStatus";
+import ReservationBooking from "./components/pages/ReservationBooking";
+import ReservationStatus from "./components/pages/ReservationStatus";
+import PaymentHistory from "./components/pages/PaymentHistory";
 import ProjectReview from "./Components/Pages/ProjectReview";
 import ProjectStatus from "./components/pages/ProjectStatus";
 import Message from "./Components/Pages/Message";
@@ -39,6 +39,7 @@ import AboutPage from "./components/pages/Home/AboutPage";
 import About from "./components/pages/Home/About";
 import Portfolio from "./components/pages/Home/Portfolio";
 import Services from "./components/pages/Home/Services";
+import ProjectStatusAdmin from "./components/pages/ProjectStatusAdmin";
 
 function App() {
   return (
@@ -76,8 +77,8 @@ function App() {
             element={<ReservationBooking />}
           />
           <Route
-            path="/dashboard/reservation-payment"
-            element={<ReservationPayment />}
+            path="/dashboard/payment-history"
+            element={<PaymentHistory />}
           />
           <Route path="/dashboard/project-review" element={<ProjectReview />} />
           <Route path="/dashboard/project-status" element={<ProjectStatus />} />
@@ -101,6 +102,10 @@ function App() {
           <Route
             path="/dashboard/confirm-installment"
             element={<ConfirmInstallment />}
+          />
+          <Route
+            path="/dashboard/project-status-admin"
+            element={<ProjectStatusAdmin />}
           />
           <Route path="/dashboard/order-items" element={<OrderItems />} />
           <Route path="/dashboard/message" element={<ProjectProgress />} />
