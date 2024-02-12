@@ -45,29 +45,29 @@ const ReservationStatus = () => {
 
   return (
     <div className="font-sans">
-      <h1 className="text-3xl w-96 font-bold text-white bg-gradient-to-b from-blue-900 to-black p-3 my-10 text-center mx-auto rounded-xl shadow-2xl">
+      <h1 className="text-3xl w-96 font-bold text-white bg-gradient-to-b from-blue-900 to-black p-3 my-5 text-center rounded-xl shadow-2xl mt-12 mx-auto">
         Reservation Status
       </h1>
       <div className="overflow-x-auto rounded-lg border-blue-500">
         <table className="table">
           <thead>
             <tr className=" text-base">
-              <th className="px-6 py-3 text-center text-base font-bold  bg-yellow-300 border border-slate-600 uppercase tracking-wider text-black">
+              <th className="bg-[#ddec51]  py-3 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border border-slate-600">
                 ReservationId
               </th>
-              <th className="px-6 py-3 text-center text-base font-bold  bg-yellow-200 border border-slate-600 uppercase tracking-wider text-black">
+              <th className="bg-[#f4ff28]  py-3 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border border-slate-600">
                 CatalogName
               </th>
-              <th className="px-6 py-3 text-center text-base font-bold  bg-yellow-300 border border-slate-600 uppercase tracking-wider text-black">
+              <th className="bg-[#ddec51]  py-3 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border border-slate-600">
                 Date
               </th>
-              <th className="px-6 py-3 text-center text-base font-bold  bg-yellow-200 border border-slate-600 uppercase tracking-wider text-black">
+              <th className="bg-[#f4ff28]  py-3 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border border-slate-600">
                 Amount
               </th>
-              <th className="px-6 py-3 text-center text-base font-bold  bg-yellow-300 border border-slate-600 uppercase tracking-wider text-black">
+              <th className="bg-[#ddec51]  py-3 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border border-slate-600">
                 Status
               </th>
-              <th className="px-6 py-3 text-center text-base font-bold  bg-yellow-200 border border-slate-600 uppercase tracking-wider text-black">
+              <th className="bg-[#f4ff28]  py-3 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border border-slate-600">
                 Description
               </th>
             </tr>
@@ -75,13 +75,13 @@ const ReservationStatus = () => {
           <tbody>
             {reservations.map((reservation, index) => (
               <tr key={index}>
-                <th className="px-6 py-4 whitespace-nowrap border border-slate-600 text-center">
+                <th className="bg-[#add8ed] px-6 py-3 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border border-slate-600">
                   {reservation.ReservationId}
                 </th>
-                <td className="px-6 py-4 whitespace-nowrap border border-slate-600 text-center">
+                <td className="bg-[#e7edad] px-6 py-3 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border border-slate-600">
                   {reservation.CatalogName}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap border border-slate-600 text-center">
+                <td className="bg-[#add8ed] px-6 py-3 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border border-slate-600">
                   {new Date(reservation.ReservationDate).toLocaleDateString(
                     "en-GB",
                     {
@@ -91,10 +91,10 @@ const ReservationStatus = () => {
                     }
                   )}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap border border-slate-600 text-center">
+                <td className="bg-[#e7edad] px-6 py-3 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border border-slate-600">
                   {reservation.Amount}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap border border-slate-600 text-center">
+                <td className="bg-[#add8ed] px-6 py-3 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border border-slate-600">
                   {reservation.Status === "approved" && (
                     <button className="bg-green-500 p-2 text-white text-lg font-bold border border-slate-600">
                       Approved
@@ -111,7 +111,7 @@ const ReservationStatus = () => {
                     </button>
                   )}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap border border-slate-600 text-center">
+                <td className="bg-[#e7edad] px-6 py-3 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border border-slate-600">
                   {reservation.Description}
                 </td>
               </tr>

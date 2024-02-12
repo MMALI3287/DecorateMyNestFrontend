@@ -94,7 +94,7 @@ const ProfilePage = () => {
         <div className=" flex justify-evenly gap-5 mx-10 font-sans">
           <div className="w-2/3 mt-20 bg-[#d6f8fe] p-3 rounded-lg">
             <div className="">
-              <h1 className="text-3xl font-semibold text-black ">
+              <h1 className="text-3xl w-96 font-bold text-white bg-gradient-to-b from-blue-900 to-black p-3 my-5 text-center rounded-xl shadow-2xl mt-12 mx-auto">
                 Profile Information
               </h1>
             </div>

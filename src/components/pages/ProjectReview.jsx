@@ -13,7 +13,7 @@ const ProjectReview = () => {
   });
   return (
     <div className="font-sans">
-      <h1 className="text-3xl w-96 font-bold text-white bg-gradient-to-b from-blue-900 to-black p-3 my-5 text-center mx-auto rounded-xl shadow-2xl">
+      <h1 className="text-3xl w-96 font-bold text-white bg-gradient-to-b from-blue-900 to-black p-3 my-5 text-center rounded-xl shadow-2xl mt-12 mx-auto">
         Project Review
       </h1>
       <form onSubmit={handleSubmit()} className="w-1/2 mx-auto">

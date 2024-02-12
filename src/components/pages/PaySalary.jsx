@@ -91,7 +91,7 @@ const PaySalary = () => {
 
   return (
     <div className="font-sans">
-      <h1 className="text-3xl w-96 font-bold text-white bg-gradient-to-b from-blue-900 to-black p-3 my-10 text-center mx-auto rounded-xl shadow-2xl">
+      <h1 className="text-3xl w-96 font-bold text-white bg-gradient-to-b from-blue-900 to-black p-3 my-5 text-center rounded-xl shadow-2xl mt-12 mx-auto">
         Pay Salary
       </h1>
       {/* <p className="italic text-gray-500 text-center mt-5">
@@ -144,13 +144,13 @@ const PaySalary = () => {
           render={({ field }) => (
             <label className="form-control">
               <div className="label">
-                <span className="label-text mx-auto my-auto block font-bold text-blue-900">
+                <span className="label-text mx-auto my-auto block w-full font-bold text-blue-900">
                   Description
                 </span>
               </div>
               <textarea
                 {...field}
-                className="mx-auto my-auto block p-2 textarea textarea-bordered h-24"
+                className="mx-auto my-auto block w-full p-2 border-blue-900 textarea textarea-bordered h-24"
                 placeholder="Transaction Description"
               />
             </label>

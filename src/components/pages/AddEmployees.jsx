@@ -46,7 +46,7 @@ const AddEmployees = () => {
 
   return (
     <div className="font-sans">
-      <h1 className="text-3xl w-96 font-bold text-white bg-gradient-to-b from-blue-900 to-black p-3 my-10 text-center mx-auto rounded-xl shadow-2xl">
+      <h1 className="text-3xl w-96 font-bold text-white bg-gradient-to-b from-blue-900 to-black p-3 my-5 text-center rounded-xl shadow-2xl mt-12 mx-auto">
         Add Employees
       </h1>
       <form onSubmit={handleSubmit(onSubmit)} className="w-1/2 mx-auto">
@@ -192,14 +192,21 @@ const AddEmployees = () => {
           defaultValue={""}
           control={control}
           errors={errors}
+          min="0"
+          onChange={(e) => {
+            if (e.target.value < 0) {
+              e.target.value = 0;
+            }
+          }}
           rules={{
             required: "Salary is required",
+            validate: (value) => value >= 0 || "Salary cannot be negative",
           }}
         />
         {loading ? (
           <Button type="submit" disabled={true} text={<LinearLoader />} />
         ) : (
-          <Button type="submit" text="Add Vendor" />
+          <Button type="submit" text="Add Employee" />
         )}
       </form>
     </div>

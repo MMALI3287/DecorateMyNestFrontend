@@ -30,6 +30,7 @@ const SigninOrganism = () => {
           localStorage.setItem("role", authData.Role);
           localStorage.setItem("picture", authData.ProfilePictrue);
           localStorage.setItem("mime", authData.MimeType);
+          localStorage.setItem("role", authData.Role);
           <Toaster richColors />;
           toast.success("Successfully logged in!");
         }

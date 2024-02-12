@@ -59,39 +59,39 @@ const InventoryTracking = () => {
 
   return (
     <div className="font-sans">
-      <h1 className="text-2xl min-w-96 font-bold text-white bg-gradient-to-b from-blue-900 to-black p-3 my-10 text-center mx-auto rounded-xl shadow-2xl">
+      <h1 className="text-3xl w-96 font-bold text-white bg-gradient-to-b from-blue-900 to-black p-3 my-5 text-center rounded-xl shadow-2xl mt-12 mx-auto">
         Inventory Tracking
       </h1>
       <div className="overflow-x-auto rounded-lg border-blue-500">
-        <table className="table">
-          <thead>
+        <table className="min-w-full divide-y divide-[#24289b]">
+          <thead className="">
             <tr className=" text-base text-center">
               <th
-                className="bg-[#f9ff8d] border border-slate-600"
+                className=" bg-[#ddec51]  py-3 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border border-slate-600"
                 style={{ width: "10%" }}
               >
                 MaterialId
               </th>
               <th
-                className="text-black bg-[#f4ff28] border border-slate-600"
+                className=" bg-[#f4ff28] px-6 py-3 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border border-slate-600"
                 style={{ width: "25%" }}
               >
                 Name
               </th>
               <th
-                className="text-black bg-[#f9ff8d]  border border-slate-600"
+                className=" bg-[#ddec51]  px-6 py-3 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border border-slate-600"
                 style={{ width: "15%" }}
               >
                 Quantity
               </th>
               <th
-                className="text-black bg-[#f4ff28] border border-slate-600"
+                className="bg-[#f4ff28] px-6 py-3 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border border-slate-600"
                 style={{ width: "35%" }}
               >
                 Remarks
               </th>
               <th
-                className="text-black bg-[#f9ff8d] border border-slate-600"
+                className="bg-[#ddec51] px-6 py-3 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border border-slate-600"
                 style={{ width: "15%" }}
               >
                 Critical Limit
@@ -107,15 +107,15 @@ const InventoryTracking = () => {
                 }}
                 onClick={() => handleRowClick(item)}
               >
-                <td className="text-center border border-slate-600">
+                <td className=" px-6 py-3 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border border-slate-600">
                   {item.MaterialId}
                 </td>
                 <td className="border border-slate-600">{item.Name}</td>
-                <td className="text-center border border-slate-600">
+                <td className="text-color-black  px-6 py-3 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border border-slate-600">
                   {item.Quantity}
                 </td>
                 <td className="border border-slate-600">{item.Remarks}</td>
-                <td className="text-center border border-slate-600">
+                <td className="text-color-black px-6 py-3 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border border-slate-600">
                   {item.CriticalLimit}
                 </td>
               </tr>

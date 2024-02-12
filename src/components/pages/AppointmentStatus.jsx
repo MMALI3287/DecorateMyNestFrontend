@@ -46,7 +46,7 @@ const AppointmentStatus = () => {
 
   return (
     <div className="font-sans">
-      <h1 className="text-3xl w-96 font-bold text-white bg-gradient-to-b from-blue-900 to-black p-3 my-10 text-center mx-auto rounded-xl shadow-2xl">
+      <h1 className="text-3xl w-96 font-bold text-white bg-gradient-to-b from-blue-900 to-black p-3 my-5 text-center rounded-xl shadow-2xl mt-12 mx-auto">
         Appointment Status
       </h1>
       {/* <p className="text-white italic text-center my-10">Lorem ipsum dolor sit amet consectetur <br />adipisicing elit. Quibusdam at ut eligendi asperiores ratione eaque.</p> */}
@@ -54,19 +54,19 @@ const AppointmentStatus = () => {
         <table className="table">
           <thead>
             <tr className=" text-base">
-              <th className="px-6 py-3 text-center text-base font-bold  bg-yellow-300 border border-slate-600 uppercase tracking-wider text-black">
+              <th className="bg-[#ddec51]  py-3 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border border-slate-600">
                 AppointmentId
               </th>
-              <th className="px-6 py-3 text-center text-base font-bold  bg-yellow-200 border border-slate-600 uppercase tracking-wider text-black">
+              <th className="bg-[#f4ff28]  py-3 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border border-slate-600">
                 Employee Name
               </th>
-              <th className="px-6 py-3 text-center text-base font-bold  bg-yellow-300 border border-slate-600 uppercase tracking-wider text-black">
+              <th className="bg-[#ddec51]  py-3 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border border-slate-600">
                 Appointment Date
               </th>
-              <th className="px-6 py-3 text-center text-base font-bold  bg-yellow-200 border border-slate-600 uppercase tracking-wider text-black">
+              <th className="bg-[#f4ff28]  py-3 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border border-slate-600">
                 Room No
               </th>
-              <th className="px-6 py-3 text-center text-base font-bold  bg-yellow-300 border border-slate-600 uppercase tracking-wider text-black">
+              <th className="bg-[#ddec51]  py-3 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border border-slate-600">
                 Status
               </th>
             </tr>
@@ -74,15 +74,15 @@ const AppointmentStatus = () => {
           <tbody>
             {appointments.map((appointment, index) => (
               <tr key={index}>
-                <th className="px-6 py-4 whitespace-nowrap border border-slate-600 text-center">
+                <th className="bg-[#add8ed] px-6 py-3 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border border-slate-600">
                   {appointment.AppointmentId}
                 </th>
-                <td className="px-6 py-4 whitespace-nowrap border border-slate-600 text-center">
+                <td className="bg-[#e7edad] px-6 py-3 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border border-slate-600">
                   {appointment.EmployeeId === 0
                     ? "Not Appointed Yet"
                     : getEmployeeName(appointment.EmployeeId)}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap border border-slate-600 text-center">
+                <td className="bg-[#add8ed] px-6 py-3 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border border-slate-600">
                   {new Date(appointment.AppointmentDate).toLocaleDateString(
                     "en-GB",
                     {
@@ -92,7 +92,7 @@ const AppointmentStatus = () => {
                     }
                   )}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap border border-slate-600 text-center">
+                <td className="bg-[#e7edad] px-6 py-3 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border border-slate-600">
                   {appointment.AppointmentRoom === 0
                     ? "Pending Selection"
                     : appointment.AppointmentRoom}

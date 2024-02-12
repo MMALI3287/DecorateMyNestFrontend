@@ -3,7 +3,7 @@ import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
 
-console.log(environment.REACT_APP_GOOGLE_CLIENT_ID);
+// console.log(environment.REACT_APP_GOOGLE_CLIENT_ID);
 // TODO: Addimport { Provider } from 'react-redux';
 //  SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries

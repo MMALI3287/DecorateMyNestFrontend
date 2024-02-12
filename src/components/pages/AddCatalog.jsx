@@ -176,14 +176,14 @@ const AddCatalog = () => {
             rules={{ required: "Catalog Category is required" }}
             render={({ field }) => (
               <div>
-                <h6 className="text-sm font-bold text-blue-950 mb-1">
+                <h6 className="text-sm font-bold text-blue-900 mb-1">
                   Catalog Category
                 </h6>
                 <select
                   {...field}
                   className="select select-bordered mx-auto my-auto block w-full p-2 text-black font-semibold bg-gray-200"
                 >
-                  <option className="text-black" disabled value="">
+                  <option className="text-black font-sans" disabled value="">
                     Choose an option
                   </option>
                   {catalogCategories.map((category) => (
@@ -233,7 +233,7 @@ const AddCatalog = () => {
                 </div>
                 <textarea
                   {...field}
-                  className="mx-auto my-auto block w-full p-2 textarea textarea-bordered h-24"
+                  className="mx-auto my-auto block w-full p-2 border-blue-900 textarea textarea-bordered h-24"
                   placeholder="Catalog Description"
                 />
               </label>
@@ -249,6 +249,10 @@ const AddCatalog = () => {
             errors={errors}
             rules={{
               required: "Price is required",
+              min: {
+                value: 0,
+                message: "Price cannot be negative",
+              },
             }}
           />
           <span className="label-text mx-auto my-auto block full font-bold font-scan text-blue-900">

@@ -98,7 +98,7 @@ const EditCatalog = () => {
 
   return (
     <div className="font-sans">
-      <h1 className="text-3xl w-96 font-bold text-white bg-gradient-to-b from-blue-900 to-black p-3 my-10 text-center mx-auto rounded-xl shadow-2xl">
+      <h1 className="text-3xl w-96 font-bold text-white bg-gradient-to-b from-blue-900 to-black p-3 my-5 text-center rounded-xl shadow-2xl mt-12 mx-auto">
         Edit Catalog
       </h1>
       <form onSubmit={handleSubmit(onSubmit)} className="w-1/2 mx-auto">
@@ -206,7 +206,7 @@ const EditCatalog = () => {
               </div>
               <textarea
                 {...field}
-                className="mx-auto my-auto block w-full p-2 textarea textarea-bordered h-24"
+                className="mx-auto my-auto block w-full p-2 border-blue-900 textarea textarea-bordered h-24"
                 placeholder="Catalog Description"
               />
             </label>
@@ -222,6 +222,10 @@ const EditCatalog = () => {
           errors={errors}
           rules={{
             required: "Price is required",
+            min: {
+              value: 0,
+              message: "Price cannot be negative",
+            },
           }}
         />
         <span className="label-text mx-auto my-auto block full font-bold font-scan text-blue-900">
