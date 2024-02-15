@@ -49,7 +49,6 @@ const AppointmentStatus = () => {
       <h1 className="text-3xl w-96 font-bold text-white bg-gradient-to-b from-blue-900 to-black p-3 my-5 text-center rounded-xl shadow-2xl mt-12 mx-auto">
         Appointment Status
       </h1>
-      {/* <p className="text-white italic text-center my-10">Lorem ipsum dolor sit amet consectetur <br />adipisicing elit. Quibusdam at ut eligendi asperiores ratione eaque.</p> */}
       <div className="overflow-x-auto rounded-lg border-blue-500">
         <table className="table">
           <thead>

@@ -1,12 +1,47 @@
-// import React from 'react'
+import React, { useState, useEffect } from "react";
 
+import ApiCalls from "../../apis/APICalls";
 const AssignMeetings = () => {
+  const [loading, setLoading] = useState(false);
+  const [appointments, setAppointments] = useState([]);
+  const [authenticatedAccounts, setAuthenticatedAccounts] = useState([]);
+  const [employees, setEmployees] = useState([]);
+  const api = new ApiCalls();
+
+  useEffect(() => {
+    async function fetchData() {
+      const allAppointments = await api.getAppointments();
+      setAppointments(allAppointments);
+      const employees = await api.getEmployeeRosters();
+      const authenticatedAccounts = await api.getAuthenticaions();
+      const matchedEmployees = employees.map((employee) => {
+        const account = authenticatedAccounts.find(
+          (acc) => acc.AuthId === employee.AuthId
+        );
+        return {
+          ...employee,
+          ...account,
+        };
+      });
+      setAuthenticatedAccounts(authenticatedAccounts);
+      setEmployees(matchedEmployees);
+    }
+
+    fetchData();
+  }, []);
+
+  const getEmployeeName = (employeeId) => {
+    const employee = employees.find((emp) => emp.EmployeeId === employeeId);
+    if (employee) {
+      return `${employee.FirstName} ${employee.LastName}`;
+    }
+    return "";
+  };
   return (
     <div className="font-sans">
       <h1 className="text-3xl w-96 font-bold text-white bg-gradient-to-b from-blue-900 to-black p-3 my-5 text-center rounded-xl shadow-2xl mt-12 mx-auto">
         Assign Meeting
       </h1>
-      {/* <p className="text-white italic text-center my-10">Lorem ipsum dolor sit amet consectetur <br />adipisicing elit. Quibusdam at ut eligendi asperiores ratione eaque.</p> */}
       <div className="overflow-x-auto rounded-lg border-blue-500">
         <table className="table">
           {/* head */}
@@ -30,7 +65,6 @@ const AssignMeetings = () => {
             </tr>
           </thead>
           <tbody>
-            {/* row 1 */}
             <tr>
               <th className="bg-[#add8ed] px-6 py-3 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border border-slate-600">
                 1
@@ -47,15 +81,11 @@ const AssignMeetings = () => {
                     <option disabled selected className="text-black">
                       Pick the Employee
                     </option>
-                    <option className="text-black">One Piece</option>
-                    <option className="text-black">Naruto</option>
-                    <option className="text-black">Death Note</option>
-                    <option className="text-black">Attack on Titan</option>
-                    <option className="text-black">Bleach</option>
-                    <option className="text-black">Fullmetal Alchemist</option>
-                    <option className="text-black">
-                      Jojos Bizarre Adventure
-                    </option>
+                    {employees.map((employee) => (
+                      <option key={employee.EmployeeId} className="text-black">
+                        {getEmployeeName(employee.EmployeeId)}
+                      </option>
+                    ))}
                   </select>
                 </div>
               </td>
