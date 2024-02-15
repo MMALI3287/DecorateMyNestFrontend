@@ -1,14 +1,52 @@
 import Header from "../../templates/Header/Header";
 import Footer from "../../templates/Footer/Footer";
+import ApiCalls from "../../../apis/APICalls";
+import { useEffect, useState } from "react";
 const Portfolio = () => {
+  const api = new ApiCalls();
+  const [Catalog, setCatalog] = useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const catalog = await api.getCatalogs();
+        setCatalog(catalog);
+        console.log(catalog);
+      } catch (error) {
+        console.error("Failed to fetch catalog:", error);
+      }
+    }
+    fetchData();
+  }, []);
   return (
     <>
       <Header />
       <div>
         <h1 className="text-7xl font-bold text-blur-950 mt-20 text-center  pb-10 mx-20">
-          Projects
+          Catalog
         </h1>
-        <div className="grid grid-cols-3 mx-20 gap-20">
+        <div className="grid grid-cols-3 gap-4 mx-20 mb-10">
+          {Catalog.map((catalog) => (
+            <div
+              key={catalog.CatalogId}
+              className="rounded overflow-hidden shadow-lg p-6 bg-white transform transition duration-500 ease-in-out hover:scale-105"
+            >
+              <img
+                className="w-full h-64 object-cover"
+                src={`${catalog.MimeType},${catalog.Picture}`}
+                alt={catalog.Name}
+              />
+              <div className="mt-4">
+                <h1 className="text-xl font-bold">{catalog.Name}</h1>
+                <p className="mt-2 text-gray-600">{catalog.Description}</p>
+                <p className="mt-2 text-gray-600 text-sm">
+                  Price: ${catalog.EstimatedPrice}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+        {/* <div className="grid grid-cols-3 mx-20 gap-20">
           <div className="mt-5">
             <img
               className="full"
@@ -75,7 +113,7 @@ const Portfolio = () => {
             </h1>
             <p className="text-blue-400 mt-2 pl-3">MODERN FARMHOUSE</p>
           </div>
-        </div>
+        </div> */}
       </div>
       <Footer />
     </>
