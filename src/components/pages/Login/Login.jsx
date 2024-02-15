@@ -6,7 +6,7 @@ import Footer from "../../templates/Footer/Footer";
 const Login = () => {
   return (
     <div>
-      <Header/>
+      <Header />
       <Signin />
     </div>
   );

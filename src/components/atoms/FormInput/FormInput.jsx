@@ -22,7 +22,7 @@ const FormInput = ({
         render={({ field }) => (
           <>
             <input
-            className="rounded-xl w-1/2 mx-auto"
+              className="rounded-xl w-1/2 mx-auto"
               {...field}
               type={type}
               id={name}

@@ -5,4 +5,4 @@ export default {
   component: Button,
 };
 
-export const Red = () => <Button/>
+export const Red = () => <Button />;
