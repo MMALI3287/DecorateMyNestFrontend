@@ -96,7 +96,7 @@ const AppointmentStatus = () => {
                     ? "Pending Selection"
                     : appointment.AppointmentRoom}
                 </td>
-                <td className="bg-yellow-500 p-2 text-white text-xl font-normal border border-slate-600 text-center">
+                <td className="bg-[#add8ed] px-6 py-3 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border border-slate-600">
                   {appointment.EmployeeId === 0 ||
                   appointment.AppointmentRoom === 0 ? (
                     <button

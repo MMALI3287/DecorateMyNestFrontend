@@ -1,23 +1,16 @@
-// import "../molecules/SigninFormMolecules/SigninFormMolecules";
-// import { Link } from "react-router-dom"
-// import { useNavigate } from "react-router-dom";
-import FormInput from "../atoms/FormInput/FormInput";
-// import Navbar2 from "./Navbar/Navbar2";import React, { useEffect, useState } from "react";
-import { useForm, Controller, useWatch } from "react-hook-form";
+import React, { useEffect, useState } from "react";
+import { useForm, Controller } from "react-hook-form";
 import ApiCalls from "../../apis/APICalls";
 import LinearLoader from "../atoms/LineLoader/LineLoader";
 import Button from "../atoms/Buttons/Button";
-import React, { useEffect, useState } from "react";
 
 const AppointmentBooking = () => {
   const api = new ApiCalls();
   const [loading, setLoading] = useState(false);
-
   const {
     handleSubmit,
     control,
     formState: { errors },
-    // reset,
   } = useForm({
     mode: "onChange",
   });
@@ -47,27 +40,42 @@ const AppointmentBooking = () => {
       <h1 className="text-4xl font-bold text-blue-950 mt-2 mb-20 text-center">
         To Get Appointment
       </h1>
-      {/* <p className="text-gray-500 italic text-center my-10">
-        Lorem ipsum dolor sit amet consectetur <br />
-        adipisicing elit. Quibusdam at ut eligendi asperiores ratione eaque.
-      </p> */}
       <form onSubmit={handleSubmit(onSubmit)} className="w-1/2 mx-auto">
-        <FormInput
-          className="border-2"
-          labelText="Date"
-          type="date"
+        <Controller
           name="Date"
-          defaultValue={""}
           control={control}
-          errors={errors}
-          rules={{
-            required: "Date is required",
-          }}
+          defaultValue=""
+          rules={{ required: "Date is required" }}
+          render={({ field }) => (
+            <input
+              {...field}
+              className="border-2 text-4xl"
+              type="date"
+              style={{ fontSize: "24px" }} // Adjust font size here
+            />
+          )}
         />
         {loading ? (
-          <Button type="submit" disabled={true} text={<LinearLoader />} />
+          <Button
+            type="submit"
+            disabled={true}
+            text={<LinearLoader />}
+            style={{
+              width: "150px",
+              fontSize: "20px",
+              backgroundColor: "#003366",
+            }} // Adjust width, font size, and background color here
+          />
         ) : (
-          <Button type="submit" text="Book Appointment" />
+          <Button
+            type="submit"
+            text="Book Appointment"
+            style={{
+              width: "150px",
+              fontSize: "20px",
+              backgroundColor: "#003366",
+            }} // Adjust width, font size, and background color here
+          />
         )}
       </form>
     </div>
