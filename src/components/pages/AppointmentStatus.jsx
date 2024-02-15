@@ -82,12 +82,15 @@ const AppointmentStatus = () => {
                     : getEmployeeName(appointment.EmployeeId)}
                 </td>
                 <td className="bg-[#add8ed] px-6 py-3 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border border-slate-600">
-                  {new Date(appointment.AppointmentDate).toLocaleDateString(
+                  {new Date(appointment.AppointmentDate).toLocaleString(
                     "en-GB",
                     {
                       day: "numeric",
                       month: "short",
                       year: "numeric",
+                      hour: "2-digit",
+                      minute: "2-digit",
+                      hour12: true,
                     }
                   )}
                 </td>

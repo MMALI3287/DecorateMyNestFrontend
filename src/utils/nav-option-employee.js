@@ -1,13 +1,13 @@
 export const employeeOptions = [
-  {
-    menu: "Message",
-    subMenu: [
-      {
-        name: "Project in Progress",
-        link: "/dashboard/message",
-      },
-    ],
-  },
+  // {
+  //   menu: "Message",
+  //   subMenu: [
+  //     {
+  //       name: "Project in Progress",
+  //       link: "/dashboard/message",
+  //     },
+  //   ],
+  // },
   {
     menu: "Projects",
     subMenu: [

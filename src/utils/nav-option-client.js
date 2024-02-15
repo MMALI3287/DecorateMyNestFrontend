@@ -38,15 +38,15 @@ export const clientOptions = [
       },
     ],
   },
-  {
-    menu: "MESSAGE",
-    subMenu: [
-      {
-        name: "Project in Progress",
-        link: "/dashboard/project-in-progress/dashboard/message",
-      },
-    ],
-  },
+  // {
+  //   menu: "MESSAGE",
+  //   subMenu: [
+  //     {
+  //       name: "Project in Progress",
+  //       link: "/dashboard/project-in-progress/dashboard/message",
+  //     },
+  //   ],
+  // },
   {
     menu: "PAYMENT",
     subMenu: [
