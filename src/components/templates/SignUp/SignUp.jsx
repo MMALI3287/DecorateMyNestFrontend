@@ -7,7 +7,7 @@ const Signup = () => {
       <div className="container-main-signup">
         <div className="column1">
           <div className="image-interior-signup">
-            <img src="https://media.architecturaldigest.com/photos/63d195596b8c438a8a174891/16:9/w_2240,c_limit/ISHKADESIGNS_WHITEHOUSE_37.jpg" />
+            <img src="https://jaynedesignstudio.com/wp-content/uploads/2016/04/Perelman_JAYNE_-42566-FINAL-A-crop-1280x1419.jpg" />
           </div>
         </div>
         <div className="column2">

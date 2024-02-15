@@ -227,7 +227,7 @@ const AboutPage = () => {
         <div className="md:flex gap-20 justify-center mx-20 mt-20 mb-5">
           <img
             className="w-6/12"
-            src="https://jaynedesignstudio.com/wp-content/uploads/2016/01/160404_ThomasJayne_R-25-1280x852.jpg"
+            src="https://images.unsplash.com/photo-1615873968403-89e068629265?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt=""
             data-aos="zoom-out-down"
           />

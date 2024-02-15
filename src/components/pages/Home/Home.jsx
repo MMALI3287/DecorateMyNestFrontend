@@ -279,7 +279,7 @@ const Home = () => {
       </div>
 
       <div className="mx-20">
-        <h1 className="text-7xl font-bold text-blue-950 mt-20">
+        <h1 className="text-6xl font-bold text-blue-950 mt-20">
           About Our Design <br /> Philosophy
         </h1>
         <hr className="mt-5" />
@@ -473,7 +473,7 @@ const Home = () => {
       {/* tab picture */}
 
       <div className="mx-20">
-        <h1 className="text-7xl font-bold text-blue-950 mt-20 font-serif">
+        <h1 className="text-6xl font-bold text-blue-950 mt-20 font-serif">
           Our Approach
         </h1>
 
@@ -498,7 +498,7 @@ const Home = () => {
           className="tab-content bg-base-100 border-base-300 rounded-box p-6"
         >
           <img
-            className="w-full h-[450px]"
+            className="w-full h-[350px]"
             src="https://www.minimallimited.com/wp-content/uploads/2022/10/Minimal-Meet-and-Greet.svg"
             alt=""
           />
@@ -512,10 +512,8 @@ const Home = () => {
           ></progress>
 
           <p className="text-xl mt-5">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-            Repellendus minus debitis nulla quam accusamus doloremque. Tempora
-            natus minus aperiam molestias necessitatibus dolorum odio quas
-            neque, repellendus, dolor aspernatur eos sapiente.
+            You’ll meet our expert designers, and they will listen to your
+            requirements. (No payment is required.)
           </p>
         </div>
 
@@ -532,7 +530,7 @@ const Home = () => {
           className="tab-content bg-base-100 border-base-300 rounded-box p-6"
         >
           <img
-            className="w-full h-[450px]"
+            className="w-full h-[350px]"
             src="https://www.minimallimited.com/wp-content/uploads/2022/10/Minimal-Design-Development.svg"
             alt=""
           />
@@ -546,10 +544,9 @@ const Home = () => {
           ></progress>
 
           <p className="text-xl mt-5">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-            Repellendus minus debitis nulla quam accusamus doloremque. Tempora
-            natus minus aperiam molestias necessitatibus dolorum odio quas
-            neque, repellendus, dolor aspernatur eos sapiente.
+            With a range of designs, our designers will seek your approval and
+            develop the design from start to finish. (Pay 5% of the estimated
+            quotation.)
           </p>
         </div>
 
@@ -565,7 +562,7 @@ const Home = () => {
           className="tab-content bg-base-100 border-base-300 rounded-box p-6"
         >
           <img
-            className="w-full h-[450px]"
+            className="w-full h-[350px]"
             src="https://www.minimallimited.com/wp-content/uploads/2022/10/place-the-order-at-minimal.svg"
             alt=""
           />
@@ -579,10 +576,9 @@ const Home = () => {
           ></progress>
 
           <p className="text-xl mt-5">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-            Repellendus minus debitis nulla quam accusamus doloremque. Tempora
-            natus minus aperiam molestias necessitatibus dolorum odio quas
-            neque, repellendus, dolor aspernatur eos sapiente.
+            Once the order is placed, we will begin working on construction
+            drawings. Upon your written approval, we will start procuring
+            materials and preparing the site to commence work.
           </p>
         </div>
         <input
@@ -597,7 +593,7 @@ const Home = () => {
           className="tab-content bg-base-100 border-base-300 rounded-box p-6"
         >
           <img
-            className="w-full h-[450px]"
+            className="w-full h-[350px]"
             src="https://www.minimallimited.com/wp-content/uploads/2022/10/Minimal-Installation-Process.svg"
             alt=""
           />
@@ -611,10 +607,9 @@ const Home = () => {
           ></progress>
 
           <p className="text-xl mt-5">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-            Repellendus minus debitis nulla quam accusamus doloremque. Tempora
-            natus minus aperiam molestias necessitatibus dolorum odio quas
-            neque, repellendus, dolor aspernatur eos sapiente.
+            To ensure everything is on track, we’ll provide you with a Gantt
+            Chart. We’ll also conduct 154 quality checks. (Pay 95% of the final
+            quotation.)
           </p>
         </div>
         <input
@@ -629,7 +624,7 @@ const Home = () => {
           className="tab-content bg-base-100 border-base-300 rounded-box p-6"
         >
           <img
-            className="w-full h-[450px]"
+            className="w-full h-[350px]"
             src="https://www.minimallimited.com/wp-content/uploads/2022/10/Minimal-Moving-In.svg"
             alt=""
           />
@@ -643,10 +638,7 @@ const Home = () => {
           ></progress>
 
           <p className="text-xl mt-5">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-            Repellendus minus debitis nulla quam accusamus doloremque. Tempora
-            natus minus aperiam molestias necessitatibus dolorum odio quas
-            neque, repellendus, dolor aspernatur eos sapiente.
+            Now that our installation is complete, you can move into your place.
           </p>
         </div>
       </div>
