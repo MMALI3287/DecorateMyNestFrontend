@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import Header from "../../templates/Header/Header";
 import Footer from "../../templates/Footer/Footer";
 import { useForm } from "react-hook-form";
+import { FaLocationArrow, FaMailBulk } from "react-icons/fa";
 
 const About = () => {
   const { register, handleSubmit, errors } = useForm();
@@ -58,16 +59,15 @@ const About = () => {
               <p className="text-blue-500 mt-5">Call us or WhatsApp at:</p>
               <div className="flex mt-4">
                 <FaPhone className="mt-2 mr-3 text-xl" />
-                <p className="text-2xl font-semibold">01775 760 496</p>
+                <p className="text-2xl font-scan">01775775499</p>
               </div>
               <div className="flex mt-4">
-                <p className="font-bold text-2xl mr-3 mt-1">@</p>
-                <p className="md:text-3xl font-semibold">
-                  decoratemynest@gmail.com
-                </p>
+                <FaMailBulk className="mt-2 mr-3 text-xl" />
+
+                <p className="md:text-3xl ">decoratemynest@gmail.com</p>
               </div>
               <div className="flex mt-5">
-                <MdOutlineLocationOn className="mt-2 mr-3 text-2xl" />
+                <FaLocationArrow className="mt-2 mr-3 text-2xl" />
                 <p className=" font-semibold">
                   KA-6/A, 2nd Floor, Bashundhara R/A Main Road,
                   <br /> Vatara, Dhaka-1229
@@ -78,7 +78,7 @@ const About = () => {
             {/* right side  */}
 
             <div className="">
-              <h1 className="text-3xl font-bold text-blue-950 mt-10">
+              <h1 className="text-4xl font-bold text-blue-950 mt-10">
                 Contact us
               </h1>
               <form onSubmit={handleSubmit(onSubmit)}>
@@ -87,7 +87,7 @@ const About = () => {
                   type="text"
                   name="name"
                   id=""
-                  className=" w-full px-2 py-2 mt-3  rounded-lg border-2 border-solid border-blue-500"
+                  className=" w-full h-16  px-2 py-2 mt-3  rounded-lg border-2 border-solid border-blue-500"
                 />{" "}
                 <br />
                 <input
@@ -95,7 +95,7 @@ const About = () => {
                   type="email"
                   name="email"
                   id=""
-                  className=" w-full px-2 py-2 mt-3  rounded-lg border-2 border-solid border-blue-500"
+                  className=" w-full h-16 px-2 py-2 mt-3  rounded-lg border-2 border-solid border-blue-500"
                 />{" "}
                 <br />
                 <input
@@ -103,7 +103,7 @@ const About = () => {
                   type="text"
                   name="message"
                   id=""
-                  className=" w-full px-2 py-8 mt-3  rounded-lg border-2 border-solid border-blue-500"
+                  className=" w-full h-60 px-2 py-8 mt-3  rounded-lg border-2 border-solid border-blue-500"
                 />
                 <br />
                 <button
