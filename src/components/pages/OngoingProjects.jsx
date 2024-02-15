@@ -96,13 +96,13 @@ const OngoingProjects = () => {
                   {project.ProjectId}
                 </td>
                 <td className="bg-[#e7edad] px-6 py-3 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border border-slate-600">
-                  {project.StartDate}
+                  {new Date(project.StartDate).toLocaleString()}
                 </td>
                 <td className="bg-[#add8ed] px-6 py-3 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border border-slate-600">
                   {project.ClientName}
                 </td>
                 <td className="bg-[#e7edad] px-6 py-3 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border border-slate-600">
-                  {project.CompletionDate}
+                  {new Date(project.CompletionDate).toLocaleString()}
                 </td>
               </tr>
             ))}
