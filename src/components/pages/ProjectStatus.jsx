@@ -18,41 +18,45 @@ const ProjectStatus = () => {
       const clientIdd = localStorage.getItem("clientId");
       console.log(clientIdd);
       await setClientId(clientIdd);
-      const combinedData = allReservations.map((reservation) => {
-        const inProgressProject = allInProgressProjects.find(
-          (ipp) => ipp.ReservationId === reservation.ReservationId
-        );
-        const archivedProject = allArchivedProjects.find(
-          (ap) => ap.ProjectId === inProgressProject?.ProjectId
-        );
-        const client = allClients.find(
-          (c) => c.ClientId === reservation.ClientId
-        );
-        const authentication = allAuthentications.find(
-          (auth) => auth.AuthId === client?.AuthId
-        );
-        const catalog = allCatalogs.find(
-          (cat) => cat.CatalogId === reservation.CatalogId
-        );
-        const projectManager = allEmployeeRosters.find(
-          (er) => er.EmployeeId === inProgressProject?.ProjectManagerId
-        );
-        return {
-          ...reservation,
-          //   ClientName: authentication
-          //     ? `${authentication.FirstName} ${authentication.LastName}`
-          //     : "",
-          ClientName: authentication ? `${authentication.UserName}` : "",
-          CatalogName: catalog ? catalog.Name : "",
-          ProjectId: inProgressProject ? inProgressProject.ProjectId : null,
-          StartDate: inProgressProject ? inProgressProject.StartDate : null,
-          ProjectManagerName: projectManager ? projectManager.EmployeeName : "",
-          CompletionDate: archivedProject
-            ? archivedProject.CompletionDate
-            : null,
-        };
-        console.log(client);
-      });
+      const combinedData = allReservations
+        .filter((reservation) => String(reservation.ClientId) === clientIdd)
+        .map((reservation) => {
+          const inProgressProject = allInProgressProjects.find(
+            (ipp) => ipp.ReservationId === reservation.ReservationId
+          );
+          const archivedProject = allArchivedProjects.find(
+            (ap) => ap.ProjectId === inProgressProject?.ProjectId
+          );
+          const client = allClients.find(
+            (c) => c.ClientId === reservation.ClientId
+          );
+          const authentication = allAuthentications.find(
+            (auth) => auth.AuthId === client?.AuthId
+          );
+          const catalog = allCatalogs.find(
+            (cat) => cat.CatalogId === reservation.CatalogId
+          );
+          const projectManager = allEmployeeRosters.find(
+            (er) => er.EmployeeId === inProgressProject?.ProjectManagerId
+          );
+          return {
+            ...reservation,
+            //   ClientName: authentication
+            //     ? `${authentication.FirstName} ${authentication.LastName}`
+            //     : "",
+            ClientName: authentication ? `${authentication.UserName}` : "",
+            CatalogName: catalog ? catalog.Name : "",
+            ProjectId: inProgressProject ? inProgressProject.ProjectId : null,
+            StartDate: inProgressProject ? inProgressProject.StartDate : null,
+            ProjectManagerName: projectManager
+              ? projectManager.EmployeeName
+              : "",
+            CompletionDate: archivedProject
+              ? archivedProject.CompletionDate
+              : null,
+          };
+          console.log(client);
+        });
       setReservations(combinedData);
       console.log(combinedData);
     }
@@ -72,9 +76,9 @@ const ProjectStatus = () => {
               <th className="bg-[#ddec51]  py-3 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border border-slate-600">
                 Reservation ID
               </th>
-              <th className="bg-[#f4ff28]  py-3 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border border-slate-600">
+              {/* <th className="bg-[#f4ff28]  py-3 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border border-slate-600">
                 Client Name
-              </th>
+              </th> */}
               <th className="bg-[#ddec51]  py-3 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border border-slate-600">
                 Catalog Name
               </th>
@@ -94,9 +98,9 @@ const ProjectStatus = () => {
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
             {reservations
-              .filter(
-                (reservation) => String(reservation.ClientId) === clientIdd
-              )
+              // .filter(
+              //   (reservation) => String(reservation.ClientId) === clientIdd
+              // )
               .map((reservation, index) => (
                 <tr
                   key={reservation.ReservationId}
@@ -105,9 +109,9 @@ const ProjectStatus = () => {
                   <td className="bg-[#add8ed] px-6 py-3 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border border-slate-600">
                     {reservation.ReservationId}
                   </td>
-                  <td className="bg-[#e7edad] px-6 py-3 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border border-slate-600">
+                  {/* <td className="bg-[#e7edad] px-6 py-3 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border border-slate-600">
                     {reservation.ClientName}
-                  </td>
+                  </td> */}
                   <td className="bg-[#add8ed] px-6 py-3 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border border-slate-600">
                     {reservation.CatalogName}
                   </td>
