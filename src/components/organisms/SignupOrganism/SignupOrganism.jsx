@@ -6,7 +6,8 @@ import { auth, provider } from "../../../apis/FirebaseSDK";
 import { signInWithPopup } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import ApiCalls from "../../../apis/APICalls";
-import { Toaster, toast } from "sonner";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const SignupOrganism = () => {
   const api = new ApiCalls();
@@ -30,14 +31,21 @@ const SignupOrganism = () => {
       const createdClient = await api.createClient(clientData);
       // localStorage.setItem("email", data.user.email);
       // localStorage.setItem("username", data.user.email.split("@")[0].replace(/[^a-zA-Z0-9]/g, ''));
-      <Toaster richColors />;
-      toast.success("Successfully logged in!");
+      const notification = await api.createNotification({
+        ReceiverId: createdClient.AuthId,
+        Content: "You have successfully registered!",
+        Type: "info",
+        IsRead: false,
+        RedirectUrl: "/profile",
+      });
+      console.log(notification);
+      toast.success("Successfully Signed Up!");
       setValue(data.user.email);
     });
   };
 
   useEffect(() => {
-    // setValue(localStorage.getItem("email"));
+    setValue(localStorage.getItem("email"));
   });
 
   return (
@@ -67,7 +75,7 @@ const SignupOrganism = () => {
             </p>
             <SignupFormMolecules />
             <button onClick={signinwithgoogle}>
-              <img className="signUpImage" src={signin} />
+              <img className="signUpImage w-44 h-12 ml-28" src={signin} />
             </button>
           </div>
         </div>

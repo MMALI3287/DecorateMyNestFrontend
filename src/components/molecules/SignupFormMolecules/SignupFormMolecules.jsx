@@ -76,6 +76,13 @@ const SignupFormMolecules = () => {
         AuthId: createdAuthentication.AuthId,
       };
       const createdClient = await api.createClient(clientData);
+      const notification = await api.createNotification({
+        RecieverId: createdAuthentication.AuthId,
+        Content: "You have successfully registered!",
+        type: "info",
+        isRead: false,
+        link: "/profile",
+      });
       console.log("Authentication created:", createdAuthentication);
       console.log("Client created:", createdClient);
     } catch (error) {

@@ -15,6 +15,7 @@ import logo from "./../../../assets/images/imagelogo.png";
 import placeholder from "./../../../assets/images/placeholder.png";
 
 import { useNavigate } from "react-router-dom";
+import ApiCalls from "../../../apis/APICalls";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -26,6 +27,8 @@ const Header = () => {
   const [isPopupVisible, setPopupVisible] = useState(false);
   const [profileImage, setProfileImage] = useState();
   const [profileImageMime, setProfileImageMime] = useState();
+  const [notifications, setNotifications] = useState([]);
+  const api = new ApiCalls();
 
   useEffect(() => {
     function handleClickOutside(event) {
@@ -59,6 +62,30 @@ const Header = () => {
     setProfileImageMime(
       localStorage.getItem("mime") || sessionStorage.getItem("mime")
     );
+  }, []);
+
+  const handleNotificationClick = async (notification) => {
+    navigate(notification.RedirectUrl);
+    try {
+      const updatedNotification = { ...notification, IsRead: true };
+
+      const noti = await api.updateNotification(updatedNotification);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const allNotifications = await api.getNotifications();
+      const userAuthId =
+        localStorage.getItem("authId") || sessionStorage.getItem("authId");
+      const notifications = allNotifications.filter(
+        (notification) => notification.ReceiverId === parseInt(userAuthId)
+      );
+      setNotifications(notifications);
+    };
+    fetchData();
   }, []);
 
   return (
@@ -105,7 +132,7 @@ const Header = () => {
               className="hover:text-blue-900 cursor-pointer pl-10 font-serif text-2xl"
               onClick={() => navigate("/portfolio")}
             >
-              Portfolio
+              Catalog
             </li>
             <li
               className="hover:text-blue-900 cursor-pointer pl-10 font-serif text-2xl"
@@ -209,20 +236,39 @@ const Header = () => {
                   className="drawer-overlay"
                 ></label>
                 <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
-                  <li>
-                    <div>
-                      <img
-                        className="w-20 h-20 rounded-full"
-                        src="https://images.unsplash.com/photo-1706354924674-0304751469e8?q=80&w=1528&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                        alt=""
-                      />
-                      <div>
-                        <p className="pl-2">
-                          Lorem ipsum dolor sit amet consectetur{" "}
-                        </p>
-                      </div>
+                  {notifications &&
+                  notifications.some(
+                    (notification) => notification.IsRead === false
+                  ) ? (
+                    notifications.map((notification) =>
+                      !notification.IsRead ? (
+                        <li key={notification.NotificationId}>
+                          <div
+                            onClick={() =>
+                              handleNotificationClick(notification)
+                            }
+                          >
+                            <img
+                              className="w-20 h-20 rounded-full"
+                              src="https://static9.depositphotos.com/1074995/1180/v/950/depositphotos_11805572-stock-illustration-welcome-hand-lettering-vector.jpg"
+                              alt=""
+                            />
+                            <div>
+                              <p className="pl-2">{notification.Content}</p>
+                            </div>
+                          </div>
+                        </li>
+                      ) : null
+                    )
+                  ) : (
+                    <div
+                      className="bg-blue-100 border-l-4 border-blue-500 text-blue-700 p-4"
+                      role="alert"
+                    >
+                      <h2 className="font-bold">All Caught Up!</h2>
+                      <p>Take a break, do what you do best</p>
                     </div>
-                  </li>
+                  )}
                 </ul>
               </div>
             </div>
