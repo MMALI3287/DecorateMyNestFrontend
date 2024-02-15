@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import SigninFormMolecules from "../../molecules/SigninFormMolecules/SigninFormMolecules";
 import "./SigninOrganism.style.scss";
-import signin from "../../../assets/images/googlesignin.jpg";
+import signin from "../../../assets/images/googlesignin.png";
 import { auth, provider } from "../../../apis/FirebaseSDK";
 import { signInWithPopup } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
