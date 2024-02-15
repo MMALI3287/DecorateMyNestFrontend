@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import FormInput from "../atoms/FormInput/FormInput";
 import ApiCalls from "../../apis/APICalls";
 import Button from "../atoms/Buttons/Button";
@@ -159,17 +159,34 @@ const AddEmployees = () => {
             required: "Address is required",
           }}
         />
-        <FormInput
-          className="border-2"
-          labelText="Department"
-          type="text"
+        <Controller
           name="Department"
-          defaultValue={""}
           control={control}
-          errors={errors}
-          rules={{
-            required: "Department is required",
-          }}
+          defaultValue=""
+          rules={{ required: "Department is required" }}
+          render={({ field }) => (
+            <div className="flex flex-col">
+              <label className="mb-2 font-bold text-lg text-gray-900">
+                Department
+              </label>
+              <select
+                {...field}
+                className="p-2 border-2 border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+              >
+                <option value="">Select a department</option>
+                <option value="Interior Design">Interior Design</option>
+                <option value="Architecture">Architecture</option>
+                <option value="Project Management">Project Management</option>
+                <option value="Sales">Sales</option>
+                <option value="Marketing">Marketing</option>
+              </select>
+              {errors.Department && (
+                <p className="mt-2 text-sm text-red-600">
+                  {errors.Department.message}
+                </p>
+              )}
+            </div>
+          )}
         />
         <FormInput
           className="border-2"
@@ -183,7 +200,6 @@ const AddEmployees = () => {
             required: "Designation is required",
           }}
         />
-
         <FormInput
           className="border-2"
           labelText="Salary"

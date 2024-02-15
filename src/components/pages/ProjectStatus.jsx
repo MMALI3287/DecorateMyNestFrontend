@@ -4,6 +4,8 @@ import ApiCalls from "../../apis/APICalls";
 const ProjectStatus = () => {
   const api = new ApiCalls();
   const [reservations, setReservations] = useState([]);
+  const [authenticatedAccounts, setAuthenticatedAccounts] = useState([]);
+  const [employees, setEmployees] = useState([]);
   const [clientIdd, setClientId] = useState();
 
   useEffect(() => {
@@ -16,6 +18,7 @@ const ProjectStatus = () => {
       const allCatalogs = await api.getCatalogs();
       const allEmployeeRosters = await api.getEmployeeRosters();
       const clientIdd = localStorage.getItem("clientId");
+
       console.log(clientIdd);
       await setClientId(clientIdd);
       const combinedData = allReservations
@@ -48,9 +51,7 @@ const ProjectStatus = () => {
             CatalogName: catalog ? catalog.Name : "",
             ProjectId: inProgressProject ? inProgressProject.ProjectId : null,
             StartDate: inProgressProject ? inProgressProject.StartDate : null,
-            ProjectManagerName: projectManager
-              ? projectManager.EmployeeName
-              : "",
+            ProjectManagerId: projectManager ? projectManager.EmployeeId : "",
             CompletionDate: archivedProject
               ? archivedProject.CompletionDate
               : null,
@@ -62,6 +63,34 @@ const ProjectStatus = () => {
     }
     fetchData();
   }, []);
+
+  useEffect(() => {
+    async function fetchData() {
+      const employees = await api.getEmployeeRosters();
+      const authenticatedAccounts = await api.getAuthenticaions();
+      const matchedEmployees = employees.map((employee) => {
+        const account = authenticatedAccounts.find(
+          (acc) => acc.AuthId === employee.AuthId
+        );
+        return {
+          ...employee,
+          ...account,
+        };
+      });
+      setAuthenticatedAccounts(authenticatedAccounts);
+      setEmployees(matchedEmployees);
+    }
+
+    fetchData();
+  }, []);
+
+  const getEmployeeName = (employeeId) => {
+    const employee = employees.find((emp) => emp.EmployeeId === employeeId);
+    if (employee) {
+      return `${employee.FirstName} ${employee.LastName}`;
+    }
+    return "";
+  };
 
   return (
     <div className="font-sans">
@@ -122,7 +151,7 @@ const ProjectStatus = () => {
                     {reservation.StartDate}
                   </td>
                   <td className="bg-[#add8ed] px-6 py-3 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border border-slate-600">
-                    {reservation.ProjectManagerName}
+                    {getEmployeeName(reservation.ProjectManagerId)}
                   </td>
                   <td className="bg-[#e7edad] px-6 py-3 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border border-slate-600">
                     {reservation.CompletionDate}

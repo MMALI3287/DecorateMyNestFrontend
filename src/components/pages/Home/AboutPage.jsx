@@ -148,13 +148,17 @@ const AboutPage = () => {
             className="text-2xl mx-20 mt-20 text-gray-600"
             data-aos="zoom-out-down"
           >
-            For the past 30 years, Jayne Design Studio has designed rooms that
-            reflect a strong connection to history and place. Drawing upon their
-            past for inspiration and seeking details that will deepen and
-            enhance their decoration. Whether the site is a SoHo loft in a
-            late-19th-century industrial building or a historic Federal house
-            built by a New England whaling merchant, the settings become part of
-            the narrative, their history providing the impetus for the design.
+            Welcome to DecorateMyNest, where the art of transforming houses into
+            dream homes comes to life. Established in 2023, DecorateMyNest is
+            more than just an online home decoration website – it's your partner
+            in creating spaces that reflect your unique style and personality.
+            Our mission is to empower clients to design their homes according to
+            their wishes, offering a seamless journey filled with creativity and
+            innovation. At DecorateMyNest, we go beyond providing a platform; we
+            provide comprehensive guidance, expert assistance, and a plethora of
+            resources to ensure that your home design journey is nothing short
+            of extraordinary. Let us be a part of your home's story, turning
+            each space into a masterpiece that resonates with you.
           </h1>
 
           <div className="md:flex gap-20 justify-center mt-20">
@@ -176,21 +180,28 @@ const AboutPage = () => {
             className="text-2xl text-gray-600 mx-40 mt-20"
             data-aos="zoom-out-down"
           >
-            Thomas Jayne reflects: “I have always been attracted to history and
-            to objects linked with it. I find their connections and evolution
-            fascinating.” The emphasis in his work has always been to discover
-            relationships and associations that add texture, richness, and
-            depth; the elements that give a room its spirit and character.
+            At DecorateMyNest, our services extend far beyond conventional home
+            decoration. We offer a holistic approach to interior design, guiding
+            clients through every step of the creative process. From the initial
+            Meet and Greet to the final Moving In phase, our dedicated team
+            ensures a seamless experience. With a focus on sensible design
+            thinking, cultural connections, and a commitment to balance and
+            harmony, DecorateMyNest brings your vision to life, making each
+            space uniquely yours.
           </p>
           <p
-            className=" text-2xltext-gray-600 mx-40 mt-10"
+            className=" text-2xl text-gray-600 mx-40 mt-10"
             data-aos="zoom-out-down"
           >
-            Thomas Jayne reflects: “I have always been attracted to history and
-            to objects linked with it. I find their connections and evolution
-            fascinating.” The emphasis in his work has always been to discover
-            relationships and associations that add texture, richness, and
-            depth; the elements that give a room its spirit and character.
+            Our exceptional team is the heartbeat of our creative journey.
+            Comprising skilled architects, engineers, and business managers, we
+            unite diverse talents to transform your home into a masterpiece.
+            Each team member is dedicated to delivering excellence and making
+            your living space the best it can be. With a passion for design
+            innovation and a commitment to client satisfaction, our cohesive
+            team collaborates seamlessly to bring forth inspired and
+            personalized interiors. Together, we aspire to redefine homes and
+            create lasting impressions.
           </p>
 
           <img
@@ -203,20 +214,14 @@ const AboutPage = () => {
             className="text-2xl text-gray-600 mx-40 mt-20"
             data-aos="zoom-out-down"
           >
-            Jayne’s academic training greatly influenced his design philosophy.
-            A graduate of the University of Oregon School of Architecture and
-            Allied Arts, he studied with the noted architectural historian
-            Marian Card Donnelly. Trained in American material culture and the
-            decorative arts at Winterthur, Jayne earned his master’s degree from
-            the University of Delaware and pursued advanced fellowships at the
-            American Wing of the Metropolitan Museum of Art, Historic Deerfield,
-            and the J. Paul Getty Museum before moving on to a position at
-            Christie’s estates and appraisal department. His interest in
-            architecture and the decorative arts eventually lead him to pursue a
-            career in interior design. He was fortunate to work in two of the
-            most influential design studios in America–Parish-Hadley &
-            Associates and Kevin McNamara, Inc.–before opening Jayne Design
-            Studio in 1990.
+            At DecorateMyNest, our services extend far beyond conventional home
+            decoration. We offer a holistic approach to interior design, guiding
+            clients through every step of the creative process. From the initial
+            Meet and Greet to the final Moving In phase, our dedicated team
+            ensures a seamless experience. With a focus on sensible design
+            thinking, cultural connections, and a commitment to balance and
+            harmony, DecorateMyNest brings your vision to life, making each
+            space uniquely yours.
           </p>
         </div>
         <div className="md:flex gap-20 justify-center mx-20 mt-20 mb-5">
@@ -227,20 +232,15 @@ const AboutPage = () => {
             data-aos="zoom-out-down"
           />
           <p className="text-2xl text-gray-600 mt-20" data-aos="zoom-out-down">
-            Jayne’s academic training greatly influenced his design philosophy.
-            A graduate of the University of Oregon School of Architecture and
-            Allied Arts, he studied with the noted architectural historian
-            Marian Card Donnelly. Trained in American material culture and the
-            decorative arts at Winterthur, Jayne earned his master’s degree from
-            the University of Delaware and pursued advanced fellowships at the
-            American Wing of the Metropolitan Museum of Art, Historic Deerfield,
-            and the J. Paul Getty Museum before moving on to a position at
-            Christie’s estates and appraisal department. His interest in
-            architecture and the decorative arts eventually lead him to pursue a
-            career in interior design. He was fortunate to work in two of the
-            most influential design studios in America–Parish-Hadley &
-            Associates and Kevin McNamara, Inc.–before opening Jayne Design
-            Studio in 1990.
+            Our exceptional team is the heartbeat of our creative journey.
+            Comprising skilled architects, engineers, and business managers, we
+            unite diverse talents to transform your home into a masterpiece.
+            Each team member is dedicated to delivering excellence and making
+            your living space the best it can be. With a passion for design
+            innovation and a commitment to client satisfaction, our cohesive
+            team collaborates seamlessly to bring forth inspired and
+            personalized interiors. Together, we aspire to redefine homes and
+            create lasting impressions.
           </p>
         </div>
       </div>

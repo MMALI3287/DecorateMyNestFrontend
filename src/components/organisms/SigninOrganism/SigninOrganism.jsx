@@ -5,7 +5,8 @@ import signin from "../../../assets/images/googlesignin.jpg";
 import { auth, provider } from "../../../apis/FirebaseSDK";
 import { signInWithPopup } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import { Toaster, toast } from "sonner";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import ApiCalls from "../../../apis/APICalls";
 const SigninOrganism = () => {
   const navigate = useNavigate();
@@ -31,11 +32,12 @@ const SigninOrganism = () => {
           localStorage.setItem("picture", authData.ProfilePictrue);
           localStorage.setItem("mime", authData.MimeType);
           localStorage.setItem("role", authData.Role);
-          <Toaster richColors />;
-          toast.success("Successfully logged in!");
+
+          toast.success("Login Successful 🔓");
         }
       } catch (error) {
         console.log(error);
+        toast.error("Login failed ❌");
       }
 
       setValue(data.user.email);

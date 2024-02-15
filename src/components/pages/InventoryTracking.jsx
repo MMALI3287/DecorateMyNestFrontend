@@ -110,11 +110,15 @@ const InventoryTracking = () => {
                 <td className=" px-6 py-3 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border border-slate-600">
                   {item.MaterialId}
                 </td>
-                <td className="border border-slate-600">{item.Name}</td>
+                <td className="border-slate-600 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border">
+                  {item.Name}
+                </td>
                 <td className="text-color-black  px-6 py-3 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border border-slate-600">
                   {item.Quantity}
                 </td>
-                <td className="border border-slate-600">{item.Remarks}</td>
+                <td className="border border-slate-600 text-center font-bold  text-gray-600 uppercase tracking-wider">
+                  {item.Remarks}
+                </td>
                 <td className="text-color-black px-6 py-3 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border border-slate-600">
                   {item.CriticalLimit}
                 </td>

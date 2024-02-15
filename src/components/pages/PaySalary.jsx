@@ -94,48 +94,38 @@ const PaySalary = () => {
       <h1 className="text-3xl w-96 font-bold text-white bg-gradient-to-b from-blue-900 to-black p-3 my-5 text-center rounded-xl shadow-2xl mt-12 mx-auto">
         Pay Salary
       </h1>
-      {/* <p className="italic text-gray-500 text-center mt-5">
-        Lorem ipsum, dolor sit amet consectetur adipisicing <br /> elit. Modi
-        maiores facere numquam consequuntur <br /> quia rem culpa debitis sequi
-        necessitatibus <br />
-        sit?
-      </p> */}
-
-      <h1 className="text-3xl font-bold text-blue-950 my-5 text-center">
-        Employee Name :
-      </h1>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="font-sans flex flex-col items-center justify-center"
+        className="font-sans flex flex-col items-center justify-center w-96 mx-auto"
       >
-        <div className="flex items-center justify-center font-semibold mt-3 overflow-hidden">
-          <Controller
-            name="EmployeeId"
-            control={control}
-            defaultValue=""
-            rules={{ required: "Employee Name is required" }}
-            render={({ field }) => (
-              <select
-                {...field}
-                className="select select-bordered mx-auto my-auto block p-2 text-black font-semibold bg-gray-200"
-              >
-                <option className="text-black" disabled value="">
-                  Choose an option
+        <p className="text-3xl font-bold text-blue-950 my-5 text-center">
+          Employee Name :
+        </p>
+        <Controller
+          name="EmployeeId"
+          control={control}
+          defaultValue=""
+          rules={{ required: "Employee Name is required" }}
+          render={({ field }) => (
+            <select
+              {...field}
+              className="select select-bordered mx-auto my-auto block w-full p-2 text-black font-semibold bg-gray-200"
+            >
+              <option className="text-black font-sans" disabled value="">
+                Choose an option
+              </option>
+              {employees.map((employee) => (
+                <option
+                  className="text-black"
+                  key={employee.EmployeeId}
+                  value={employee.EmployeeId}
+                >
+                  {employee.FirstName} {employee.LastName} ({employee.UserName})
                 </option>
-                {employees.map((employee) => (
-                  <option
-                    className="text-black"
-                    key={employee.EmployeeId}
-                    value={employee.EmployeeId}
-                  >
-                    {employee.FirstName} {employee.LastName} (
-                    {employee.UserName})
-                  </option>
-                ))}
-              </select>
-            )}
-          />
-        </div>
+              ))}
+            </select>
+          )}
+        />
         <Controller
           name="Description"
           control={control}
@@ -144,22 +134,39 @@ const PaySalary = () => {
           render={({ field }) => (
             <label className="form-control">
               <div className="label">
-                <span className="label-text mx-auto my-auto block w-full font-bold text-blue-900">
+                <span className="label-text my-auto block font-bold font-sans text-blue-900">
                   Description
                 </span>
               </div>
               <textarea
                 {...field}
-                className="mx-auto my-auto block w-full p-2 border-blue-900 textarea textarea-bordered h-24"
+                className=" border-blue-900  h-48 w-96 textarea textarea-bordered"
                 placeholder="Transaction Description"
               />
             </label>
           )}
         />
         {loading ? (
-          <Button type="submit" disabled={true} text={<LinearLoader />} />
+          <Button
+            type="submit"
+            disabled={true}
+            text={<LinearLoader />}
+            style={{
+              width: "150px",
+              fontSize: "20px",
+              backgroundColor: "#003366",
+            }}
+          />
         ) : (
-          <Button type="submit" text="Pay Salary" />
+          <Button
+            type="submit"
+            text="Pay Salary"
+            style={{
+              width: "150px",
+              fontSize: "20px",
+              backgroundColor: "#003366",
+            }}
+          />
         )}
       </form>
     </div>

@@ -4,6 +4,8 @@ import ApiCalls from "../../apis/APICalls";
 const ProjectStatusAdmin = () => {
   const api = new ApiCalls();
   const [reservations, setReservations] = useState([]);
+  const [employees, setEmployees] = useState([]);
+  const [selectedProjectManager, setSelectedProjectManager] = useState(null);
 
   useEffect(() => {
     async function fetchData() {
@@ -42,7 +44,7 @@ const ProjectStatusAdmin = () => {
           CatalogName: catalog ? catalog.Name : "",
           ProjectId: inProgressProject ? inProgressProject.ProjectId : null,
           StartDate: inProgressProject ? inProgressProject.StartDate : null,
-          ProjectManagerName: projectManager ? projectManager.EmployeeName : "",
+          ProjectManagerId: projectManager ? projectManager.EmployeeId : "",
           CompletionDate: archivedProject
             ? archivedProject.CompletionDate
             : null,
@@ -55,12 +57,103 @@ const ProjectStatusAdmin = () => {
     fetchData();
   }, []);
 
+  const getEmployeeName = (employeeId) => {
+    const employee = employees.find((emp) => emp.EmployeeId === employeeId);
+    if (employee) {
+      return `${employee.FirstName} ${employee.LastName}`;
+    }
+    return "";
+  };
+
+  useEffect(() => {
+    async function fetchData() {
+      const employees = await api.getEmployeeRosters();
+      const authenticatedAccounts = await api.getAuthenticaions();
+      const matchedEmployees = employees.map((employee) => {
+        const account = authenticatedAccounts.find(
+          (acc) => acc.AuthId === employee.AuthId
+        );
+        return {
+          ...employee,
+          ...account,
+        };
+      });
+      setEmployees(matchedEmployees);
+      console.log(matchedEmployees);
+    }
+
+    fetchData();
+  }, []);
+
+  const startProject = async (reservationIdd) => {
+    try {
+      const reservationId = reservationIdd;
+      const reservation = reservations.find(
+        (res) => res.ReservationId === reservationId
+      );
+      console.log(reservation.ClientId);
+      const now = new Date();
+      const utcDate = new Date(
+        Date.UTC(
+          now.getUTCFullYear(),
+          now.getUTCMonth(),
+          now.getUTCDate(),
+          now.getUTCHours(),
+          now.getUTCMinutes(),
+          now.getUTCSeconds()
+        )
+      );
+      const data = {
+        ClientId: reservation.ClientId,
+        StartDate: utcDate,
+        EndDate: utcDate,
+        ProjectManagerId: parseInt(selectedProjectManager),
+        ReservationId: reservation.ReservationId,
+      };
+      console.log("🚀 ~ startProject ~ data:", data);
+      const inProgressionProject = await api.createInProgressProject(data);
+      console.log(
+        "🚀 ~ startProject ~ inProgressionProject:",
+        inProgressionProject
+      );
+      window.location.reload();
+    } catch (error) {
+      console.error("Failed to start project:", error);
+    }
+  };
+
+  const archiveProject = async (projectId) => {
+    try {
+      const project = reservations.find((res) => res.ProjectId === projectId);
+      console.log(project);
+      const now = new Date();
+      const utcDate = new Date(
+        Date.UTC(
+          now.getUTCFullYear(),
+          now.getUTCMonth(),
+          now.getUTCDate(),
+          now.getUTCHours(),
+          now.getUTCMinutes(),
+          now.getUTCSeconds()
+        )
+      );
+      const data = {
+        ProjectId: projectId,
+        ClientId: project.ClientId,
+        CompletionDate: utcDate,
+      };
+      const archivedProject = await api.createArchivedProject(data);
+      window.location.reload();
+    } catch (error) {
+      console.error("Failed to archive project:", error);
+    }
+  };
+
   return (
     <div className="font-sans">
       <h1 className="text-3xl w-96 font-bold text-white bg-gradient-to-b from-blue-900 to-black p-3 my-5 text-center rounded-xl shadow-2xl mt-12 mx-auto">
         Project Status
       </h1>
-      {/* <p className="text-white italic text-center my-10">Lorem ipsum dolor sit amet consectetur <br />adipisicing elit. Quibusdam at ut eligendi asperiores ratione eaque.</p> */}
       <div className="overflow-x-auto rounded-lg border-blue-500">
         <table className="min-w-full divide-y divide-[#24289b]">
           <thead className="bg-[#47d9f3]">
@@ -75,13 +168,13 @@ const ProjectStatusAdmin = () => {
                 Catalog Name
               </th>
               <th className="px-6 py-3 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border border-slate-600">
+                Project Manager
+              </th>
+              <th className="px-6 py-3 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border border-slate-600">
                 Project ID
               </th>
               <th className="px-6 py-3 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border border-slate-600">
                 Start Date
-              </th>
-              <th className="px-6 py-3 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border border-slate-600">
-                Project Manager
               </th>
               <th className="px-6 py-3 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border border-slate-600">
                 Completion Date
@@ -104,16 +197,72 @@ const ProjectStatusAdmin = () => {
                   {reservation.CatalogName}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap border border-slate-600">
-                  {reservation.ProjectId}
+                  {reservation.ProjectManagerId ? (
+                    getEmployeeName(reservation.ProjectManagerId)
+                  ) : (
+                    <select
+                      className="bg-[#add8ed] px-6 py-3 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border border-slate-600"
+                      onChange={(e) =>
+                        setSelectedProjectManager(e.target.value)
+                      }
+                    >
+                      <option disabled selected className="text-black">
+                        Pick the Project Manager
+                      </option>
+                      {employees.map((employee) => (
+                        <option
+                          key={employee.EmployeeId}
+                          className="text-black"
+                          value={employee.EmployeeId}
+                          onClick={() =>
+                            setProjectManagerId(employee.EmployeeId)
+                          }
+                        >
+                          {getEmployeeName(employee.EmployeeId)}
+                        </option>
+                      ))}
+                    </select>
+                  )}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap border border-slate-600">
-                  {reservation.StartDate}
+                  {reservation.ProjectId ? (
+                    reservation.ProjectId
+                  ) : (
+                    <button
+                      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+                      onClick={() => startProject(reservation.ReservationId)}
+                    >
+                      Start Project
+                    </button>
+                  )}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap border border-slate-600">
-                  {reservation.ProjectManagerName}
+                  {new Date(reservation.StartDate).toLocaleDateString("en-GB", {
+                    day: "numeric",
+                    month: "short",
+                    year: "numeric",
+                  })}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap border border-slate-600">
-                  {reservation.CompletionDate}
+                  {reservation.ProjectId ? (
+                    reservation.CompletionDate ? (
+                      new Date(reservation.CompletionDate).toLocaleDateString(
+                        "en-GB",
+                        {
+                          day: "numeric",
+                          month: "short",
+                          year: "numeric",
+                        }
+                      )
+                    ) : (
+                      <button
+                        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+                        onClick={() => archiveProject(reservation.ProjectId)}
+                      >
+                        Complete Project
+                      </button>
+                    )
+                  ) : null}
                 </td>
               </tr>
             ))}

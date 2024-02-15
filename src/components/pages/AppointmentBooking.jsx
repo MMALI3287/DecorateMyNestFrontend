@@ -51,7 +51,7 @@ const AppointmentBooking = () => {
               {...field}
               className="border-2 text-4xl"
               type="date"
-              style={{ fontSize: "24px" }} // Adjust font size here
+              style={{ fontSize: "24px" }}
             />
           )}
         />
@@ -64,7 +64,7 @@ const AppointmentBooking = () => {
               width: "150px",
               fontSize: "20px",
               backgroundColor: "#003366",
-            }} // Adjust width, font size, and background color here
+            }} //
           />
         ) : (
           <Button
@@ -74,7 +74,7 @@ const AppointmentBooking = () => {
               width: "150px",
               fontSize: "20px",
               backgroundColor: "#003366",
-            }} // Adjust width, font size, and background color here
+            }} //
           />
         )}
       </form>

@@ -10,6 +10,9 @@ import Checkbox from "../../atoms/CheckBox/Checkbox";
 import LinearLoader from "./../../atoms/LineLoader/LineLoader";
 import ApiCalls from "../../../apis/APICalls";
 import { useState, useEffect } from "react";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+// import { Toaster, toast } from "sonner";
 const SigninFormMolecules = () => {
   const {
     handleSubmit,
@@ -21,8 +24,6 @@ const SigninFormMolecules = () => {
   });
 
   const navigate = useNavigate();
-
-  const [errorMessage, setErrorMessage] = useState(null);
 
   const [loading, setLoading] = useState(false);
 
@@ -58,13 +59,13 @@ const SigninFormMolecules = () => {
           sessionStorage.setItem("picture", authData.ProfilePictrue);
           sessionStorage.setItem("mime", authData.MimeType);
         }
-
+        toast.success("Login successful 🔓");
         navigate("/");
       }
     } catch (error) {
       console.error("Error fetching authentication data:", error.message);
 
-      setErrorMessage("Invalid username or password");
+      toast.error("Invalid credentials ❌");
     } finally {
       setLoading(false);
     }
@@ -105,7 +106,6 @@ const SigninFormMolecules = () => {
           </Link>
         </div>
       </div>
-      {errorMessage && <div className="error-message">{errorMessage}</div>}
       {loading ? (
         <Button type="submit" disabled={true} text={<LinearLoader />} />
       ) : (
