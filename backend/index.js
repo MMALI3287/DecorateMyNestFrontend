@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors"; // Import the cors middleware
 import sendEmail from "./controllers/emailController.js";
 import dotenv from "dotenv";
+import contactMail from "./controllers/contactController.js";
 
 dotenv.config();
 
@@ -14,6 +15,7 @@ app.use(express.json());
 
 // Example route definition using POST method
 app.post("/api/send-email", sendEmail);
+app.post("/api/contact", contactMail);
 
 // Other routes and configurations...
 

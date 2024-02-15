@@ -219,7 +219,7 @@ const AboutPage = () => {
             Studio in 1990.
           </p>
         </div>
-        <div className="md:flex gap-20 justify-center mx-20 mt-20">
+        <div className="md:flex gap-20 justify-center mx-20 mt-20 mb-5">
           <img
             className="w-6/12"
             src="https://jaynedesignstudio.com/wp-content/uploads/2016/01/160404_ThomasJayne_R-25-1280x852.jpg"
