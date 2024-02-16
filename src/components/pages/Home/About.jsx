@@ -77,7 +77,7 @@ const About = () => {
             </div>
 
             {/* right side  */}
-            <div className="">
+            <div className="mb-24">
               <h1 className="text-4xl font-bold text-blue-950 mt-10">
                 Contact us
               </h1>
