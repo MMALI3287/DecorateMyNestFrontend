@@ -58,7 +58,6 @@ const ConfirmReservation = () => {
       );
       reservationToUpdate.Status = "approved";
       await api.updateReservation(reservationToUpdate);
-      await api.updateFinancialTransaction(reservationToUpdate);
       window.location.reload();
     } catch (error) {
       console.error("Failed to update reservation status:", error);
