@@ -23,6 +23,14 @@ const SigninFormMolecules = () => {
     mode: "onChange",
   });
 
+  function handleForgotPasswordClick(event) {
+    if (!username) {
+      event.preventDefault();
+      alert("Please provide a username before proceeding.");
+    } else {
+    }
+  }
+
   const navigate = useNavigate();
 
   const [loading, setLoading] = useState(false);
@@ -101,11 +109,14 @@ const SigninFormMolecules = () => {
             onChange={() => setRememberMe(!rememberMe)}
           />
         </div>
-        <div>
-          <Link to="/forgot-password">
+        {/* <div>
+          <button
+            className="bg-transparent text-blue-700 font-semibold hover:text-blue-500"
+            onClick={handleForgotPasswordClick}
+          >
             <p>Forgot Password?</p>
-          </Link>
-        </div>
+          </button>
+        </div> */}
       </div>
       {loading ? (
         <Button type="submit" disabled={true} text={<LinearLoader />} />
