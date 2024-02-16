@@ -6,6 +6,8 @@ import Header from "../templates/Header/Header";
 import ApiCalls from "../../apis/APICalls";
 import { useEffect, useState } from "react";
 import { Controller } from "react-hook-form";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ProfilePage = () => {
   const api = new ApiCalls();
@@ -72,6 +74,7 @@ const ProfilePage = () => {
   };
 
   const onSubmit = async (data) => {
+    console.log("inside");
     data["ProfilePicture"] = base64Image;
     console.log(base64Image);
     data["MimeType"] = mimeType;
@@ -101,7 +104,12 @@ const ProfilePage = () => {
               </h1>
             </div>
             {userData?.UserName && (
-              <form onSubmit={handleSubmit(onSubmit)} className="">
+              <form
+                onSubmit={handleSubmit(onSubmit, (errors) =>
+                  toast.error("Fill up all the fields")
+                )}
+                className=""
+              >
                 <Controller
                   name="UserName"
                   control={control}
