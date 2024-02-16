@@ -79,19 +79,9 @@ const NewOrder = () => {
         (order) => order.MaterialTransactionId === materialTransactionId
       );
 
-      if (!orderToUpdate) {
-        console.log(
-          `No order found with MaterialTransactionId: ${materialTransactionId}`
-        );
-        return;
-      }
-
       orderToUpdate.IsComplete = true;
       await api.updateOrder(orderToUpdate);
 
-      console.log(
-        `Order confirmed with MaterialTransactionId: ${materialTransactionId}`
-      );
       window.location.reload();
     } catch (error) {
       console.log(error);

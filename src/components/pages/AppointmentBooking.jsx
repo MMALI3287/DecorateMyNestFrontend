@@ -16,6 +16,23 @@ const AppointmentBooking = () => {
     mode: "onChange",
   });
 
+  const getMinDate = () => {
+    const now = new Date();
+    now.setHours(11);
+    now.setMinutes(0);
+    now.setSeconds(0);
+    return now.toISOString().substring(0, 16);
+  };
+
+  const getMaxDate = () => {
+    const maxDate = new Date();
+    maxDate.setDate(maxDate.getDate() + 14);
+    maxDate.setHours(15);
+    maxDate.setMinutes(0);
+    maxDate.setSeconds(0);
+    return maxDate.toISOString().substring(0, 16);
+  };
+
   const onSubmit = async (data) => {
     setLoading(true);
     try {
@@ -56,7 +73,8 @@ const AppointmentBooking = () => {
             <input
               {...field}
               type="datetime-local"
-              min={new Date().toISOString().substring(0, 16)}
+              min={getMinDate()}
+              max={getMaxDate()}
               className="border-2 border-blue-500 text-4xl px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300 focus:border-transparent"
               style={{ fontSize: "24px" }}
             />

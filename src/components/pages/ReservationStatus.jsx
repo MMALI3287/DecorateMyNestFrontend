@@ -30,7 +30,6 @@ const ReservationStatus = () => {
         const catalog = allCatalogs.find(
           (cat) => cat.CatalogId === reservation.CatalogId
         );
-        console.log(catalog);
         return {
           ...reservation,
           CatalogName: catalog ? catalog.Name : "",
@@ -39,6 +38,7 @@ const ReservationStatus = () => {
         };
       });
       setReservations(combinedData);
+      console.log(combinedData);
     }
     fetchData();
   }, []);
