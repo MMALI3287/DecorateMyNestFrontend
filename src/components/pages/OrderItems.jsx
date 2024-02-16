@@ -81,6 +81,7 @@ const OrderItems = () => {
       const order = await api.createOrder(data);
       console.log("After Order call:", order);
       setSuccess(true);
+      window.location.reload();
     } catch (error) {
       console.log(error);
     }

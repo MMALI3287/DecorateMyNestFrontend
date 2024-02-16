@@ -400,7 +400,7 @@ const Home = () => {
             role="tab"
             className="tab text-2xl"
             aria-label="Mission"
-            checked
+            defaultChecked
           />
           <div role="tabpanel" className="tab-content p-10">
             <p className=" text-green-600 text-xl font-serif">
@@ -523,7 +523,7 @@ const Home = () => {
           role="tab"
           className="tab text-2xl font-bold"
           aria-label="Design Development"
-          checked
+          defaultChecked
         />
         <div
           role="tabpanel"

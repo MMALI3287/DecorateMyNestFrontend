@@ -1,6 +1,6 @@
 export const vendorOptions = [
   {
-    menu: "Payment",
+    menu: "Orders",
     subMenu: [
       {
         name: "New Order",
