@@ -30,25 +30,25 @@ const ProjectReviewAdmin = () => {
             <tr className=" text-base text-center">
               <th
                 className=" bg-[#ddec51]  py-3 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border border-slate-600"
-                style={{ width: "50%" }}
+                style={{ width: "20%" }}
               >
                 Client ID
               </th>
               <th
                 className=" bg-[#f4ff28] px-6 py-3 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border border-slate-600"
-                style={{ width: "50%" }}
+                style={{ width: "20%" }}
               >
                 Project ID
               </th>
               <th
                 className=" bg-[#f4ff28] px-6 py-3 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border border-slate-600"
-                style={{ width: "50%" }}
+                style={{ width: "40%" }}
               >
                 Review
               </th>
               <th
                 className=" bg-[#f4ff28] px-6 py-3 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border border-slate-600"
-                style={{ width: "50%" }}
+                style={{ width: "30%" }}
               >
                 Rating
               </th>
@@ -70,19 +70,19 @@ const ProjectReviewAdmin = () => {
                       backgroundColor: index % 2 === 0 ? "#add8ed " : "#e7edad",
                     }}
                   >
-                    <td className=" px-6 py-3 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border border-slate-600">
+                    <td className=" bg-[#add8ed] px-6 py-3 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border border-slate-600">
                       {project.ClientId}
                     </td>
-                    <td className=" px-6 py-3 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border border-slate-600">
+                    <td className=" bg-[#e7edad] px-6 py-3 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border border-slate-600">
                       {project.ProjectId}
                     </td>
-                    <td className=" px-6 py-3 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border border-slate-600">
+                    <td className=" bg-[#add8ed] px-6 py-3 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border border-slate-600">
                       {project.Review}
                     </td>
-                    <td className=" px-6 py-3 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border border-slate-600">
+                    <td className=" bg-[#e7edad] px-6 py-3 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border border-slate-600">
                       {project.Rating}
                     </td>
-                    <td className="border-slate-600 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border">
+                    <td className="bg-[#add8ed] border-slate-600 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border">
                       {new Date(project.CompletionDate).toLocaleDateString()}
                     </td>
                   </tr>
