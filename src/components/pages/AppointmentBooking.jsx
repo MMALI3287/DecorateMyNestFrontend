@@ -21,7 +21,9 @@ const AppointmentBooking = () => {
     try {
       data["ClientId"] = localStorage.getItem("clientId");
       const appointmentDate = new Date(data["DateTime"]);
-      data["AppointmentDate"] = appointmentDate.toISOString();
+      const offset = appointmentDate.getTimezoneOffset();
+      appointmentDate.setMinutes(appointmentDate.getMinutes() - offset);
+      data["AppointmentDate"] = appointmentDate.toISOString().slice(0, -1);
       data["EmployeeId"] = null;
       const createdAppointment = await api.createAppointment(data);
       console.log("Appointment created:", createdAppointment);
