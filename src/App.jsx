@@ -40,6 +40,7 @@ import About from "./components/pages/Home/About";
 import Portfolio from "./components/pages/Home/Portfolio";
 import Services from "./components/pages/Home/Services";
 import ProjectStatusAdmin from "./components/pages/ProjectStatusAdmin";
+import ProjectReviewAdmin from "./components/pages/ProjectReviewAdmin";
 
 function App() {
   return (
@@ -113,6 +114,10 @@ function App() {
           <Route path="/dashboard/view-order-items" element={<OrderItems />} />
           <Route path="/dashboard/new-order" element={<NewOrder />} />
           <Route path="/dashboard/payment-status" element={<PaymentStatus />} />
+          <Route
+            path="/dashboard/project-review-admin"
+            element={<ProjectReviewAdmin />}
+          />
           <Route
             path="/dashboard/installment-payment"
             element={<InstallmentPayment />}

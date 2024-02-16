@@ -19,6 +19,10 @@ export const adminOptions = [
         name: "Project Status",
         link: "/dashboard/project-status-admin",
       },
+      {
+        name: "Project Reviews",
+        link: "/dashboard/project-review-admin",
+      },
     ],
   },
   {
