@@ -29,7 +29,7 @@ const SigninOrganism = () => {
           localStorage.setItem("username", authenticated.UserId);
           localStorage.setItem("authId", authData.AuthId);
           localStorage.setItem("role", authData.Role);
-          localStorage.setItem("picture", authData.ProfilePictrue);
+          localStorage.setItem("picture", authData.ProfilePicture);
           localStorage.setItem("mime", authData.MimeType);
           localStorage.setItem("role", authData.Role);
 

@@ -46,7 +46,7 @@ const ProfilePage = () => {
     setValue("EmailAddress", userData.EmailAddress);
     setValue("PhoneNumber", userData.Picture);
     setValue("Address", userData.Address);
-    setBase64Image(userData.Picture);
+    setBase64Image(userData.ProfilePicture);
     setMimeType(userData.MimeType);
   };
 
@@ -72,16 +72,18 @@ const ProfilePage = () => {
   };
 
   const onSubmit = async (data) => {
-    data["Picture"] = base64Image;
+    data["ProfilePicture"] = base64Image;
+    console.log(base64Image);
     data["MimeType"] = mimeType;
     console.log(mimeType);
     data["AuthId"] = authId;
+    data["Role"] = localStorage.getItem("role");
     try {
       console.log(data);
       const updated = await api.updateAuthentication(data);
       console.log(updated);
-      // setSuccess(true);
-      // window.location.reload();
+      setSuccess(true);
+      window.location.reload();
     } catch (error) {
       console.log(error);
     }
@@ -103,7 +105,7 @@ const ProfilePage = () => {
                 <Controller
                   name="UserName"
                   control={control}
-                  defaultValue={userData?.UserName}
+                  defaultValue={userData?.UserName || ""}
                   rules={{
                     required: "Username is required",
                   }}
@@ -117,7 +119,7 @@ const ProfilePage = () => {
                 <Controller
                   name="Password"
                   control={control}
-                  defaultValue={userData?.Password}
+                  defaultValue={userData?.Password || ""}
                   rules={{
                     required: "Password is required",
                     minLength: {
@@ -141,7 +143,7 @@ const ProfilePage = () => {
                 <Controller
                   name="FirstName"
                   control={control}
-                  defaultValue={userData?.FirstName}
+                  defaultValue={userData?.FirstName || ""}
                   render={({ field }) => (
                     <div>
                       <label htmlFor="firstName">First Name</label>
@@ -153,7 +155,7 @@ const ProfilePage = () => {
                 <Controller
                   name="LastName"
                   control={control}
-                  defaultValue={userData?.LastName}
+                  defaultValue={userData?.LastName || ""}
                   render={({ field }) => (
                     <div>
                       <label htmlFor="lastName">Last Name</label>
@@ -165,7 +167,7 @@ const ProfilePage = () => {
                 <Controller
                   name="EmailAddress"
                   control={control}
-                  defaultValue={userData?.EmailAddress}
+                  defaultValue={userData?.EmailAddress || ""}
                   rules={{
                     required: "Email is required",
                     pattern: {
@@ -189,7 +191,7 @@ const ProfilePage = () => {
                 <Controller
                   name="PhoneNumber"
                   control={control}
-                  defaultValue={userData?.PhoneNumber}
+                  defaultValue={userData?.PhoneNumber || ""}
                   render={({ field }) => (
                     <div>
                       <label htmlFor="phone">Phone</label>
@@ -201,7 +203,7 @@ const ProfilePage = () => {
                 <Controller
                   name="Address"
                   control={control}
-                  defaultValue={userData?.Address}
+                  defaultValue={userData?.Address || ""}
                   render={({ field }) => (
                     <div>
                       <label htmlFor="address">Address</label>

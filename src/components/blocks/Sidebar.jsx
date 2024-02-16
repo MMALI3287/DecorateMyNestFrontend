@@ -13,6 +13,9 @@ const Sidebar = ({ options }) => {
   const [clients, setClients] = useState([]);
   const api = new ApiCalls();
   const [username, setUsername] = useState();
+  const [profileImage, setProfileImage] = useState();
+  const [profileImageMime, setProfileImageMime] = useState();
+  const [authId, setAuthId] = useState([]);
 
   useEffect(() => {
     setUsername(
@@ -52,6 +55,22 @@ const Sidebar = ({ options }) => {
     }
   }, []);
 
+  useEffect(() => {
+    setAuthId(
+      localStorage.getItem("authId") || sessionStorage.getItem("authId")
+    );
+    const fetchData = async () => {
+      const authData = await api.getAuthenticationById(authId);
+      setProfileImage(authData.ProfilePicture);
+      setProfileImageMime(authData.MimeType);
+      console.log(profileImage);
+      console.log(profileImageMime);
+    };
+    if (authId) {
+      fetchData();
+    }
+  }, [authId, profileImage, profileImageMime]);
+
   return (
     <>
       <Header />
@@ -61,7 +80,14 @@ const Sidebar = ({ options }) => {
         </a> */}
         <div className="avatar">
           <div className="w-32 mt-4 rounded-full ml-12">
-            <img src={placeholder} alt="placeholder" />
+            <img
+              src={
+                profileImage && profileImageMime
+                  ? `${profileImageMime},${profileImage}`
+                  : placeholder
+              }
+              alt="placeholder"
+            />
           </div>
         </div>
         <h2 className="text-white text-3xl text-center my-5 font-bold">

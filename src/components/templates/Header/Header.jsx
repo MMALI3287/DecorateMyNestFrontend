@@ -28,6 +28,7 @@ const Header = () => {
   const [profileImage, setProfileImage] = useState();
   const [profileImageMime, setProfileImageMime] = useState();
   const [notifications, setNotifications] = useState([]);
+  const [authId, setAuthId] = useState([]);
   const api = new ApiCalls();
 
   useEffect(() => {
@@ -55,14 +56,21 @@ const Header = () => {
   // }, [email]);
 
   useEffect(() => {
-    setRole(localStorage.getItem("role"));
-    setProfileImage(
-      localStorage.getItem("picture") || sessionStorage.getItem("picture")
+    setAuthId(
+      localStorage.getItem("authId") || sessionStorage.getItem("authId")
     );
-    setProfileImageMime(
-      localStorage.getItem("mime") || sessionStorage.getItem("mime")
-    );
-  }, []);
+    const fetchData = async () => {
+      const authData = await api.getAuthenticationById(authId);
+      setRole(localStorage.getItem("role"));
+      setProfileImage(authData.ProfilePicture);
+      setProfileImageMime(authData.MimeType);
+      console.log(profileImage);
+      console.log(profileImageMime);
+    };
+    if (authId) {
+      fetchData();
+    }
+  }, [authId, profileImage, profileImageMime]);
 
   const handleNotificationClick = async (notification) => {
     navigate(notification.RedirectUrl);
@@ -78,15 +86,14 @@ const Header = () => {
   useEffect(() => {
     const fetchData = async () => {
       const allNotifications = await api.getNotifications();
-      const userAuthId =
-        localStorage.getItem("authId") || sessionStorage.getItem("authId");
+      const userAuthId = authId;
       const notifications = allNotifications.filter(
         (notification) => notification.ReceiverId === parseInt(userAuthId)
       );
       setNotifications(notifications);
     };
     fetchData();
-  }, []);
+  }, [authId]);
 
   return (
     <>
@@ -202,13 +209,11 @@ const Header = () => {
               </div>
 
               <img
-                className="h-12 rounded-full cursor-pointer mr-4"
+                className="h-12 w-12 rounded-full cursor-pointer mr-4"
                 id="menuImage"
                 src={
-                  profileImage &&
-                  profileImageMime &&
-                  profileImage.includes("base64")
-                    ? `data:${profileImageMime};base64,${profileImage}`
+                  profileImage && profileImageMime
+                    ? `${profileImageMime},${profileImage}`
                     : placeholder
                 }
                 alt="Menu"

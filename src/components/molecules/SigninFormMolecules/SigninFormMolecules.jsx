@@ -42,13 +42,14 @@ const SigninFormMolecules = () => {
 
       if (authenticated) {
         const authData = await api.getUserByUsername(data.username);
+        console.log(authData);
 
         if (rememberMe) {
           localStorage.setItem("bearerToken", authenticated.TokenKey);
           localStorage.setItem("username", authenticated.UserId);
           localStorage.setItem("authId", authData.AuthId);
           localStorage.setItem("role", authData.Role);
-          localStorage.setItem("picture", authData.ProfilePictrue);
+          localStorage.setItem("picture", authData.ProfilePicture);
           localStorage.setItem("mime", authData.MimeType);
         } else {
           sessionStorage.setItem("bearerToken", authenticated.TokenKey);
@@ -56,7 +57,7 @@ const SigninFormMolecules = () => {
           sessionStorage.setItem("authId", authData.AuthId);
           sessionStorage.setItem("role", authData.Role);
           localStorage.setItem("role", authData.Role);
-          sessionStorage.setItem("picture", authData.ProfilePictrue);
+          sessionStorage.setItem("picture", authData.ProfilePicture);
           sessionStorage.setItem("mime", authData.MimeType);
         }
         toast.success("Login successful 🔓");
