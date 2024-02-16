@@ -66,7 +66,7 @@ const SigninOrganism = () => {
               </p>
               <SigninFormMolecules />
               <button onClick={signinwithgoogle}>
-                <img src={signin} className="signInImage h-12 w-64 ml-20" />
+                <img src={signin} className="signInImage h-14 w-56 ml-24" />
               </button>
             </div>
           </div>
