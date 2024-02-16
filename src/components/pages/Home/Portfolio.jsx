@@ -10,8 +10,10 @@ const Portfolio = () => {
     async function fetchData() {
       try {
         const catalog = await api.getCatalogs();
-        setCatalog(catalog);
-        console.log(catalog);
+        const reversedCatalog = catalog.reverse();
+
+        setCatalog(reversedCatalog);
+        console.log(reversedCatalog);
       } catch (error) {
         console.error("Failed to fetch catalog:", error);
       }

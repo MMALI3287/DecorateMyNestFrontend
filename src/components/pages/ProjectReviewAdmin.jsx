@@ -61,30 +61,35 @@ const ProjectReviewAdmin = () => {
             </tr>
           </thead>
           <tbody>
-            {projects.map((project, index) => (
-              <tr
-                key={project.ProjectId}
-                style={{
-                  backgroundColor: index % 2 === 0 ? "#add8ed " : "#e7edad",
-                }}
-              >
-                <td className=" px-6 py-3 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border border-slate-600">
-                  {project.ClientId}
-                </td>
-                <td className=" px-6 py-3 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border border-slate-600">
-                  {project.ProjectId}
-                </td>
-                <td className=" px-6 py-3 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border border-slate-600">
-                  {project.Review}
-                </td>
-                <td className=" px-6 py-3 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border border-slate-600">
-                  {project.Rating}
-                </td>
-                <td className="border-slate-600 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border">
-                  {new Date(project.CompletionDate).toLocaleDateString()}
-                </td>
-              </tr>
-            ))}
+            {projects.map((project, index) => {
+              if (project.Rating !== 0) {
+                return (
+                  <tr
+                    key={project.ProjectId}
+                    style={{
+                      backgroundColor: index % 2 === 0 ? "#add8ed " : "#e7edad",
+                    }}
+                  >
+                    <td className=" px-6 py-3 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border border-slate-600">
+                      {project.ClientId}
+                    </td>
+                    <td className=" px-6 py-3 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border border-slate-600">
+                      {project.ProjectId}
+                    </td>
+                    <td className=" px-6 py-3 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border border-slate-600">
+                      {project.Review}
+                    </td>
+                    <td className=" px-6 py-3 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border border-slate-600">
+                      {project.Rating}
+                    </td>
+                    <td className="border-slate-600 text-center text-base font-bold  text-gray-600 uppercase tracking-wider border">
+                      {new Date(project.CompletionDate).toLocaleDateString()}
+                    </td>
+                  </tr>
+                );
+              }
+              return null;
+            })}
           </tbody>
         </table>
       </div>
