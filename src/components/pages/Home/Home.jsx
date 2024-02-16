@@ -364,16 +364,15 @@ const Home = () => {
             aria-label="History"
           />
           <div role="tabpanel" className="tab-content p-10">
-            <p className=" text-blue-600 text-xl font-serif">
-              In 2023, our interior decoration project unfolded as a captivating
-              narrative of design evolution. Guided by a commitment to harmonize
-              modern aesthetics with enduring elegance, our team embarked on a
-              meticulous journey. By seamlessly weaving together personalized
-              client preferences, architectural intricacies, and a carefully
-              curated palette of textures and materials, we crafted spaces that
-              transcend mere functionality. The project stands as a testament to
-              our unwavering dedication to innovation, collaborative excellence,
-              and the artistry of creating environments that seamlessly blend
+            <p className=" text-xl font-serif">
+              In 2023, Guided by a commitment to harmonize modern aesthetics
+              with enduring elegance, our team embarked on a meticulous journey.
+              By seamlessly weaving together personalized client preferences,
+              architectural intricacies, and a carefully curated palette of
+              textures and materials, we crafted spaces that transcend mere
+              functionality. The project stands as a testament to our unwavering
+              dedication to innovation, collaborative excellence, and the
+              artistry of creating environments that seamlessly blend
               contemporary allure with timeless sophistication.
             </p>
 
@@ -403,7 +402,7 @@ const Home = () => {
             defaultChecked
           />
           <div role="tabpanel" className="tab-content p-10">
-            <p className=" text-green-600 text-xl font-serif">
+            <p className="  text-xl font-serif">
               Our mission is to elevate living spaces through innovative and
               timeless design solutions. We are dedicated to understanding and
               exceeding our clients' expectations, fostering lasting
@@ -439,7 +438,7 @@ const Home = () => {
             aria-label="Vision"
           />
           <div role="tabpanel" className="tab-content p-10 font-serif">
-            <p className=" text-violet-600 text-xl font-serif">
+            <p className=" text-xl font-serif">
               Our vision is to be at the forefront of transformative design,
               shaping environments that inspire and endure. We aspire to set new
               standards for creativity, sustainability, and client satisfaction,
