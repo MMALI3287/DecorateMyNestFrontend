@@ -33,6 +33,7 @@ const About = () => {
 
       const result = await response.json();
       console.log(result);
+      window.location.reload();
     } catch (error) {
       console.error("Error sending data to backend:", error);
     }
